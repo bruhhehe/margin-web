@@ -15,13 +15,16 @@ the repository root. A push here is a deploy.
 
 ## Changing something
 
-Change it in the app repository, run `npm run build -w @a2e/site`, and copy `packages/site/dist`
+Change it in the app repository, run `npm run build -w @margin/site`, and copy `packages/site/dist`
 over this repository's contents. Editing the files here works until the next build overwrites it.
 
 ## What the pages need
 
 Both pages are static. Everything they do beyond drawing themselves goes to a Margin backend, which
 is a Cloudflare Worker deployed from the app repository — where it is, who you are, and which shop
-you are looking at are kept in your own browser and nowhere else. The dashboard comes prefilled with
-the backend address the extension ships with; anyone running their own opens "Using your own
-server?" on the sign-in card and changes it.
+you are looking at are kept in your own browser and nowhere else.
+
+The dashboard uses the backend address the extension ships with, and nothing on the sign-in card
+asks about it: it is the same Worker for everybody who has not deployed their own, so the question
+had one right answer and every visitor had to read past it. Anybody running their own backend opens
+`/dashboard/?server=https://their-worker.workers.dev` once, and it is remembered from then on.

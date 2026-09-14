@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap" />
-    <script type="module" crossorigin src="../assets/dashboard-Bx8YkmnI.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DlRLmQ_j.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/margin-BopnQ7D1.js">
     <link rel="stylesheet" crossorigin href="../assets/margin-CDkzY6yT.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DA12ysFb.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-CFzJVh0x.css">
   </head>
   <body>
     <!--
@@ -45,23 +45,6 @@
             <input type="text" id="shopLabel" name="shopLabel" autocomplete="off" placeholder="My shop" />
             <em>A name for your own use, so you can tell one shop from another. It can be changed later.</em>
           </label>
-          <!--
-            The server address, out of the way.
-
-            Margin publishes through a backend, and this page has to be told where that is. Almost
-            nobody deploys their own, so the address the extension ships with is already filled in
-            and the question is folded away — asking every seller for the address of a Worker they
-            did not deploy is asking them for something they cannot know. The few who do run their
-            own open this and change it.
-          -->
-          <details class="advanced">
-            <summary>Using your own server?</summary>
-            <label class="field">
-              <span>Server address</span>
-              <input type="url" id="server" name="server" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://your-worker.workers.dev" required />
-              <em>The same address as the extension's: Settings → Account → Server address.</em>
-            </label>
-          </details>
           <p class="formError" id="gateError" role="alert" hidden></p>
           <button class="btn primary big" type="submit" id="gateGo">Sign in</button>
         </form>
