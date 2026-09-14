@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Margin — price an Amazon listing backwards from what you keep</title>
+    <meta
+      name="description"
+      content="A Chrome side panel that turns an Amazon or AliExpress product page into an eBay listing priced on what it leaves you, then watches the source for the price and stock moving."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
+    />
+    <script type="module" crossorigin src="./assets/index-8mjY6_Yv.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/margin-CCiFqtac.js">
+    <link rel="stylesheet" crossorigin href="./assets/margin-C8lrZ6KZ.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-NgjQV1_O.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top">
+      <div class="wrap top-in">
+        <a class="lock" href="#top" aria-label="Margin, home">
+          <span class="tile" aria-hidden="true"><i></i><i></i></span>
+          <b>Margin</b>
+        </a>
+        <nav class="top-nav" aria-label="Sections">
+          <a href="#reading">Reading</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#watching">Watching</a>
+          <a href="./dashboard/">Dashboard</a>
+        </nav>
+        <!-- TODO: Web Store URL -->
+        <a class="btn primary" href="#install">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          Add to Chrome
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="wrap hero-in">
+          <div class="hero-say">
+            <h1>Every listing priced backwards from what you keep.</h1>
+            <p class="lead">
+              Margin is a Chrome side panel. Open it on an Amazon or AliExpress product and it already has the title, the
+              pictures, the specifications and the variations. It solves the eBay price from the amount you want left
+              over — through eBay&rsquo;s real fee for your site, your category and your account type — and publishes to
+              your own eBay account.
+            </p>
+            <div class="hero-do">
+              <!-- TODO: Web Store URL -->
+              <a class="btn primary big" href="#install">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+                Add to Chrome
+              </a>
+              <a class="btn ghost big" href="#pricing">Solve a price now</a>
+            </div>
+            <p class="hero-fine">
+              Free, and there is no account with us. Publishing goes through a server you deploy and point it at, so no
+              eBay token is ever held in the browser. No analytics — not in the extension, and not on this page.
+            </p>
+          </div>
+
+          <div class="hero-show">
+            <!--
+              The panel, drawn at the width it actually opens at. Figures are written into this markup by
+              index.ts from the same solver the extension calls, so they cannot drift from the code.
+            -->
+            <div class="panel" role="img" aria-label="The Margin side panel, showing a listing that sells for £30.92, costs £18.40, pays £4.52 in fees and keeps £8.00.">
+              <div class="panel-chrome">
+                <span class="tile" aria-hidden="true"><i></i><i></i></span>
+                <b>Margin</b>
+                <svg class="panel-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </div>
+
+              <div class="panel-tabs" aria-hidden="true">
+                <span class="on">New listing</span><span>Bulk</span><span>Orders</span><span>My listings</span><span>Settings</span>
+              </div>
+
+              <div class="panel-body">
+                <div class="panel-product">
+                  <span class="thumb" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" />
+                      <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
+                    </svg>
+                  </span>
+                  <span class="panel-title">Brushed steel kitchen mixer tap, single lever</span>
+                  <span class="panel-meta">
+                    amazon.co.uk · <span class="num" data-fill="cost">£18.40</span>
+                    <span class="chip ok"><i></i>In stock</span>
+                  </span>
+                </div>
+
+                <div class="statement panel-statement">
+                  <span class="st-row st-anim"><span class="st-label">Sells for</span><span class="num st-fig" data-fill="final">£30.92</span></span>
+                  <span class="st-row st-anim"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-fill="minus-cost">− £18.40</span></span>
+                  <span class="st-row st-anim"><span class="st-label quiet">Fees and costs</span><span class="num st-fig quiet" data-fill="minus-fee">− £4.52</span></span>
+                  <span class="st-row st-total st-anim"><span class="st-label">You keep</span><span class="num st-fig" data-fill="profit">£8.00</span></span>
+                </div>
+
+                <p class="panel-note">
+                  eBay&rsquo;s fee at that price, <span class="num" data-fill="fee">£4.52</span>, is
+                  <span data-fill="basis">the standard rate: 13.32% of the sale plus £0.40 per order</span>.
+                </p>
+
+                <div class="panel-do">
+                  <span class="btn primary">Review &amp; publish</span>
+                  <span class="btn ghost">Show the maths</span>
+                </div>
+              </div>
+            </div>
+            <p class="hero-cap">
+              Drawn at the panel&rsquo;s own width, 392&nbsp;px, where the screen allows it. The figures are solved by the
+              code the extension runs: an item costing £18.40, £8.00 to be kept, eBay UK, business seller, no category
+              chosen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="reading">
+        <div class="wrap sec">
+          <h2>It reads the page you already have open.</h2>
+          <p class="lead">
+            No Amazon API and no server-side scraping: pages are fetched and parsed inside your own browser, under your
+            own session, by a page nobody sees — so nothing steals focus and nothing is read from a datacentre that
+            Amazon would serve a captcha instead. Twenty-two Amazon marketplaces and AliExpress come out in the same
+            shape.
+          </p>
+
+          <div class="sheet-wrap">
+            <dl class="sheet">
+              <div><dt>Title</dt><dd>Cut to eBay&rsquo;s 80 characters on a word boundary, with Amazon&rsquo;s own furniture stripped out</dd></div>
+              <div><dt>Brand</dt><dd>Parsed out of the byline in eleven languages, then the details table</dd></div>
+              <div><dt>Price</dt><dd>Buy-box blocks first, struck-through list prices ignored, separator inferred rather than assumed</dd></div>
+              <div><dt>In stock</dt><dd>From the availability line, never from the price; anything unrecognised counts as out of stock</dd></div>
+              <div><dt>Pictures</dt><dd>One per gallery position at full resolution, sprites and placeholder pixels filtered out</dd></div>
+              <div><dt>Specifications</dt><dd>The tables, the bullets and the breadcrumb, which is also what the category search reads</dd></div>
+              <div><dt>Variations</dt><dd>The whole colour × size matrix, each option with its own code, pictures and availability</dd></div>
+              <div class="sheet-miss">
+                <dt>Anything absent</dt>
+                <dd>Named in a list of what was missing, with the selector that matched. Nothing is filled in with a guess.</dd>
+              </div>
+            </dl>
+
+            <aside class="aside">
+              <p>
+                <strong>Forty at a time, reviewed before anything goes live.</strong> The Bulk tab takes pasted links,
+                bare product codes or every product off the Amazon search, chart or storefront you have open. Rows are
+                read three at a time, each says which step it is on, a product already on eBay is marked and left out,
+                and the batch survives the panel being closed.
+              </p>
+              <p>
+                <strong>Amazon is asked politely.</strong> Three requests at a time, 250&nbsp;ms apart, whatever else
+                the tool is doing. A price more than 20% away from the last one costs a slower, fuller read before it
+                is believed.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="wrap sec">
+          <h2>The fee is in the price before you publish, not after the sale.</h2>
+          <p class="lead">
+            State what you want to keep and the listed price is solved so that eBay&rsquo;s cut on the order total still
+            leaves it. The rate is read off eBay&rsquo;s published table for your site and category, the price is
+            solved, the rate is read again at that price and the price re-solved — so a sale landing the other side of
+            a fee threshold is priced on the right rate.
+          </p>
+
+          <p class="sum">
+            <span><em>target</em> = cost + what you want to keep + your own fixed costs</span>
+            <span><em>price</em> = (target + eBay&rsquo;s fixed fee) ÷ (1 − eBay&rsquo;s rate)</span>
+          </p>
+
+          <form class="solver card" id="solver" novalidate>
+            <h3>Solve one now.</h3>
+            <p class="solver-say">
+              This is the extension&rsquo;s own pricing code, imported from the same package it is built from, running
+              in your browser. Change anything and the answer moves.
+            </p>
+
+            <div class="solver-grid">
+              <div class="controls">
+                <p class="field">
+                  <label for="cost">What the item costs you</label>
+                  <span class="input"><span class="sym" data-sym>£</span><input id="cost" name="cost" type="number" min="0" step="0.01" value="18.40" inputmode="decimal" autocomplete="off" /></span>
+                </p>
+                <p class="field">
+                  <label for="keep">What you want to keep</label>
+                  <span class="input"><span class="sym" data-sym>£</span><input id="keep" name="keep" type="number" min="0" step="0.01" value="8.00" inputmode="decimal" autocomplete="off" /></span>
+                </p>
+                <p class="field">
+                  <label for="site">eBay site</label>
+                  <select id="site" name="site"></select>
+                </p>
+                <fieldset class="field seg-field">
+                  <legend>Seller account</legend>
+                  <div class="seg">
+                    <span><input type="radio" id="acct-business" name="acct" value="business" checked /><label for="acct-business">Business</label></span>
+                    <span><input type="radio" id="acct-private" name="acct" value="private" /><label for="acct-private">Private</label></span>
+                  </div>
+                </fieldset>
+                <p class="field">
+                  <label for="cat">Category assumption</label>
+                  <select id="cat" name="cat">
+                    <option value="">No category chosen — the site&rsquo;s standard rate</option>
+                    <option value="Mobile Phones &amp; Communication &gt; Mobile &amp; Smart Phones">Mobile Phones &amp; Communication &gt; Mobile &amp; Smart Phones</option>
+                    <option value="Home, Furniture &amp; DIY &gt; Furniture &gt; Tables">Home, Furniture &amp; DIY &gt; Furniture &gt; Tables</option>
+                    <option value="Jewellery &amp; Watches &gt; Fine Jewellery">Jewellery &amp; Watches &gt; Fine Jewellery</option>
+                    <option value="Clothes, Shoes &amp; Accessories &gt; Men&rsquo;s Shoes &gt; Trainers">Clothes, Shoes &amp; Accessories &gt; Men&rsquo;s Shoes &gt; Trainers</option>
+                  </select>
+                </p>
+              </div>
+
+              <div class="answer">
+                <output class="statement solve-statement" id="answer" for="cost keep site cat">
+                  <span class="st-row"><span class="st-label">Lists at</span><span class="num st-fig" data-out="final">£30.92</span></span>
+                  <span class="st-row"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-out="cost">− £18.40</span></span>
+                  <span class="st-row"><span class="st-label quiet">eBay&rsquo;s fee</span><span class="num st-fig quiet" data-out="fee">− £4.52</span></span>
+                  <span class="st-row st-total"><span class="st-label">You keep</span><span class="num st-fig" data-out="profit">£8.00</span></span>
+                </output>
+                <p class="basis" data-out="basis">Standard rate: 13.32% of the sale plus £0.40 per order.</p>
+                <p class="caveat">
+                  eBay charges by category, so this figure is only as good as the category assumed above. The extension
+                  uses the category you are actually listing in, and the rate it reads is the one for that category.
+                </p>
+                <p class="source" data-out="source"></p>
+              </div>
+            </div>
+          </form>
+
+          <p class="after-solver">
+            Rules the solver leaves out and the extension does not: a price floor, a rounding rule that only ever nudges
+            upwards so the margin holds, a profit floor that refuses a repricing rather than publishing it at a loss,
+            and an extra percentage for Promoted Listings and anything else off the same sale that eBay does not
+            publish. Every rate can be replaced by the percentage and fixed fee from your own invoice, which is better
+            evidence than any table.
+          </p>
+        </div>
+      </section>
+
+      <section class="band" id="watching">
+        <div class="wrap sec">
+          <h2>Then it checks the source page, on a timer.</h2>
+          <p class="lead">
+            Every fifteen minutes to every few hours, your choice, with a tolerance below which a price move is ignored.
+            What it does about a change is three switches, and all three are off by default — a listing that changes its
+            own price is a listing you have to trust.
+          </p>
+
+          <ol class="rail">
+            <li>
+              <h3>The source price moves</h3>
+              <p>
+                The eBay price is re-solved from your rule on the new cost, with that listing&rsquo;s own category
+                feeding the fee. A repricing that would leave less than your profit floor is refused, the price is not
+                sent, and the row is flagged.
+              </p>
+            </li>
+            <li>
+              <h3>The source runs out</h3>
+              <p>
+                Quantity to zero, and back to what it was when the source returns. A price that has merely vanished from
+                the page is not a price of zero and is not acted on.
+              </p>
+            </li>
+            <li>
+              <h3>It sold out on eBay</h3>
+              <p>
+                A listing eBay is holding at zero because it sold is put back at the quantity it was published with,
+                while the source still has stock. What eBay actually holds is read first, so only listings genuinely at
+                zero are touched.
+              </p>
+            </li>
+            <li>
+              <h3>Amazon stops answering</h3>
+              <p>
+                Five listings in a row that read fine last time and fail now is a bot wall, not five bad products. The
+                run gives up there, leaves the rest of the list untouched, says so on screen and in a notification, and
+                tries again in thirty minutes.
+              </p>
+            </li>
+          </ol>
+          <p class="rail-after">
+            Only what changed is touched: a price move never resets the quantity, and a stock change never re-solves the
+            price. Notifications name the product rather than its product code, and forty price moves arrive as one
+            piece of news rather than forty.
+          </p>
+        </div>
+      </section>
+
+      <section id="wont">
+        <div class="wrap sec">
+          <h2>What it will not do.</h2>
+          <ul class="refusals">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
+              <div>
+                <h3>It will not buy the item for you.</h3>
+                <p>
+                  From an order, &ldquo;Order on Amazon&rdquo; opens the product page with the quantity set and fills the
+                  buyer&rsquo;s address into the checkout form when it appears. Nothing presses Buy&nbsp;now — that stays
+                  your click — and nothing dispatches for you.
+                </p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
+              <div>
+                <h3>It will not guess a fee, or anything else.</h3>
+                <p>
+                  A missing price is asked for rather than invented. An item specific is suggested with the evidence it
+                  came from, and written only when you accept it. A category the ranking cannot answer is handed to
+                  eBay&rsquo;s own suggestions rather than filled with the nearest thing.
+                </p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
+              <div>
+                <h3>It will not touch a listing you did not ask it to.</h3>
+                <p>
+                  Nothing publishes without a confirmation dialogue listing the title, price, quantity, condition,
+                  category, delivery, picture count and SKU. A new install starts in test mode, where a listing is
+                  validated and recorded but never reaches eBay, and the panel always says which of test, sandbox and
+                  production is in force.
+                </p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
+              <div>
+                <h3>It will not send your work anywhere.</h3>
+                <p>
+                  No analytics and no third-party calls. Nothing leaves the browser except to the server you deployed and
+                  to eBay, and the eBay tokens live on that server, encrypted, rather than in the extension.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="band" id="faq">
+        <div class="wrap sec sec-narrow">
+          <h2>Questions worth asking first.</h2>
+          <div class="faq">
+            <details>
+              <summary>Does this fit eBay&rsquo;s dropshipping policy?</summary>
+              <div>
+                <p>
+                  eBay allows dropshipping where you fulfil orders from a wholesale supplier. It does not allow listing
+                  an item and having it shipped to your buyer directly from another retailer or marketplace, and it can
+                  end listings or restrict an account for doing so. That is eBay&rsquo;s rule, not ours, and it is worth
+                  reading in their own words before you list anything.
+                </p>
+                <p>
+                  Margin is built for a seller who holds the stock and dispatches it themselves. It never places an
+                  order, never presses Buy&nbsp;now and never dispatches; the confirmation dialogue says, before you
+                  publish, that you hold this stock and will dispatch it yourself. Nothing in it tries to hide what a
+                  listing is from eBay. How you actually run your business is your responsibility.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>Do I need to run a server?</summary>
+              <div>
+                <p>
+                  To publish, yes. eBay&rsquo;s credentials and your refresh token live on a small backend rather than
+                  in the browser, and you deploy it and point the extension at its address. It runs on Cloudflare
+                  Workers on the free plan, or on Node on your own machine.
+                </p>
+                <p>
+                  To try it, no. A new install starts in test mode, which needs no backend at all: it reads pages, builds
+                  drafts, prices them and records them locally without ever calling eBay.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>How exact is the fee?</summary>
+              <div>
+                <p>
+                  It is an estimate, unavoidably: eBay works the real fee out when the sale exists and reports it per
+                  transaction afterwards. This is the figure a listing has to be priced against beforehand.
+                </p>
+                <p>
+                  The rates come from each site&rsquo;s own published table, per category, in four shapes eBay actually
+                  uses — a flat rate, a rate that steps above a threshold, a whole sale re-rated at one rate, and three
+                  or more tiered bands — plus the regulatory operating fee where a site charges one. eBay UK&rsquo;s table
+                  was checked against real order statements from this seller&rsquo;s own account, which is where the
+                  setting for the extra percentage an invoice shows on top came from: Promoted Listings and the like come
+                  out of the same sale and eBay does not publish them. Once a sale happens, the Orders tab shows what
+                  eBay actually charged.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>Which eBay sites, and does the account type matter?</summary>
+              <div>
+                <p>
+                  Fourteen: the United Kingdom, United States, Ireland, Germany, France, Italy, Spain, the Netherlands,
+                  Belgium, Austria, Switzerland, Poland, Canada and Australia — each with its own currency, fee table and
+                  site id.
+                </p>
+                <p>
+                  The account type matters enough to be asked of eBay and cached for a day: a private seller on eBay UK
+                  pays no final value fee at all, while a private seller on eBay US pays what a business pays. An account
+                  eBay says nothing about is treated as a business, because quoting no fee to somebody who will be
+                  charged one is the expensive way to be wrong.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>Does it use the Amazon API?</summary>
+              <div>
+                <p>
+                  No — not the Product Advertising API and not the Creators API. Pages are read in your own browser under
+                  your own session, which is also the only thing that works: Amazon serves a datacentre address a captcha
+                  rather than a product page.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>What does it cost?</summary>
+              <div>
+                <p>
+                  Nothing. There is no paid plan, no account with us and no payment step anywhere in the extension. What
+                  it can cost you is what you choose to run it on: a Cloudflare Workers account and a database, both of
+                  which have free tiers that this fits inside.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>Can I install it today?</summary>
+              <div>
+                <p>
+                  Not from the Chrome Web Store yet — the listing is written but not published, which is why the button
+                  on this page has nowhere to go. The extension itself is built and loadable as an unpacked extension
+                  today. This page will carry the store link the moment there is one.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="install">
+        <div class="wrap sec close">
+          <h2>Open it beside the page you were going to list anyway.</h2>
+          <p class="lead">
+            Alt+E, or the toolbar icon, on whichever tab you were last on. Everything else you have already read on this
+            page.
+          </p>
+          <div class="hero-do">
+            <!-- TODO: Web Store URL -->
+            <a class="btn primary big" href="#install">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Add to Chrome
+            </a>
+            <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
+          </div>
+          <p class="hero-fine">Not on the Chrome Web Store yet: the button has nowhere to go until it is.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot-in">
+        <a class="lock" href="#top">
+          <span class="tile" aria-hidden="true"><i></i><i></i></span>
+          <b>Margin</b>
+        </a>
+        <nav class="foot-nav" aria-label="Footer">
+          <a href="#reading">Reading</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#watching">Watching</a>
+          <a href="#faq">Questions</a>
+          <a href="./dashboard/">Dashboard</a>
+        </nav>
+        <p class="foot-fine">
+          Fee rates are each eBay site&rsquo;s own published figures, read on 10&nbsp;September&nbsp;2026, and every one of
+          them is an estimate until eBay charges the sale. Margin is not affiliated with eBay, Amazon or AliExpress.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>

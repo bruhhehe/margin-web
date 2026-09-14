@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard — Margin</title>
+    <meta name="description" content="What your eBay shops sold, what eBay took, what the stock cost and what you kept." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap" />
+    <script type="module" crossorigin src="../assets/dashboard-B8ja5i00.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/margin-CCiFqtac.js">
+    <link rel="stylesheet" crossorigin href="../assets/margin-C8lrZ6KZ.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-Cp3XP4k3.css">
+  </head>
+  <body>
+    <!--
+      Operate. Every figure here is one somebody is about to make a decision on, so the page is
+      arranged for scanning: the money first at any width, the run of trading under it, then the
+      products, then what the watching has been doing. Four views, one shell, no page loads.
+    -->
+
+    <!-- Signed out. Nothing else exists until this is answered. -->
+    <main class="gate" id="gate" hidden>
+      <div class="card gateCard">
+        <a class="lock gateLock" href="../"><span class="tile" aria-hidden="true"><i></i><i></i></span><b>Margin<em>.</em></b></a>
+
+        <div class="tabs" role="tablist" aria-label="Sign in or sign up">
+          <button type="button" role="tab" id="tabIn" aria-selected="true" aria-controls="gateForm">Sign in</button>
+          <button type="button" role="tab" id="tabUp" aria-selected="false" aria-controls="gateForm">Create an account</button>
+        </div>
+
+        <form id="gateForm" novalidate>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="email" name="email" autocomplete="username" spellcheck="false" required />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input type="password" id="password" name="password" autocomplete="current-password" required />
+            <em class="onlyUp" hidden>At least 10 characters. Length is what makes a password hard to guess.</em>
+          </label>
+          <label class="field onlyUp" hidden>
+            <span>What is your shop called?</span>
+            <input type="text" id="shopLabel" name="shopLabel" autocomplete="off" placeholder="My shop" />
+            <em>Just for you, so you can tell one shop from another. You can change it later.</em>
+          </label>
+          <!--
+            The server address, out of the way.
+
+            Margin publishes through a backend, and this page has to be told where that is. Almost
+            nobody deploys their own, so the address the extension ships with is already filled in
+            and the question is folded away — asking every seller for the address of a Worker they
+            did not deploy is asking them for something they cannot know. The few who do run their
+            own open this and change it.
+          -->
+          <details class="advanced">
+            <summary>Using your own server?</summary>
+            <label class="field">
+              <span>Server address</span>
+              <input type="url" id="server" name="server" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://your-worker.workers.dev" required />
+              <em>The same address as the extension's: Settings → Account → Server address.</em>
+            </label>
+          </details>
+          <p class="formError" id="gateError" role="alert" hidden></p>
+          <button class="btn primary big" type="submit" id="gateGo">Sign in</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Signed in. -->
+    <div class="app" id="app" hidden>
+      <aside>
+        <a class="lock" href="../"><span class="tile" aria-hidden="true"><i></i><i></i></span><b>Margin<em>.</em></b></a>
+
+        <div class="shopPicker">
+          <label class="sr-only" for="shopSelect">Shop</label>
+          <select id="shopSelect"></select>
+        </div>
+
+        <nav class="side" aria-label="Views">
+          <button type="button" data-view="overview" class="here"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13V7M8 13V3M13 13v-4" /></svg>Overview</button>
+          <button type="button" data-view="listings"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8" /></svg>Listings</button>
+          <button type="button" data-view="shops"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5h11l-1 7h-9z" /><path d="M5.5 6.5V4a2.5 2.5 0 0 1 5 0v2.5" /></svg>Shops</button>
+          <button type="button" data-view="plan"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="2" /><path d="M2 7h12" /></svg>Plan</button>
+        </nav>
+
+        <div class="side-foot">
+          <label class="lookPick">
+            <span class="sr-only">How this page looks</span>
+            <select id="lookSelect">
+              <option value="shared">Same as my panel</option>
+              <option value="system">Follow this browser</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </label>
+          <p class="who" id="who"></p>
+          <button class="linkish" type="button" id="signOut">Sign out</button>
+        </div>
+      </aside>
+
+      <main>
+        <p class="strip" id="failure" role="alert" hidden></p>
+
+        <!-- ---------------------------------------------------------------- Overview -->
+        <section class="view" data-view="overview">
+          <div class="pagehead">
+            <div class="titles">
+              <h1 id="overviewTitle">Overview</h1>
+              <p class="sub" id="periodSaid">&nbsp;</p>
+            </div>
+            <div class="tools">
+              <div class="seg" role="group" aria-label="Period">
+                <button type="button" data-days="7">7 days</button>
+                <button type="button" data-days="30" aria-pressed="true">30 days</button>
+                <button type="button" data-days="90">90 days</button>
+                <button type="button" data-days="365">A year</button>
+              </div>
+              <button class="btn ghost" type="button" id="refresh">Refresh</button>
+            </div>
+          </div>
+
+          <div class="loading" id="loading" hidden><span class="spinner" aria-hidden="true"></span>Reading your shop…</div>
+
+          <div id="overviewBody" hidden>
+            <div class="prompt" id="connectPrompt" hidden></div>
+            <dl class="cards" id="cards"></dl>
+            <p class="founded" id="founded"></p>
+
+            <div class="two">
+              <div class="col">
+                <section class="card">
+                  <header><h2>What you kept, week by week</h2><span class="meta" id="weeksMeta"></span></header>
+                  <div class="pad">
+                    <figure>
+                      <figcaption>Sales less eBay's fee less what the stock cost, for the twelve weeks to now.</figcaption>
+                      <div class="chartScroll"><svg class="chart" id="weeksChart" role="img" viewBox="0 0 760 240" preserveAspectRatio="xMidYMid meet"></svg></div>
+                    </figure>
+                    <details>
+                      <summary>Read it as a table</summary>
+                      <div class="scroller">
+                        <table id="weeksTable">
+                          <thead>
+                            <tr>
+                              <th scope="col">Week ending</th>
+                              <th scope="col" class="n">Orders</th>
+                              <th scope="col" class="n">Sales</th>
+                              <th scope="col" class="n">Fees</th>
+                              <th scope="col" class="n">Cost</th>
+                              <th scope="col" class="n">Kept</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </details>
+                  </div>
+                </section>
+
+                <section class="card">
+                  <header><h2>Orders a day</h2><span class="meta" id="daysMeta"></span></header>
+                  <div class="pad">
+                    <figure>
+                      <figcaption>How many orders landed on each day of the period.</figcaption>
+                      <div class="chartScroll"><svg class="chart" id="daysChart" role="img" viewBox="0 0 760 150" preserveAspectRatio="xMidYMid meet"></svg></div>
+                    </figure>
+                  </div>
+                </section>
+
+                <section class="card">
+                  <header><h2>What each product earned</h2><span class="meta" id="productsMeta"></span></header>
+                  <div class="pad">
+                    <div class="scroller">
+                      <table id="productTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col" class="n">Sold</th>
+                            <th scope="col" class="n">Each</th>
+                            <th scope="col" class="n">Margin</th>
+                            <th scope="col" class="n">Kept</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                    <p class="empty" id="productsEmpty" hidden>Nothing sold in this period.</p>
+                  </div>
+                </section>
+              </div>
+
+              <div class="col">
+                <section class="card">
+                  <header><h2>Still to send</h2><span class="meta" id="dispatchMeta"></span></header>
+                  <div id="dispatchList"></div>
+                </section>
+
+                <section class="card">
+                  <header><h2>The shop as it stands</h2></header>
+                  <dl class="health" id="shopHealth"></dl>
+                </section>
+
+                <section class="card">
+                  <header><h2>What the checks found</h2><span class="meta">last 24 hours</span></header>
+                  <dl class="health" id="checkHealth"></dl>
+                </section>
+              </div>
+            </div>
+
+            <p class="foot">
+              Sales and eBay's fee are what eBay reports. What the stock cost is the source price the last check read, so it is an estimate of the price on the
+              day you bought.
+            </p>
+          </div>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Listings -->
+        <section class="view" data-view="listings" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Listings</h1>
+              <p class="sub">Every shop on this account, in one place.</p>
+            </div>
+            <div class="tools">
+              <label class="sr-only" for="listingShop">Shop</label>
+              <select id="listingShop"></select>
+              <label class="sr-only" for="listingSearch">Search</label>
+              <input type="search" id="listingSearch" placeholder="Search titles and codes" />
+              <button class="btn ghost" type="button" id="refreshListings">Refresh</button>
+            </div>
+          </div>
+
+          <div class="loading" id="listingsLoading" hidden><span class="spinner" aria-hidden="true"></span>Reading your listings…</div>
+
+          <section class="card" id="listingsCard" hidden>
+            <header><h2 id="listingsCount">Listings</h2><span class="meta" id="listingsMeta"></span></header>
+            <div class="pad">
+              <div class="scroller">
+                <table id="listingsTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Item</th>
+                      <th scope="col">Shop</th>
+                      <th scope="col" class="n">Cost</th>
+                      <th scope="col" class="n">On eBay</th>
+                      <th scope="col">State</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <p class="empty" id="listingsEmpty" hidden></p>
+              <div class="moreRow" id="listingsMore" hidden></div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Shops -->
+        <section class="view" data-view="shops" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Shops</h1>
+              <p class="sub">Each one is its own eBay account, with its own listings and its own orders.</p>
+            </div>
+          </div>
+
+          <div class="loading" id="shopsLoading" hidden><span class="spinner" aria-hidden="true"></span>Reading your shops…</div>
+          <div id="shopList" class="shopGrid"></div>
+
+          <section class="card addShop">
+            <header><h2>Add a shop</h2></header>
+            <div class="pad">
+              <form id="addShopForm" class="inlineForm" novalidate>
+                <label class="field">
+                  <span class="sr-only">Shop name</span>
+                  <input type="text" id="newShopLabel" placeholder="What will you call it?" autocomplete="off" required />
+                </label>
+                <button class="btn primary" type="submit">Add shop</button>
+              </form>
+              <p class="formError" id="shopError" role="alert" hidden></p>
+              <p class="empty" id="shopHint"></p>
+            </div>
+          </section>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Plan -->
+        <section class="view" data-view="plan" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Plan</h1>
+              <p class="sub" id="planSaid">&nbsp;</p>
+            </div>
+          </div>
+
+          <div class="loading" id="planLoading" hidden><span class="spinner" aria-hidden="true"></span>Reading your plan…</div>
+          <div class="plans" id="planList"></div>
+          <p class="formError" id="planError" role="alert" hidden></p>
+          <p class="foot" id="planFoot"></p>
+        </section>
+      </main>
+    </div>
+
+    <div id="tip" role="status" aria-live="polite"></div>
+  </body>
+</html>
