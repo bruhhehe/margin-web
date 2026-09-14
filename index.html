@@ -194,11 +194,11 @@
                 one is on. Products you have already listed are flagged and skipped. You review the batch before
                 anything goes live, and closing the panel does not lose it.
               </p>
-              <h3>It reads at a pace that keeps working</h3>
+              <h3>A run of forty finishes</h3>
               <p>
-                Three requests at a time, 250&nbsp;ms apart, which is slow enough that Amazon keeps answering. If a
-                price comes back more than 20% away from the last one, Margin re-reads the page in full before it
-                believes it.
+                Margin reads three products at a time with a pause between them, so a bulk run gets to the end instead
+                of stalling halfway. If a price comes back more than 20% away from the last one, it re-reads the page in
+                full before it believes it.
               </p>
             </aside>
           </div>
@@ -289,7 +289,7 @@
 
       <section class="band" id="watching">
         <!--
-          Two columns once there is room: what is being claimed on the left, the four things that
+          Two columns once there is room: what is being claimed on the left, the things that
           happen on the right. Measured at 1440 this section used 728 of its 1160 and left 432 empty,
           which is a narrow document in a wide frame rather than a composition.
         -->
@@ -297,9 +297,8 @@
           <div class="split-say">
             <h2>Margin keeps checking the Amazon page after you list.</h2>
             <p class="lead">
-              Every 15 minutes, or every few hours — you choose. You also set how small a price move it should ignore.
-              What it does about a change is three separate switches, and all three start switched off: a listing that
-              changes its own price is one you have to trust first.
+              Every 15 minutes, or every few hours — you choose. You also set how small a price move it should
+              ignore. Each of the three things below is its own switch, and they all start off.
             </p>
           </div>
 
@@ -322,17 +321,8 @@
             <li>
               <h3>Your eBay listing sells out</h3>
               <p>
-                If eBay is holding a listing at zero because it sold, and Amazon still has stock, Margin puts it back up
-                at the quantity you first published. It reads what eBay actually holds before it does anything, so it
-                only touches listings that really are at zero.
-              </p>
-            </li>
-            <li>
-              <h3>Amazon starts blocking the checks</h3>
-              <p>
-                Five listings in a row that worked last time and fail now means Amazon is blocking you, not that five
-                products have gone bad. Margin stops the run there, leaves the rest of your listings untouched, tells
-                you on screen and in a notification, and tries again in thirty minutes.
+                If eBay is holding a listing at zero because it sold, and Amazon still has stock, Margin puts it back
+                up at the quantity you first published.
               </p>
             </li>
           </ol>
