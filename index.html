@@ -394,8 +394,8 @@
               <div>
                 <h3>Your shop data stays yours.</h3>
                 <p>
-                  No analytics and no third-party calls. Nothing leaves your browser except to your own server and to
-                  eBay, and your eBay tokens are encrypted on that server rather than held in the extension.
+                  No analytics and no third-party calls. Nothing leaves your browser except to Margin and to eBay, and
+                  your eBay tokens are encrypted at rest rather than held in the extension.
                 </p>
               </div>
             </li>
@@ -424,9 +424,8 @@
           <div class="plans" id="planCards"></div>
 
           <p class="plans-fine">
-            Billed monthly. Cancel from the dashboard whenever you like; there is no contract. Publishing to eBay needs
-            a small server of your own — a Cloudflare Workers account and a database, both of which have free tiers
-            this fits inside. Your plan pays for Margin, not for that hosting.
+            Billed monthly. Cancel from the dashboard whenever you like; there is no contract. Nothing to install
+            beyond the extension and nothing to deploy — your plan covers the hosting as well as the software.
           </p>
         </div>
       </section>
@@ -446,16 +445,15 @@
               </div>
             </details>
             <details>
-              <summary>Do I have to run a server?</summary>
+              <summary>Is there anything to set up?</summary>
               <div>
                 <p>
-                  To publish to eBay, yes. Your eBay credentials and refresh token have to live somewhere safer than a
-                  browser extension, so you deploy a small server and point Margin at its address. It runs on
-                  Cloudflare Workers&rsquo; free plan, or on Node on your own machine.
+                  No. Install it, create an account, connect your eBay shop, and list. Margin runs the server side; you
+                  do not deploy anything and there is nothing to configure.
                 </p>
                 <p>
-                  To try it, no. A new install starts in test mode, which needs no server at all: it reads pages,
-                  builds drafts and prices them on your machine, and never calls eBay.
+                  Your eBay refresh token is encrypted and held on that server rather than in the extension, because a
+                  browser extension is the wrong place to keep the key to your shop.
                 </p>
               </div>
             </details>
@@ -514,9 +512,8 @@
                   search results in one pass. Max, at £39, adds up to twelve eBay shops on one login.
                 </p>
                 <p>
-                  Your plan pays for Margin itself. The server you run it on is separate and also yours: a Cloudflare
-                  Workers account and a database, both of which have free tiers this fits inside. There is no contract,
-                  and you cancel from the dashboard.
+                  That is everything: the software and the hosting behind it. There is nothing else to pay for and
+                  nothing to deploy. No contract, and you cancel from the dashboard.
                 </p>
               </div>
             </details>

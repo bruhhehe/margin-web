@@ -20,11 +20,7 @@ over this repository's contents. Editing the files here works until the next bui
 
 ## What the pages need
 
-Both pages are static. Everything they do beyond drawing themselves goes to a Margin backend, which
-is a Cloudflare Worker deployed from the app repository — where it is, who you are, and which shop
-you are looking at are kept in your own browser and nowhere else.
-
-The dashboard uses the backend address the extension ships with, and nothing on the sign-in card
-asks about it: it is the same Worker for everybody who has not deployed their own, so the question
-had one right answer and every visitor had to read past it. Anybody running their own backend opens
-`/dashboard/?server=https://their-worker.workers.dev` once, and it is remembered from then on.
+Both pages are static. Everything they do beyond drawing themselves goes to the Margin backend, a
+Cloudflare Worker deployed from the app repository. Sellers do not deploy anything and there is
+nothing for them to configure: the dashboard ships knowing where the backend is, and who you are and
+which shop you are looking at are kept in your own browser.
