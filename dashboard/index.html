@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap" />
-    <script type="module" crossorigin src="../assets/dashboard-B8ja5i00.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DeLSYe2e.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/margin-CCiFqtac.js">
     <link rel="stylesheet" crossorigin href="../assets/margin-C8lrZ6KZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-Cp3XP4k3.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-C5axWFeS.css">
   </head>
   <body>
     <!--
@@ -89,12 +89,14 @@
           <label class="lookPick">
             <span class="sr-only">How this page looks</span>
             <select id="lookSelect">
-              <option value="shared">Same as my panel</option>
+              <option value="shared">From my panel</option>
               <option value="system">Follow this browser</option>
               <option value="light">Light</option>
               <option value="dark">Dark</option>
             </select>
           </label>
+          <!-- Why "From my panel" is greyed out, and what to do about it. Only when it is. -->
+          <p class="lookHint" id="lookHint" hidden>Pick a theme in the extension to share it here.</p>
           <p class="who" id="who"></p>
           <button class="linkish" type="button" id="signOut">Sign out</button>
         </div>
