@@ -14,10 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
     />
-    <script type="module" crossorigin src="./assets/index-CyjUH3_z.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/margin-BopnQ7D1.js">
-    <link rel="stylesheet" crossorigin href="./assets/margin-CDkzY6yT.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-DpbnalLw.css">
+    <script type="module" crossorigin src="./assets/index-m3GP-fR5.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/index-_BMXD2tf.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DlDxNt-9.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BryupmQN.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -35,13 +35,17 @@
           <a href="#plans">Plans</a>
           <a href="./dashboard/">Dashboard</a>
         </nav>
-        <!-- TODO: Web Store URL -->
-        <a class="btn primary" href="#install">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 5v14M5 12h14" />
-          </svg>
-          Add to Chrome
-        </a>
+        <!--
+          The primary action is one that finishes.
+
+          This was "Add to Chrome", three times on the page, every one of them pointing at #install
+          — and the one inside #install pointed at the section it was in, so it produced no scroll,
+          no focus change and no feedback: a control indistinguishable from a broken one, at the
+          conversion point of the whole site. The extension is not on the Chrome Web Store yet, so
+          until it is, the way in is the dashboard, which is real, free, and works now. The store
+          button comes back here on the day there is a URL for it.
+        -->
+        <a class="btn primary" href="./dashboard/">Open the dashboard</a>
       </div>
     </header>
 
@@ -57,18 +61,12 @@
               publishes to your own eBay account.
             </p>
             <div class="hero-do">
-              <!-- TODO: Web Store URL -->
-              <a class="btn primary big" href="#install">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 5v14M5 12h14" />
-                </svg>
-                Add to Chrome
-              </a>
-              <a class="btn ghost big" href="#pricing">See the calculation</a>
+              <a class="btn primary big" href="./dashboard/">Open the dashboard</a>
+              <a class="btn ghost big" href="#install">How to run it today</a>
             </div>
             <p class="hero-fine">
-              Free to start, and free to stay on. Publishing goes through a backend you deploy and point it at, so no
-              eBay token is ever held in the browser. No analytics, in the extension or on this page.
+              Free to start, and free to stay on. No analytics, in the extension or on this page. The extension is not
+              on the Chrome Web Store yet — <a href="#install">how to run it today</a> is at the foot of the page.
             </p>
           </div>
 
@@ -157,17 +155,24 @@
               </div>
             </dl>
 
+            <!--
+              Headings, because these were headings.
+
+              They were `<strong>` with a sentence after them, which looks like a heading and is not
+              one: somebody moving by heading went straight from "Margin reads the product page" to
+              "The fee is in the price" and never heard that bulk listing exists at all.
+            -->
             <aside class="aside">
+              <h3>Forty at a time, reviewed before anything goes live.</h3>
               <p>
-                <strong>Forty at a time, reviewed before anything goes live.</strong> The Bulk tab takes pasted links,
-                bare product codes or every product off the Amazon search, chart or storefront you have open. Rows are
-                read three at a time, each says which step it is on, a product already on eBay is marked and left out,
-                and the batch survives the panel being closed.
+                The Bulk tab takes pasted links, bare product codes or every product off the Amazon search, chart or
+                storefront you have open. Rows are read three at a time, each says which step it is on, a product
+                already on eBay is marked and left out, and the batch survives the panel being closed.
               </p>
+              <h3>Amazon is asked politely.</h3>
               <p>
-                <strong>Amazon is asked politely.</strong> Three requests at a time, 250&nbsp;ms apart, whatever else
-                the tool is doing. A price more than 20% away from the last one costs a slower, fuller read before it
-                is believed.
+                Three requests at a time, 250&nbsp;ms apart, whatever else the tool is doing. A price more than 20%
+                away from the last one costs a slower, fuller read before it is believed.
               </p>
             </aside>
           </div>
@@ -257,14 +262,22 @@
       </section>
 
       <section class="band" id="watching">
-        <div class="wrap sec">
-          <h2>The source page is then checked on a schedule.</h2>
-          <p class="lead">
-            Every fifteen minutes to every few hours, your choice, with a tolerance below which a price move is ignored.
-            What it does about a change is three switches, and all three are off by default — a listing that changes its
-            own price is a listing you have to trust.
-          </p>
+        <!--
+          Two columns once there is room: what is being claimed on the left, the four things that
+          happen on the right. Measured at 1440 this section used 728 of its 1160 and left 432 empty,
+          which is a narrow document in a wide frame rather than a composition.
+        -->
+        <div class="wrap sec split">
+          <div class="split-say">
+            <h2>The source page is then checked on a schedule.</h2>
+            <p class="lead">
+              Every fifteen minutes to every few hours, your choice, with a tolerance below which a price move is
+              ignored. What it does about a change is three switches, and all three are off by default — a listing that
+              changes its own price is a listing you have to trust.
+            </p>
+          </div>
 
+          <div class="split-do">
           <ol class="rail">
             <li>
               <h3>The source price moves</h3>
@@ -303,6 +316,7 @@
             price. Notifications name the product rather than its product code, and forty price moves arrive as one
             piece of news rather than forty.
           </p>
+          </div>
         </div>
       </section>
 
@@ -390,6 +404,22 @@
         <div class="wrap sec sec-narrow">
           <h2>Questions worth answering before you install.</h2>
           <div class="faq">
+            <!--
+              First, because it is the most consequential fact on the page and it was seventh of
+              seven. Somebody deciding whether to read the other six wants to know whether there is
+              anything at the end of them.
+            -->
+            <details>
+              <summary>Can I install it today?</summary>
+              <div>
+                <p>
+                  Not from the Chrome Web Store — the listing is written but not published. The extension itself is
+                  built and runs today as an unpacked extension:
+                  <a href="#install">the three steps are at the foot of this page</a>. The dashboard is live now, free,
+                  and needs nothing installed. This page will carry the store link the moment there is one.
+                </p>
+              </div>
+            </details>
             <details>
               <summary>Does this fit eBay&rsquo;s dropshipping policy?</summary>
               <div>
@@ -481,38 +511,39 @@
                 </p>
               </div>
             </details>
-            <details>
-              <summary>Can I install it today?</summary>
-              <div>
-                <p>
-                  Not from the Chrome Web Store yet — the listing is written but not published, which is why the button
-                  on this page has nowhere to go. The extension itself is built and loadable as an unpacked extension
-                  today. This page will carry the store link the moment there is one.
-                </p>
-              </div>
-            </details>
           </div>
         </div>
       </section>
 
       <section id="install">
         <div class="wrap sec close">
-          <h2>Install it, and open it beside the page you were already reading.</h2>
+          <h2>Running it today, before the Chrome Web Store.</h2>
           <p class="lead">
-            Alt+E, or the toolbar icon, on whichever tab you were last on. Everything else you have already read on this
-            page.
+            The extension is not published yet, so it is loaded from a folder rather than installed from a store. Three
+            steps, and it opens beside the page you were already reading.
           </p>
+          <ol class="install-steps">
+            <li>
+              <div>
+                <b>Build it.</b> Clone the repository and run <code>npm install</code>, then
+                <code>npm run build -w @margin/extension</code>. That writes a <code>dist</code> folder.
+              </div>
+            </li>
+            <li>
+              <div>
+                <b>Load it.</b> Open <code>chrome://extensions</code>, turn on Developer mode, press
+                <b>Load unpacked</b>, and choose that <code>dist</code> folder.
+              </div>
+            </li>
+            <li>
+              <div><b>Open it.</b> Alt+E, or the toolbar icon, on whichever tab you were last on.</div>
+            </li>
+          </ol>
           <div class="hero-do">
-            <!-- TODO: Web Store URL -->
-            <a class="btn primary big" href="#install">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" />
-              </svg>
-              Add to Chrome
-            </a>
-            <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
+            <a class="btn primary big" href="./dashboard/">Open the dashboard</a>
           </div>
-          <p class="hero-fine">Not on the Chrome Web Store yet: the button has nowhere to go until it is.</p>
+          <!-- TODO: Web Store URL. When there is one, this becomes the primary action again. -->
+          <p class="hero-fine">This page will carry the store link on the day there is one.</p>
         </div>
       </section>
     </main>

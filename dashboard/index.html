@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap" />
-    <script type="module" crossorigin src="../assets/dashboard-DlRLmQ_j.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/margin-BopnQ7D1.js">
-    <link rel="stylesheet" crossorigin href="../assets/margin-CDkzY6yT.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-CFzJVh0x.css">
+    <script type="module" crossorigin src="../assets/dashboard-VCyiRl9M.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-_BMXD2tf.js">
+    <link rel="stylesheet" crossorigin href="../assets/index-DlDxNt-9.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-Cv_fQpIl.css">
   </head>
   <body>
     <!--
@@ -23,12 +23,22 @@
     <!-- Signed out. Nothing else exists until this is answered. -->
     <main class="gate" id="gate" hidden>
       <div class="card gateCard">
-        <a class="lock gateLock" href="../"><span class="tile" aria-hidden="true"><i></i><i></i></span><b>Margin<em>.</em></b></a>
+        <a class="lock gateLock" href="../"><span class="tile" aria-hidden="true"><i></i><i></i></span><b>Margin</b></a>
 
-        <div class="tabs" role="tablist" aria-label="Sign in or sign up">
-          <button type="button" role="tab" id="tabIn" aria-selected="true" aria-controls="gateForm">Sign in</button>
-          <button type="button" role="tab" id="tabUp" aria-selected="false" aria-controls="gateForm">Create an account</button>
+        <!--
+          Two buttons that change one form, said as two buttons that change one form.
+
+          This was a `role="tablist"` of two `role="tab"`s pointing at a form that was not a
+          tabpanel, which promises a screen-reader user arrow-key movement into a panel that does
+          not exist. A pressed-state group is what is actually here, and it is honest.
+        -->
+        <div class="tabs" role="group" aria-label="Sign in or create an account">
+          <button type="button" id="tabIn" aria-pressed="true">Sign in</button>
+          <button type="button" id="tabUp" aria-pressed="false">Create an account</button>
         </div>
+
+        <!-- What was pressed on the pricing table, carried through so the card knows why you are here. -->
+        <p class="gateWanted" id="gateWanted" hidden></p>
 
         <form id="gateForm" novalidate>
           <label class="field">
@@ -42,7 +52,7 @@
           </label>
           <label class="field onlyUp" hidden>
             <span>What is your shop called?</span>
-            <input type="text" id="shopLabel" name="shopLabel" autocomplete="off" placeholder="My shop" />
+            <input type="text" id="shopLabel" name="shopLabel" autocomplete="off" placeholder="My shop" maxlength="60" />
             <em>A name for your own use, so you can tell one shop from another. It can be changed later.</em>
           </label>
           <p class="formError" id="gateError" role="alert" hidden></p>
@@ -53,8 +63,9 @@
 
     <!-- Signed in. -->
     <div class="app" id="app" hidden>
+      <a class="skip" href="#main">Skip to content</a>
       <aside>
-        <a class="lock" href="../"><span class="tile" aria-hidden="true"><i></i><i></i></span><b>Margin<em>.</em></b></a>
+        <a class="lock" href="../"><span class="tile" aria-hidden="true"><i></i><i></i></span><b>Margin</b></a>
 
         <div class="shopPicker">
           <label class="sr-only" for="shopSelect">Shop</label>
@@ -85,7 +96,7 @@
         </div>
       </aside>
 
-      <main>
+      <main id="main" tabindex="-1">
         <p class="strip" id="failure" role="alert" hidden></p>
 
         <!-- ---------------------------------------------------------------- Overview -->
@@ -259,7 +270,7 @@
               <form id="addShopForm" class="inlineForm" novalidate>
                 <label class="field">
                   <span class="sr-only">Shop name</span>
-                  <input type="text" id="newShopLabel" placeholder="What will you call it?" autocomplete="off" required />
+                  <input type="text" id="newShopLabel" placeholder="What will you call it?" autocomplete="off" maxlength="60" required />
                 </label>
                 <button class="btn primary" type="submit">Add shop</button>
               </form>
@@ -284,6 +295,22 @@
           <p class="foot" id="planFoot"></p>
         </section>
       </main>
+
+      <!--
+        The page's own footer, and the only help on the surface.
+
+        A dashboard with no `contentinfo` is a page a screen-reader user cannot leave by landmark,
+        and a seller who wants to know what "Below your floor" means has, until now, had nowhere on
+        this page to find out. The answers are on the landing page; this says so.
+      -->
+      <footer class="appFoot">
+        <p>Margin</p>
+        <nav aria-label="Help">
+          <a href="../#faq">Questions and answers</a>
+          <a href="../#wont">What it will not do</a>
+          <a href="../#plans">Plans</a>
+        </nav>
+      </footer>
     </div>
 
     <div id="tip" role="status" aria-live="polite"></div>
