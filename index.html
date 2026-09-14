@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Margin — price an Amazon listing backwards from what you keep</title>
+    <title>Margin — price an eBay listing from what it leaves you</title>
     <meta
       name="description"
       content="A Chrome side panel that turns an Amazon or AliExpress product page into an eBay listing priced on what it leaves you, then watches the source for the price and stock moving."
@@ -14,10 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
     />
-    <script type="module" crossorigin src="./assets/index-8mjY6_Yv.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/margin-CCiFqtac.js">
-    <link rel="stylesheet" crossorigin href="./assets/margin-C8lrZ6KZ.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-NgjQV1_O.css">
+    <script type="module" crossorigin src="./assets/index-B2pqCHA6.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/margin-BopnQ7D1.js">
+    <link rel="stylesheet" crossorigin href="./assets/margin-CDkzY6yT.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DcC5hpbJ.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -32,6 +32,7 @@
           <a href="#reading">Reading</a>
           <a href="#pricing">Pricing</a>
           <a href="#watching">Watching</a>
+          <a href="#plans">Plans</a>
           <a href="./dashboard/">Dashboard</a>
         </nav>
         <!-- TODO: Web Store URL -->
@@ -48,12 +49,12 @@
       <section class="hero" id="top">
         <div class="wrap hero-in">
           <div class="hero-say">
-            <h1>Every listing priced backwards from what you keep.</h1>
+            <h1>Every listing priced from what it leaves you.</h1>
             <p class="lead">
-              Margin is a Chrome side panel. Open it on an Amazon or AliExpress product and it already has the title, the
-              pictures, the specifications and the variations. It solves the eBay price from the amount you want left
-              over — through eBay&rsquo;s real fee for your site, your category and your account type — and publishes to
-              your own eBay account.
+              Margin is a Chrome side panel. Opened on an Amazon or AliExpress product, it already holds the title, the
+              pictures, the specifications and the variations. It solves the eBay price from the amount you intend to be
+              left with — using eBay&rsquo;s published fee for your site, your category and your account type — and
+              publishes to your own eBay account.
             </p>
             <div class="hero-do">
               <!-- TODO: Web Store URL -->
@@ -63,11 +64,11 @@
                 </svg>
                 Add to Chrome
               </a>
-              <a class="btn ghost big" href="#pricing">Solve a price now</a>
+              <a class="btn ghost big" href="#pricing">See the calculation</a>
             </div>
             <p class="hero-fine">
-              Free, and there is no account with us. Publishing goes through a server you deploy and point it at, so no
-              eBay token is ever held in the browser. No analytics — not in the extension, and not on this page.
+              Free to start, and free to stay on. Publishing goes through a backend you deploy and point it at, so no
+              eBay token is ever held in the browser. No analytics, in the extension or on this page.
             </p>
           </div>
 
@@ -123,9 +124,9 @@
               </div>
             </div>
             <p class="hero-cap">
-              Drawn at the panel&rsquo;s own width, 392&nbsp;px, where the screen allows it. The figures are solved by the
-              code the extension runs: an item costing £18.40, £8.00 to be kept, eBay UK, business seller, no category
-              chosen.
+              Drawn at the panel&rsquo;s own width of 392&nbsp;px, where the screen allows it. The figures are produced by
+              the code the extension runs: an item costing £18.40, £8.00 to be kept, eBay UK, business seller, no
+              category chosen.
             </p>
           </div>
         </div>
@@ -133,7 +134,7 @@
 
       <section class="band" id="reading">
         <div class="wrap sec">
-          <h2>It reads the page you already have open.</h2>
+          <h2>Margin reads the product page you already have open.</h2>
           <p class="lead">
             No Amazon API and no server-side scraping: pages are fetched and parsed inside your own browser, under your
             own session, by a page nobody sees — so nothing steals focus and nothing is read from a datacentre that
@@ -189,10 +190,10 @@
           </p>
 
           <form class="solver card" id="solver" novalidate>
-            <h3>Solve one now.</h3>
+            <h3>Work through one.</h3>
             <p class="solver-say">
-              This is the extension&rsquo;s own pricing code, imported from the same package it is built from, running
-              in your browser. Change anything and the answer moves.
+              This is the extension&rsquo;s own pricing code, imported from the package it is built from and running in
+              your browser. Change any figure and the answer follows.
             </p>
 
             <div class="solver-grid">
@@ -257,7 +258,7 @@
 
       <section class="band" id="watching">
         <div class="wrap sec">
-          <h2>Then it checks the source page, on a timer.</h2>
+          <h2>The source page is then checked on a schedule.</h2>
           <p class="lead">
             Every fifteen minutes to every few hours, your choice, with a tolerance below which a price move is ignored.
             What it does about a change is three switches, and all three are off by default — a listing that changes its
@@ -307,12 +308,12 @@
 
       <section id="wont">
         <div class="wrap sec">
-          <h2>What it will not do.</h2>
+          <h2>Deliberate limits.</h2>
           <ul class="refusals">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
               <div>
-                <h3>It will not buy the item for you.</h3>
+                <h3>It does not buy the item for you.</h3>
                 <p>
                   From an order, &ldquo;Order on Amazon&rdquo; opens the product page with the quantity set and fills the
                   buyer&rsquo;s address into the checkout form when it appears. Nothing presses Buy&nbsp;now — that stays
@@ -323,7 +324,7 @@
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
               <div>
-                <h3>It will not guess a fee, or anything else.</h3>
+                <h3>It does not guess a fee, or anything else.</h3>
                 <p>
                   A missing price is asked for rather than invented. An item specific is suggested with the evidence it
                   came from, and written only when you accept it. A category the ranking cannot answer is handed to
@@ -334,7 +335,7 @@
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
               <div>
-                <h3>It will not touch a listing you did not ask it to.</h3>
+                <h3>It does not touch a listing you did not ask it to.</h3>
                 <p>
                   Nothing publishes without a confirmation dialogue listing the title, price, quantity, condition,
                   category, delivery, picture count and SKU. A new install starts in test mode, where a listing is
@@ -346,7 +347,7 @@
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
               <div>
-                <h3>It will not send your work anywhere.</h3>
+                <h3>It does not send your work anywhere.</h3>
                 <p>
                   No analytics and no third-party calls. Nothing leaves the browser except to the server you deployed and
                   to eBay, and the eBay tokens live on that server, encrypted, rather than in the extension.
@@ -357,9 +358,37 @@
         </div>
       </section>
 
+
+      <!--
+        What Margin costs.
+
+        The figures and the lists are written in by index.ts from the same `PLANS` the server bills
+        against, so a price on this page cannot disagree with the price on the card. The markup here
+        is the shape; the words are the product's.
+      -->
+      <section id="plans">
+        <div class="wrap sec">
+          <h2>What Margin costs.</h2>
+          <p class="lead">
+            Three plans, and the line between them is what happens without being asked. Free lists by hand and reports
+            what has changed. Pro acts on what it finds: repricing when a source price moves, taking a listing off sale
+            when the stock goes, putting a page of search results up in one pass. Max is for more than one eBay shop
+            under one login.
+          </p>
+
+          <div class="plans" id="planCards"></div>
+
+          <p class="plans-fine">
+            Billed monthly, cancelled from the dashboard, no contract. Publishing still goes through a backend you
+            deploy: a Cloudflare Workers account and a database, both of which have free tiers this fits inside. A plan
+            pays for Margin, not for hosting.
+          </p>
+        </div>
+      </section>
+
       <section class="band" id="faq">
         <div class="wrap sec sec-narrow">
-          <h2>Questions worth asking first.</h2>
+          <h2>Questions worth answering before you install.</h2>
           <div class="faq">
             <details>
               <summary>Does this fit eBay&rsquo;s dropshipping policy?</summary>
@@ -440,9 +469,15 @@
               <summary>What does it cost?</summary>
               <div>
                 <p>
-                  Nothing. There is no paid plan, no account with us and no payment step anywhere in the extension. What
-                  it can cost you is what you choose to run it on: a Cloudflare Workers account and a database, both of
-                  which have free tiers that this fits inside.
+                  Free to list by hand and to watch what changes, up to twenty-five live listings on one eBay shop. Pro,
+                  at £19 a month, is the point at which Margin starts acting on what it finds: repricing when a source
+                  price moves, taking a listing off sale when the stock goes, and putting a page of search results up in
+                  one pass. Max, at £39, adds up to twelve eBay shops under one login.
+                </p>
+                <p>
+                  A plan pays for Margin itself. What you run it on is separate and also yours: a Cloudflare Workers
+                  account and a database, both of which have free tiers this fits inside. There is no contract, and a
+                  plan is cancelled from the dashboard.
                 </p>
               </div>
             </details>
@@ -462,7 +497,7 @@
 
       <section id="install">
         <div class="wrap sec close">
-          <h2>Open it beside the page you were going to list anyway.</h2>
+          <h2>Install it, and open it beside the page you were already reading.</h2>
           <p class="lead">
             Alt+E, or the toolbar icon, on whichever tab you were last on. Everything else you have already read on this
             page.
@@ -492,6 +527,7 @@
           <a href="#reading">Reading</a>
           <a href="#pricing">Pricing</a>
           <a href="#watching">Watching</a>
+          <a href="#plans">Plans</a>
           <a href="#faq">Questions</a>
           <a href="./dashboard/">Dashboard</a>
         </nav>
