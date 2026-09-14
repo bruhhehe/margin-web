@@ -14,10 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
     />
-    <script type="module" crossorigin src="./assets/index-C2T7q18q.js"></script>
+    <script type="module" crossorigin src="./assets/index-ClgIyBka.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/index-CgxjHGsi.js">
     <link rel="stylesheet" crossorigin href="./assets/index-DlDxNt-9.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-Dnx53Wc6.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-1KTnD_d3.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -88,8 +88,7 @@
               <a class="btn ghost big" href="#install">How to run it today</a>
             </div>
             <p class="hero-fine">
-              There is a free plan and it does not ask for a card. Nothing here tracks you — no analytics in the
-              extension, none on this page. The extension is not on the Chrome Web Store yet;
+              Free plan, no card needed. Not on the Chrome Web Store yet —
               <a href="#install">here is how to run it today</a>.
             </p>
           </div>
@@ -176,7 +175,7 @@
               <div><dt>Variations</dt><dd>The full colour × size grid, each one with its own product code, photos and stock</dd></div>
               <div class="sheet-miss">
                 <dt>Anything it could not find</dt>
-                <dd>Listed by name, with the part of the page it looked in. Margin never fills a gap with a guess.</dd>
+                <dd>Listed by name, with the part of the page it looked in, so you can fill it in yourself.</dd>
               </div>
             </dl>
 
@@ -195,10 +194,11 @@
                 one is on. Products you have already listed are flagged and skipped. You review the batch before
                 anything goes live, and closing the panel does not lose it.
               </p>
-              <h3>It does not hammer Amazon</h3>
+              <h3>It reads at a pace that keeps working</h3>
               <p>
-                Three requests at a time, 250&nbsp;ms apart, no matter what else is running. If a price comes back more
-                than 20% away from the last one, Margin re-reads the page slowly and in full before it believes it.
+                Three requests at a time, 250&nbsp;ms apart, which is slow enough that Amazon keeps answering. If a
+                price comes back more than 20% away from the last one, Margin re-reads the page in full before it
+                believes it.
               </p>
             </aside>
           </div>
@@ -270,7 +270,7 @@
                 <p class="basis" data-out="basis">Standard rate: 13.32% of the sale plus £0.40 per order.</p>
                 <p class="caveat">
                   eBay charges a different rate by category, so this answer is only as good as the category you picked
-                  above. In the extension there is no guessing: it uses the category you are actually listing in.
+                  above. The extension uses the category you are actually listing in.
                 </p>
                 <p class="source" data-out="source"></p>
               </div>
@@ -278,11 +278,11 @@
           </form>
 
           <p class="after-solver">
-            The extension does four more things this calculator does not. It will not list below a price you set. It
-            rounds prices up, never down, so rounding never eats the profit. It refuses a repricing that would drop you
-            below a profit floor instead of publishing it at a loss. And you can add a percentage for Promoted Listings
-            and anything else eBay takes off the same sale but does not publish. You can also replace any rate with the
-            percentage and fixed fee from your own eBay invoice, which beats any published table.
+            The extension adds four things this calculator leaves out: a price floor it will not list below, rounding
+            that only ever goes up so it never eats the profit, a profit floor that blocks a re-price instead of
+            publishing one at a loss, and a percentage of your own for Promoted Listings and anything else eBay takes
+            off the same sale. You can also replace any rate with the percentage and fixed fee from your own eBay
+            invoice, which beats any published table.
           </p>
         </div>
       </section>
@@ -316,8 +316,7 @@
             <li>
               <h3>Amazon runs out of stock</h3>
               <p>
-                Margin sets your eBay quantity to zero, and puts it back when Amazon has stock again. A price that has
-                simply disappeared from the page does not count as a price of zero, and nothing acts on it.
+                Margin sets your eBay quantity to zero, and puts it back when Amazon has stock again.
               </p>
             </li>
             <li>
@@ -338,60 +337,44 @@
             </li>
           </ol>
           <p class="rail-after">
-            It only touches what changed: a price move never resets your quantity, and a stock change never re-prices
-            the listing. Notifications name the product, not its product code, and forty price changes arrive as one
+            Notifications name the product rather than its product code, and forty price changes arrive as one
             notification rather than forty.
           </p>
           </div>
         </div>
       </section>
 
+      <!--
+        Two facts, not four refusals.
+
+        This was "Four things Margin will not do", and two of the four were table stakes — it does
+        not guess at a fee, it does not publish without asking. Saying so out loud does not reassure
+        anybody; it makes them wonder why you felt the need. What is left is the pair a seller
+        actually wants to know before they start, and both are said as what happens rather than as
+        what does not.
+      -->
       <section id="wont">
         <div class="wrap sec">
-          <h2>Four things Margin will not do.</h2>
+          <h2>Two things to know before you start.</h2>
           <ul class="refusals">
             <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h2l2 9h10l2-6H7" /><circle cx="9" cy="19" r="1.4" /><circle cx="17" cy="19" r="1.4" /></svg>
               <div>
-                <h3>It will not buy the item for you.</h3>
+                <h3>You buy the stock and you post it.</h3>
                 <p>
-                  From an order, &ldquo;Order on Amazon&rdquo; opens the product page with the quantity already set and
-                  types the buyer&rsquo;s address into the checkout form when it appears. It never presses
-                  Buy&nbsp;now — that click stays yours — and it never dispatches anything.
+                  Margin handles the listing, the price and the watching. When an order comes in, &ldquo;Order on
+                  Amazon&rdquo; opens the product page with the quantity set and fills in the buyer&rsquo;s address —
+                  then you press Buy&nbsp;now, and you post the parcel.
                 </p>
               </div>
             </li>
             <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.2 3 7.6 7.5 9 4.5-1.4 7.5-4.8 7.5-9V6Z" /><path d="M9 12l2 2 4-4" /></svg>
               <div>
-                <h3>It will not guess — at a fee or at anything else.</h3>
+                <h3>Your shop data stays yours.</h3>
                 <p>
-                  If a price is missing, Margin asks you for it rather than making one up. It suggests item specifics
-                  and shows you where each one came from, and only writes them once you accept. If it cannot work out
-                  the right eBay category, it hands you eBay&rsquo;s own suggestions instead of picking the nearest
-                  thing.
-                </p>
-              </div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
-              <div>
-                <h3>It will not touch a listing you did not ask it to.</h3>
-                <p>
-                  Nothing goes live until you approve a confirmation box showing the title, price, quantity, condition,
-                  category, delivery, number of photos and SKU. A new install starts in test mode, where a listing is
-                  checked and recorded but never reaches eBay, and the panel always shows which mode you are in — test,
-                  sandbox or live.
-                </p>
-              </div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M5.6 5.6l12.8 12.8" /></svg>
-              <div>
-                <h3>It will not send your work anywhere.</h3>
-                <p>
-                  No analytics, no third-party calls. Nothing leaves your browser except to the server you deployed and
-                  to eBay itself. Your eBay tokens are encrypted and kept on that server, never in the extension.
+                  No analytics and no third-party calls. Nothing leaves your browser except to your own server and to
+                  eBay, and your eBay tokens are encrypted on that server rather than held in the extension.
                 </p>
               </div>
             </li>
@@ -451,16 +434,9 @@
               <summary>Is this allowed under eBay&rsquo;s dropshipping rules?</summary>
               <div>
                 <p>
-                  eBay allows dropshipping if you fulfil orders from a wholesale supplier. It does not allow you to
-                  list an item and have another retailer or marketplace post it straight to your buyer, and it can end
-                  your listings or restrict your account if you do. That is eBay&rsquo;s rule, not ours — read it in
-                  their words before you list anything.
-                </p>
-                <p>
-                  Margin is built for sellers who hold their own stock and post it themselves. It never places an
-                  order, never presses Buy&nbsp;now and never posts anything. Before you publish, the confirmation box
-                  states that you hold this stock and will dispatch it yourself. Margin does nothing to hide what a
-                  listing is from eBay. How you actually run your business is down to you.
+                  eBay allows dropshipping if you fulfil orders from a wholesale supplier, but not if another retailer
+                  posts the item straight to your buyer. Margin is built for the first kind of seller: you hold the
+                  stock and you post it. Worth reading eBay&rsquo;s own wording before you list.
                 </p>
               </div>
             </details>
