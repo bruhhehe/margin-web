@@ -14,10 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
     />
-    <script type="module" crossorigin src="./assets/index-DS7Y4095.js"></script>
+    <script type="module" crossorigin src="./assets/index-DZqKloyR.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/index-LS7CA65D.js">
     <link rel="stylesheet" crossorigin href="./assets/index-Dr0WNDRs.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-6P06Za5c.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-J3h1Bx5A.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -36,16 +36,14 @@
           <a href="./dashboard/">Dashboard</a>
         </nav>
         <!--
-          The primary action is one that finishes.
+          The Web Store address, in three places and nowhere else.
 
-          This was "Add to Chrome", three times on the page, every one of them pointing at #install
-          — and the one inside #install pointed at the section it was in, so it produced no scroll,
-          no focus change and no feedback: a control indistinguishable from a broken one, at the
-          conversion point of the whole site. The extension is not on the Chrome Web Store yet, so
-          until it is, the way in is the dashboard, which is real, free, and works now. The store
-          button comes back here on the day there is a URL for it.
+          `CHROME-WEB-STORE-ID` is the placeholder: grep for it and you will find every link that
+          has to change on the day the listing is published, and nothing that does not. Each one is
+          a real href rather than a script-written one, so the button works before any JavaScript
+          runs and cannot become the dead control this page used to have.
         -->
-        <a class="btn primary" href="./dashboard/">Open the dashboard</a>
+        <a class="btn primary" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID">Add to Chrome</a>
       </div>
     </header>
 
@@ -84,13 +82,11 @@
               </li>
             </ul>
             <div class="hero-do">
-              <a class="btn primary big" href="./dashboard/">Open the dashboard</a>
-              <a class="btn ghost big" href="#install">How to run it today</a>
+              <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                Add to Chrome</a>
+              <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
             </div>
-            <p class="hero-fine">
-              Free plan, no card needed. Not on the Chrome Web Store yet —
-              <a href="#install">here is how to run it today</a>.
-            </p>
+            <p class="hero-fine">Free plan, no card needed. No tracking in the extension or on this page.</p>
           </div>
         </div>
 
@@ -439,22 +435,6 @@
         <div class="wrap sec sec-narrow">
           <h2>Questions people ask first.</h2>
           <div class="faq">
-            <!--
-              First, because it is the most consequential fact on the page and it was seventh of
-              seven. Somebody deciding whether to read the other six wants to know whether there is
-              anything at the end of them.
-            -->
-            <details>
-              <summary>Can I install it today?</summary>
-              <div>
-                <p>
-                  Not from the Chrome Web Store — the listing is written but not published yet. The extension itself is
-                  built and works today; you load it from a folder instead, and
-                  <a href="#install">the three steps are at the foot of this page</a>. The dashboard is live right now,
-                  free, and needs nothing installed. This page will carry the store link the day there is one.
-                </p>
-              </div>
-            </details>
             <details>
               <summary>Is this allowed under eBay&rsquo;s dropshipping rules?</summary>
               <div>
@@ -546,33 +526,16 @@
 
       <section id="install">
         <div class="wrap sec close">
-          <h2>How to run it today.</h2>
+          <h2>Install it, and open it beside the page you were already reading.</h2>
           <p class="lead">
-            It is not on the Chrome Web Store yet, so you load it from a folder instead of installing it from a store.
-            Three steps, and it opens beside whatever page you are on.
+            Alt+E, or the toolbar icon, on whichever tab you are on. Everything else you have already read on this page.
           </p>
-          <ol class="install-steps">
-            <li>
-              <div>
-                <b>Build it.</b> Clone the repository and run <code>npm install</code>, then
-                <code>npm run build -w @margin/extension</code>. That writes a <code>dist</code> folder.
-              </div>
-            </li>
-            <li>
-              <div>
-                <b>Load it.</b> Open <code>chrome://extensions</code>, turn on Developer mode, press
-                <b>Load unpacked</b>, and choose that <code>dist</code> folder.
-              </div>
-            </li>
-            <li>
-              <div><b>Open it.</b> Alt+E, or the toolbar icon, on whichever tab you were last on.</div>
-            </li>
-          </ol>
           <div class="hero-do">
-            <a class="btn primary big" href="./dashboard/">Open the dashboard</a>
+            <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+              Add to Chrome</a>
+            <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
           </div>
-          <!-- TODO: Web Store URL. When there is one, this becomes the primary action again. -->
-          <p class="hero-fine">This page will carry the store link on the day there is one.</p>
+          <p class="hero-fine">Free plan, no card needed. Pro and Max are cancelled from the dashboard, any time.</p>
         </div>
       </section>
     </main>
