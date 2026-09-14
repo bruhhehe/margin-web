@@ -8,8 +8,8 @@
     <meta name="robots" content="noindex" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap" />
-    <script type="module" crossorigin src="../assets/dashboard-VCyiRl9M.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/index-_BMXD2tf.js">
+    <script type="module" crossorigin src="../assets/dashboard-4r6IZGC0.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-CgxjHGsi.js">
     <link rel="stylesheet" crossorigin href="../assets/index-DlDxNt-9.css">
     <link rel="stylesheet" crossorigin href="../assets/dashboard-Cv_fQpIl.css">
   </head>
@@ -51,9 +51,9 @@
             <em class="onlyUp" hidden>At least 10 characters. Length is what makes a password hard to guess.</em>
           </label>
           <label class="field onlyUp" hidden>
-            <span>What is your shop called?</span>
+            <span>What do you want to call your shop?</span>
             <input type="text" id="shopLabel" name="shopLabel" autocomplete="off" placeholder="My shop" maxlength="60" />
-            <em>A name for your own use, so you can tell one shop from another. It can be changed later.</em>
+            <em>Just a name for you, so you can tell your shops apart. You can change it later.</em>
           </label>
           <p class="formError" id="gateError" role="alert" hidden></p>
           <button class="btn primary big" type="submit" id="gateGo">Sign in</button>
@@ -127,14 +127,14 @@
             <div class="two">
               <div class="col">
                 <section class="card">
-                  <header><h2>What you kept, week by week</h2><span class="meta" id="weeksMeta"></span></header>
+                  <header><h2>Profit, week by week</h2><span class="meta" id="weeksMeta"></span></header>
                   <div class="pad">
                     <figure>
-                      <figcaption>Sales less eBay's fee less what the stock cost, for the twelve weeks to now.</figcaption>
+                      <figcaption>Your sales, minus eBay's fee, minus what the stock cost you — for the last twelve weeks.</figcaption>
                       <div class="chartScroll"><svg class="chart" id="weeksChart" role="img" viewBox="0 0 760 240" preserveAspectRatio="xMidYMid meet"></svg></div>
                     </figure>
                     <details>
-                      <summary>Read it as a table</summary>
+                      <summary>Show this as a table</summary>
                       <div class="scroller">
                         <table id="weeksTable">
                           <thead>
@@ -158,14 +158,14 @@
                   <header><h2>Orders a day</h2><span class="meta" id="daysMeta"></span></header>
                   <div class="pad">
                     <figure>
-                      <figcaption>How many orders landed on each day of the period.</figcaption>
+                      <figcaption>How many orders came in on each day.</figcaption>
                       <div class="chartScroll"><svg class="chart" id="daysChart" role="img" viewBox="0 0 760 150" preserveAspectRatio="xMidYMid meet"></svg></div>
                     </figure>
                   </div>
                 </section>
 
                 <section class="card">
-                  <header><h2>What each product earned</h2><span class="meta" id="productsMeta"></span></header>
+                  <header><h2>How much each product made</h2><span class="meta" id="productsMeta"></span></header>
                   <div class="pad">
                     <div class="scroller">
                       <table id="productTable">
@@ -188,25 +188,25 @@
 
               <div class="col">
                 <section class="card">
-                  <header><h2>Still to send</h2><span class="meta" id="dispatchMeta"></span></header>
+                  <header><h2>Orders still to post</h2><span class="meta" id="dispatchMeta"></span></header>
                   <div id="dispatchList"></div>
                 </section>
 
                 <section class="card">
-                  <header><h2>The shop as it stands</h2></header>
+                  <header><h2>Your listings right now</h2></header>
                   <dl class="health" id="shopHealth"></dl>
                 </section>
 
                 <section class="card">
-                  <header><h2>What the checks found</h2><span class="meta">last 24 hours</span></header>
+                  <header><h2>What the checks did</h2><span class="meta">last 24 hours</span></header>
                   <dl class="health" id="checkHealth"></dl>
                 </section>
               </div>
             </div>
 
             <p class="foot">
-              Sales and eBay's fee are what eBay reports. What the stock cost is the source price the last check read, so it is an estimate of the price on the
-              day you bought.
+              Sales and eBay's fee are the figures eBay reports. What the stock cost is the Amazon price at the last
+              check, so it is an estimate of what you actually paid on the day.
             </p>
           </div>
         </section>
@@ -216,13 +216,13 @@
           <div class="pagehead">
             <div class="titles">
               <h1>Listings</h1>
-              <p class="sub">Every shop on this account, in one place.</p>
+              <p class="sub">Every listing from every shop on this account, in one place.</p>
             </div>
             <div class="tools">
               <label class="sr-only" for="listingShop">Shop</label>
               <select id="listingShop"></select>
               <label class="sr-only" for="listingSearch">Search</label>
-              <input type="search" id="listingSearch" placeholder="Search titles and codes" />
+              <input type="search" id="listingSearch" placeholder="Search by title or code" />
               <button class="btn ghost" type="button" id="refreshListings">Refresh</button>
             </div>
           </div>
@@ -257,7 +257,7 @@
           <div class="pagehead">
             <div class="titles">
               <h1>Shops</h1>
-              <p class="sub">Each one is its own eBay account, with its own listings and its own orders.</p>
+              <p class="sub">Each shop is a separate eBay account, with its own listings and orders.</p>
             </div>
           </div>
 
@@ -270,7 +270,7 @@
               <form id="addShopForm" class="inlineForm" novalidate>
                 <label class="field">
                   <span class="sr-only">Shop name</span>
-                  <input type="text" id="newShopLabel" placeholder="What will you call it?" autocomplete="off" maxlength="60" required />
+                  <input type="text" id="newShopLabel" placeholder="Name this shop" autocomplete="off" maxlength="60" required />
                 </label>
                 <button class="btn primary" type="submit">Add shop</button>
               </form>
