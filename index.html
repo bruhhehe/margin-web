@@ -14,10 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
     />
-    <script type="module" crossorigin src="./assets/index-ClgIyBka.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/index-CgxjHGsi.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-DlDxNt-9.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-1KTnD_d3.css">
+    <script type="module" crossorigin src="./assets/index-lPxu533V.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/index-LS7CA65D.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-Dr0WNDRs.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BJyz1rRT.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -92,64 +92,99 @@
               <a href="#install">here is how to run it today</a>.
             </p>
           </div>
+        </div>
 
-          <div class="hero-show">
-            <!--
-              The panel, drawn at the width it actually opens at. Figures are written into this markup by
-              index.ts from the same solver the extension calls, so they cannot drift from the code.
-            -->
-            <div class="panel" role="img" aria-label="The Margin side panel, showing a listing that sells for £30.92, costs £18.40, pays £4.52 in fees and keeps £8.00.">
-              <div class="panel-chrome">
-                <span class="tile" aria-hidden="true"><i></i><i></i></span>
-                <b>Margin</b>
-                <svg class="panel-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-                  <path d="M6 6l12 12M18 6L6 18" />
-                </svg>
-              </div>
+        <!--
+          The container-scroll frame.
 
-              <div class="panel-tabs" aria-hidden="true">
-                <span class="on">New listing</span><span>Bulk</span><span>Orders</span><span>My listings</span><span>Settings</span>
-              </div>
+          The geometry is the Aceternity component's: 1000px of perspective on the wrapper, the card
+          starting at rotateX(20deg) and scale(1.05) and arriving flat at 1, the heading lifting 100px
+          over the same range, a 64rem card with a 30px radius and the six-layer shadow. What is
+          inside it is ours — the panel at its real 392px, docked beside a product page, because that
+          is what the extension is and a bare panel floating on a page never said so.
 
-              <div class="panel-body">
-                <div class="panel-product">
-                  <span class="thumb" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" />
-                      <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
-                    </svg>
-                  </span>
-                  <span class="panel-title">Brushed steel kitchen mixer tap, single lever</span>
-                  <span class="panel-meta">
-                    amazon.co.uk · <span class="num" data-fill="cost">£18.40</span>
-                    <span class="chip ok"><i></i>In stock</span>
-                  </span>
+          It runs on a scroll-driven CSS animation, so the main thread does none of it. Browsers
+          without one get the card flat, which is the honest still of the same picture; a small
+          listener drives it there instead when motion is welcome. Anybody who asked for less motion
+          gets the flat card and no listener at all.
+        -->
+        <div class="stage" id="stage">
+          <div class="stage-in">
+            <div class="stage-card">
+              <div class="stage-screen">
+                <div class="stage-bar" aria-hidden="true">
+                  <span class="stage-dots"><i></i><i></i><i></i></span>
+                  <span class="stage-url">a product page you already have open</span>
                 </div>
+                <div class="stage-split">
+                  <div class="stage-page" aria-hidden="true">
+                    <div class="pg-shot">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" />
+                        <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
+                      </svg>
+                    </div>
+                    <div class="pg-side">
+                      <span class="pg-line w90"></span>
+                      <span class="pg-line w70"></span>
+                      <span class="pg-price">£18.40</span>
+                      <span class="pg-line w40"></span>
+                      <span class="pg-buy"></span>
+                      <span class="pg-line w80"></span>
+                      <span class="pg-line w60"></span>
+                      <span class="pg-line w85"></span>
+                    </div>
+                  </div>
+      <div class="panel" role="img" aria-label="The Margin side panel, showing a listing that sells for £30.92, costs £18.40, pays £4.52 in fees and keeps £8.00.">
+                    <div class="panel-chrome">
+                      <span class="tile" aria-hidden="true"><i></i><i></i></span>
+                      <b>Margin</b>
+                      <svg class="panel-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                      </svg>
+                    </div>
 
-                <div class="statement panel-statement">
-                  <!-- The panel's own labels, because this is a picture of the panel and must not lie about it. -->
-                  <span class="st-row st-anim"><span class="st-label">Sells for</span><span class="num st-fig" data-fill="final">£30.92</span></span>
-                  <span class="st-row st-anim"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-fill="minus-cost">− £18.40</span></span>
-                  <span class="st-row st-anim"><span class="st-label quiet">Fees and costs</span><span class="num st-fig quiet" data-fill="minus-fee">− £4.52</span></span>
-                  <span class="st-row st-total st-anim"><span class="st-label">You keep</span><span class="num st-fig" data-fill="profit">£8.00</span></span>
-                </div>
+                    <div class="panel-tabs" aria-hidden="true">
+                      <span class="on">New listing</span><span>Bulk</span><span>Orders</span><span>My listings</span><span>Settings</span>
+                    </div>
 
-                <p class="panel-note">
-                  eBay takes <span class="num" data-fill="fee">£4.52</span> at this price:
-                  <span data-fill="basis">the standard rate: 13.32% of the sale plus £0.40 per order</span>.
-                </p>
+                    <div class="panel-body">
+                      <div class="panel-product">
+                        <span class="thumb" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" />
+                            <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
+                          </svg>
+                        </span>
+                        <span class="panel-title">Brushed steel kitchen mixer tap, single lever</span>
+                        <span class="panel-meta">
+                          amazon.co.uk · <span class="num" data-fill="cost">£18.40</span>
+                          <span class="chip ok"><i></i>In stock</span>
+                        </span>
+                      </div>
 
-                <div class="panel-do">
-                  <span class="btn primary">Review &amp; publish</span>
-                  <span class="btn ghost">Show the maths</span>
+                      <div class="statement panel-statement">
+                        <!-- The panel's own labels, because this is a picture of the panel and must not lie about it. -->
+                        <span class="st-row st-anim"><span class="st-label">Sells for</span><span class="num st-fig" data-fill="final">£30.92</span></span>
+                        <span class="st-row st-anim"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-fill="minus-cost">− £18.40</span></span>
+                        <span class="st-row st-anim"><span class="st-label quiet">Fees and costs</span><span class="num st-fig quiet" data-fill="minus-fee">− £4.52</span></span>
+                        <span class="st-row st-total st-anim"><span class="st-label">You keep</span><span class="num st-fig" data-fill="profit">£8.00</span></span>
+                      </div>
+
+                      <p class="panel-note">
+                        eBay takes <span class="num" data-fill="fee">£4.52</span> at this price:
+                        <span data-fill="basis">the standard rate: 13.32% of the sale plus £0.40 per order</span>.
+                      </p>
+
+                      <div class="panel-do">
+                        <span class="btn primary">Review &amp; publish</span>
+                        <span class="btn ghost">Show the maths</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <p class="hero-cap">
-              This is the panel at its real width of 392&nbsp;px, where the screen allows it. The numbers come from the
-              extension&rsquo;s own code: an item costing £18.40, £8.00 of profit wanted, eBay UK, business seller, no
-              category picked.
-            </p>
           </div>
         </div>
       </section>
