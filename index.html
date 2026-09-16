@@ -34,10 +34,10 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black ground." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#8b3dff" />
-    <script type="module" crossorigin src="./assets/index-BBkf79oL.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/index-B4jr7LQK.js">
+    <script type="module" crossorigin src="./assets/index-DvmQjcWZ.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/index-nNKhj-QV.js">
     <link rel="stylesheet" crossorigin href="./assets/index-B7AX7D_W.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-BKEkJipY.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DAm95_6x.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -441,11 +441,23 @@
             login.
           </p>
 
+          <!--
+            Month or year, as a switch rather than two tabs: it is one setting with two states, and
+            the saving is said in words beside it because a percentage on a control is a claim the
+            control cannot support.
+          -->
+          <div class="plans-term">
+            <button type="button" role="switch" aria-checked="false" id="planTerm" class="term">
+              <span class="term-track" aria-hidden="true"><span class="term-thumb"></span></span>
+              <span class="term-words">Pay yearly <em>two months free</em></span>
+            </button>
+          </div>
+
           <div class="plans" id="planCards"></div>
 
           <p class="plans-fine">
-            Billed monthly. Cancel from the dashboard whenever you like; there is no contract. Nothing to install
-            beyond the extension and nothing to deploy — your plan covers the hosting as well as the software.
+            Cancel from the dashboard whenever you like; there is no contract. Nothing to install beyond the
+            extension and nothing to deploy — your plan covers the hosting as well as the software.
           </p>
         </div>
       </section>
