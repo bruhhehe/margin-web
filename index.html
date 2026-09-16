@@ -34,10 +34,10 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black ground." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#8b3dff" />
-    <script type="module" crossorigin src="./assets/index-BtY2xPBM.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/index-BTdzo18E.js">
+    <script type="module" crossorigin src="./assets/index-B4J-ABcS.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/index-CZoNZaYb.js">
     <link rel="stylesheet" crossorigin href="./assets/index-B7AX7D_W.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-BLshpKVy.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-M6WS8Xy1.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -193,7 +193,7 @@
             <ul class="hero-list">
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Relist in a couple of clicks.</b> From Amazon or AliExpress, one at a time or a page at once.</span>
+                <span><b>Relist in a couple of clicks.</b> From any store it reads, one at a time or a page at once.</span>
               </li>
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
@@ -217,18 +217,50 @@
         </div>
       </section>
 
+      <!--
+        What it reads, as a row that keeps moving.
+
+        Two copies of the same list inside a track that travels exactly half its own width, so the
+        second copy is where the first was when the animation restarts and the seam never arrives.
+        It is a CSS animation on one element: nothing measures anything, and there is no listener.
+
+        A source that is not live yet says so. A row of names with nothing marked is a claim that
+        all of them work today, and two of them do.
+      -->
+      <section class="sources" id="sources" aria-labelledby="sources-head">
+        <div class="wrap">
+          <h2 id="sources-head" class="sources-head">Works with the stores you already buy from</h2>
+        </div>
+        <div class="marquee" data-marquee>
+          <ul class="marquee-track">
+          <li>Amazon</li>
+          <li>AliExpress</li>
+          <li>Walmart<span class="soon">soon</span></li>
+          <li>OneBuy<span class="soon">soon</span></li>
+          <li>Temu<span class="soon">soon</span></li>
+          <li>Alibaba<span class="soon">soon</span></li>
+          <li aria-hidden="true">Amazon</li>
+          <li aria-hidden="true">AliExpress</li>
+          <li aria-hidden="true">Walmart<span class="soon">soon</span></li>
+          <li aria-hidden="true">OneBuy<span class="soon">soon</span></li>
+          <li aria-hidden="true">Temu<span class="soon">soon</span></li>
+          <li aria-hidden="true">Alibaba<span class="soon">soon</span></li>
+          </ul>
+        </div>
+      </section>
+
       <section class="band" id="reading">
         <div class="wrap sec">
           <h2>It reads the page you already have open.</h2>
           <p class="lead">
             In your own browser, signed in as you, in a hidden tab that never takes your focus. No API, and nothing
-            sent to a server to be scraped — Amazon serves a captcha to datacentre traffic anyway. Twenty-two Amazon
-            sites and AliExpress, the same fields out of all of them.
+            sent to a server to be scraped — a store serves a captcha to datacentre traffic anyway. Twenty-two Amazon
+            sites and AliExpress today, the same fields out of every one.
           </p>
 
           <div class="sheet-wrap">
             <dl class="sheet">
-              <div><dt>Title</dt><dd>Trimmed to eBay&rsquo;s 80-character limit at a word break, with Amazon&rsquo;s padding removed</dd></div>
+              <div><dt>Title</dt><dd>Trimmed to eBay&rsquo;s 80-character limit at a word break, with the store&rsquo;s padding removed</dd></div>
               <div><dt>Brand</dt><dd>Taken from the byline, in eleven languages, and from the details table if the byline has none</dd></div>
               <div><dt>Price</dt><dd>The buy-box price. Struck-through list prices are ignored, and the decimal separator is read, not assumed</dd></div>
               <div><dt>In stock</dt><dd>Read from the availability line, never from the price. If the wording is unfamiliar, Margin calls it out of stock</dd></div>
@@ -259,7 +291,7 @@
             <div>
               <h3>List up to 40 products at once</h3>
               <p>
-                Paste links or product codes into the Bulk tab, or take every product off the Amazon search, best-seller
+                Paste links or product codes into the Bulk tab, or take every product off the search, best-seller
                 list or storefront you already have open. Products you have listed before are flagged and skipped, and
                 you review the batch before anything goes live.
               </p>
@@ -380,7 +412,7 @@
           axis from every other section's. Three cases are three columns.
         -->
         <div class="wrap sec">
-          <h2>Margin keeps checking the Amazon page after you list.</h2>
+          <h2>Margin keeps checking the product page after you list.</h2>
           <p class="lead">
             Every 15 minutes, or every few hours — you choose. You also set how small a price move it should ignore.
             Each of the three below is its own switch, and they all start off.
@@ -388,7 +420,7 @@
 
           <ol class="rail">
             <li>
-              <h3>Amazon changes the price</h3>
+              <h3>The store changes the price</h3>
               <p>
                 Margin works out a new eBay price from the new cost, using the same profit rule and that
                 listing&rsquo;s own category. If the new price would leave you less than your profit floor, it does not
@@ -396,15 +428,15 @@
               </p>
             </li>
             <li>
-              <h3>Amazon runs out of stock</h3>
+              <h3>The store runs out of stock</h3>
               <p>
-                Margin sets your eBay quantity to zero, and puts it back when Amazon has stock again.
+                Margin sets your eBay quantity to zero, and puts it back when the store has stock again.
               </p>
             </li>
             <li>
               <h3>Your eBay listing sells out</h3>
               <p>
-                If eBay is holding a listing at zero because it sold, and Amazon still has stock, Margin puts it back
+                If eBay is holding a listing at zero because it sold, and the store still has stock, Margin puts it back
                 up at the quantity you first published.
               </p>
             </li>
