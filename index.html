@@ -34,10 +34,10 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black ground." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#8b3dff" />
-    <script type="module" crossorigin src="./assets/index-B4J-ABcS.js"></script>
+    <script type="module" crossorigin src="./assets/index-fv4HtlYm.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/index-CZoNZaYb.js">
     <link rel="stylesheet" crossorigin href="./assets/index-B7AX7D_W.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-M6WS8Xy1.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CAT6h5T0.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -82,7 +82,7 @@
               the product is, in the order a seller meets them — and they say "one place" by being
               one list rather than by claiming it.
             -->
-            <h1 class="hero-head"><span>Relisting on eBay,</span> <b>all in one place.</b></h1>
+            <h1 class="hero-head"><span>Dropshipping on eBay,</span> <b>all in one place.</b></h1>
           </div>
         </div>
 
@@ -188,25 +188,23 @@
           claim and the product, which is the order somebody actually meets it in.
         -->
         <div class="wrap hero-more">
-          <p class="lead">
-            A Chrome extension and a dashboard for sellers who relist products from other stores on eBay.
-          </p>
+          <p class="lead">The all-in-one Chrome extension and dashboard for eBay dropshippers.</p>
             <ul class="hero-list">
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Relist in a couple of clicks.</b> From any store it reads, one at a time or a page at once.</span>
+                <span><b>List in seconds</b> from any supported store.</span>
               </li>
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Price from your profit.</b> Type what you want to make and it adds eBay&rsquo;s fee for you.</span>
+                <span><b>Price by margin,</b> as a percentage or a fixed amount.</span>
               </li>
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Track and reprice.</b> It watches the source price and stock, and moves yours to match.</span>
+                <span><b>Auto-update price and stock</b> when the source changes.</span>
               </li>
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>See what you made.</b> Sales, eBay&rsquo;s fees, stock costs and profit, across every shop.</span>
+                <span><b>Track profit</b> across sales, fees and costs in one place.</span>
               </li>
             </ul>
             <div class="hero-do">
@@ -228,6 +226,46 @@
         A source that is not live yet says so. A row of names with nothing marked is a claim that
         all of them work today, and two of them do.
       -->
+      <!--
+        The whole thing in five lines, before any of it is explained.
+
+        The page used to open on how a product page is parsed, which is the answer to a question
+        nobody has yet. This is the shape of the work — find, import, price, publish, watch — and
+        everything below it is one of these five steps in detail.
+      -->
+      <section id="how">
+        <div class="wrap sec">
+          <h2>How Margin works</h2>
+          <ol class="steps">
+            <li>
+              <span class="step-n" aria-hidden="true">01</span>
+              <h3>Find a product</h3>
+              <p>Open a product page at any store Margin reads, and press Alt+E.</p>
+            </li>
+            <li>
+              <span class="step-n" aria-hidden="true">02</span>
+              <h3>Import it</h3>
+              <p>Title, images, price, variations and specifications come across, with anything it could not find listed by name.</p>
+            </li>
+            <li>
+              <span class="step-n" aria-hidden="true">03</span>
+              <h3>Set your profit</h3>
+              <p>A margin or a fixed amount. Margin works the listing price back from it and adds eBay&rsquo;s own fee.</p>
+            </li>
+            <li>
+              <span class="step-n" aria-hidden="true">04</span>
+              <h3>Publish to eBay</h3>
+              <p>Review the listing, fix what it flagged, and publish. Nothing reaches eBay until you press it.</p>
+            </li>
+            <li>
+              <span class="step-n" aria-hidden="true">05</span>
+              <h3>Margin keeps watch</h3>
+              <p>A price or stock change at the store can move your listing to match, or take it off sale and put it back.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
       <section class="sources" id="sources" aria-labelledby="sources-head">
         <div class="wrap">
           <h2 id="sources-head" class="sources-head">Works with the stores you already buy from</h2>
@@ -277,7 +315,9 @@
             </div>
           </div>
 
-          <div class="sheet-wrap">
+          <details class="sheet-fold">
+            <summary>Every field it takes off a page</summary>
+            <div class="sheet-wrap">
             <dl class="sheet">
               <div><dt>Title</dt><dd>Trimmed to eBay&rsquo;s 80-character limit at a word break, with the store&rsquo;s padding removed</dd></div>
               <div><dt>Brand</dt><dd>Taken from the byline, in eleven languages, and from the details table if the byline has none</dd></div>
@@ -300,8 +340,8 @@
               "The fee is in the price" and never heard that bulk listing exists at all.
             -->
           </div>
+          </details>
 
-          <p class="after-solver">And the field table, for what it takes off each page.</p>
         </div>
       </section>
 
@@ -331,9 +371,16 @@
                   <label for="cost">What you pay for the item</label>
                   <span class="input"><span class="sym" data-sym>£</span><input id="cost" name="cost" type="number" min="0" step="0.01" value="18.40" inputmode="decimal" autocomplete="off" /></span>
                 </p>
+                <fieldset class="field seg-field">
+                  <legend>Profit you want</legend>
+                  <div class="seg">
+                    <span><input type="radio" id="mode-pct" name="mode" value="pct" checked /><label for="mode-pct">A margin</label></span>
+                    <span><input type="radio" id="mode-cash" name="mode" value="cash" /><label for="mode-cash">An amount</label></span>
+                  </div>
+                </fieldset>
                 <p class="field">
-                  <label for="keep">Profit you want</label>
-                  <span class="input"><span class="sym" data-sym>£</span><input id="keep" name="keep" type="number" min="0" step="0.01" value="8.00" inputmode="decimal" autocomplete="off" /></span>
+                  <label for="keep" id="keep-label">Margin on what you pay</label>
+                  <span class="input"><span class="sym" data-keep-sym>%</span><input id="keep" name="keep" type="number" min="0" step="1" value="40" inputmode="decimal" autocomplete="off" aria-labelledby="keep-label" /></span>
                 </p>
                 <p class="field">
                   <label for="site">eBay site</label>
@@ -496,28 +543,57 @@
         </div>
       </section>
 
+      <!--
+        The strongest thing this page has to say to somebody deciding whether to install it.
+
+        It was one of two bullets in "things to know before you start", beside a note about who
+        posts the parcel. An extension that holds an eBay token and reads pages inside a signed-in
+        browser has to answer this, and it should not have to be found.
+      -->
+      <section class="band" id="trust">
+        <div class="wrap sec">
+          <h2>Your seller data stays yours.</h2>
+          <p class="lead">
+            Margin holds a key to your eBay shop and reads pages in a browser you are signed into. Here is exactly what
+            that does and does not mean.
+          </p>
+          <ul class="hero-list trust-list">
+            <li>
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+              <span>eBay tokens encrypted at rest, on the server, never in the extension</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+              <span>No analytics and no third-party calls, on this page or in the panel</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+              <span>No Amazon API. Product pages are read in your own browser, signed in as you</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+              <span>Nothing leaves your browser except to Margin and to eBay</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+              <span>Nothing is sold on. There is no other business model here</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section id="wont">
         <div class="wrap sec">
-          <h2>Two things to know before you start.</h2>
+          <h2>One thing to know before you start.</h2>
           <ul class="refusals">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h2l2 9h10l2-6H7" /><circle cx="9" cy="19" r="1.4" /><circle cx="17" cy="19" r="1.4" /></svg>
               <div>
                 <h3>You buy the stock and you post it.</h3>
                 <p>
-                  Margin handles the listing, the price and the watching. When an order comes in, &ldquo;Order on
-                  Amazon&rdquo; opens the product page with the quantity set and fills in the buyer&rsquo;s address —
-                  then you press Buy&nbsp;now, and you post the parcel.
-                </p>
-              </div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.2 3 7.6 7.5 9 4.5-1.4 7.5-4.8 7.5-9V6Z" /><path d="M9 12l2 2 4-4" /></svg>
-              <div>
-                <h3>Your shop data stays yours.</h3>
-                <p>
-                  No analytics and no third-party calls. Nothing leaves your browser except to Margin and to eBay, and
-                  your eBay tokens are encrypted at rest rather than held in the extension.
+                  Margin handles the listing, the price and the watching. When an order comes in, it opens the product
+                  page with the quantity set and fills in the buyer&rsquo;s address — then you press Buy&nbsp;now, and
+                  you post the parcel.
                 </p>
               </div>
             </li>
