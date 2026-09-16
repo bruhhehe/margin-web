@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-v1Y3lW8q.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-BEy4djdq.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-CbNztzYy.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DvaVCP0I.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DFmpa30K.css">
   </head>
   <body>
     <!--
@@ -165,10 +165,18 @@
             <div class="two">
               <div class="col">
                 <section class="card">
-                  <header><h2>Profit, week by week</h2><span class="meta" id="weeksMeta"></span></header>
+                  <header>
+                    <h2 id="weeksTitle">Profit, week by week</h2>
+                    <span class="meta" id="weeksMeta"></span>
+                    <!-- Bars compare one period against another; a line says which way it is going. -->
+                    <div class="seg small" role="group" aria-label="How to draw the profit chart">
+                      <button type="button" data-look="bars" aria-pressed="true">Bars</button>
+                      <button type="button" data-look="line" aria-pressed="false">Line</button>
+                    </div>
+                  </header>
                   <div class="pad">
                     <figure>
-                      <figcaption>Your sales, minus eBay's fee, minus what the stock cost you — for the last twelve weeks.</figcaption>
+                      <figcaption id="weeksSays">Your sales, minus eBay's fee, minus what the stock cost you — for each week of the period.</figcaption>
                       <div class="chartScroll"><svg class="chart" id="weeksChart" role="img" viewBox="0 0 760 240" preserveAspectRatio="xMidYMid meet"></svg></div>
                     </figure>
                     <details>
@@ -193,10 +201,10 @@
                 </section>
 
                 <section class="card">
-                  <header><h2>Orders a day</h2><span class="meta" id="daysMeta"></span></header>
+                  <header><h2 id="daysTitle">Orders a day</h2><span class="meta" id="daysMeta"></span></header>
                   <div class="pad">
                     <figure>
-                      <figcaption>How many orders came in on each day.</figcaption>
+                      <figcaption id="daysSays">How many orders came in on each day.</figcaption>
                       <div class="chartScroll"><svg class="chart" id="daysChart" role="img" viewBox="0 0 760 150" preserveAspectRatio="xMidYMid meet"></svg></div>
                     </figure>
                     <!--
