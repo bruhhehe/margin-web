@@ -34,10 +34,10 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black ground." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#8b3dff" />
-    <script type="module" crossorigin src="./assets/index-CAeuJ7gH.js"></script>
+    <script type="module" crossorigin src="./assets/index-BtY2xPBM.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/index-BTdzo18E.js">
     <link rel="stylesheet" crossorigin href="./assets/index-B7AX7D_W.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-3nmjMmho.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BLshpKVy.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -221,10 +221,9 @@
         <div class="wrap sec">
           <h2>It reads the page you already have open.</h2>
           <p class="lead">
-            Margin reads the product page inside your own browser, signed in as you, in a hidden tab that never steals
-            your focus. It does not use Amazon&rsquo;s API and it does not send anything to a server to be scraped —
-            Amazon serves a captcha to datacentre traffic anyway. It works on 22 Amazon sites and on AliExpress, and
-            gets the same fields out of all of them.
+            In your own browser, signed in as you, in a hidden tab that never takes your focus. No API, and nothing
+            sent to a server to be scraped — Amazon serves a captcha to datacentre traffic anyway. Twenty-two Amazon
+            sites and AliExpress, the same fields out of all of them.
           </p>
 
           <div class="sheet-wrap">
@@ -249,21 +248,29 @@
               one: somebody moving by heading went straight from "Margin reads the product page" to
               "The fee is in the price" and never heard that bulk listing exists at all.
             -->
-            <aside class="aside">
+          </div>
+
+          <!--
+            Bulk listing was a sidebar beside the field table, which is where a capability goes to
+            be missed: it was the shortest column on the page and the table set the height, so it
+            sat in the corner with white space under it. It is a pair of columns of its own now.
+          -->
+          <div class="pair">
+            <div>
               <h3>List up to 40 products at once</h3>
               <p>
-                Paste links or product codes into the Bulk tab, or let it take every product off the Amazon search,
-                best-seller list or storefront you have open. It reads three at a time and shows you which step each
-                one is on. Products you have already listed are flagged and skipped. You review the batch before
-                anything goes live, and closing the panel does not lose it.
+                Paste links or product codes into the Bulk tab, or take every product off the Amazon search, best-seller
+                list or storefront you already have open. Products you have listed before are flagged and skipped, and
+                you review the batch before anything goes live.
               </p>
+            </div>
+            <div>
               <h3>A run of forty finishes</h3>
               <p>
-                Margin reads three products at a time with a pause between them, so a bulk run gets to the end instead
-                of stalling halfway. If a price comes back more than 20% away from the last one, it re-reads the page in
-                full before it believes it.
+                It reads three at a time with a pause between them, so a run gets to the end instead of stalling
+                halfway. A price more than 20% from the last one is re-read in full before Margin believes it.
               </p>
-            </aside>
+            </div>
           </div>
         </div>
       </section>
@@ -366,20 +373,19 @@
 
       <section class="band" id="watching">
         <!--
-          Two columns once there is room: what is being claimed on the left, the things that
-          happen on the right. Measured at 1440 this section used 728 of its 1160 and left 432 empty,
-          which is a narrow document in a wide frame rather than a composition.
-        -->
-        <div class="wrap sec split">
-          <div class="split-say">
-            <h2>Margin keeps checking the Amazon page after you list.</h2>
-            <p class="lead">
-              Every 15 minutes, or every few hours — you choose. You also set how small a price move it should
-              ignore. Each of the three things below is its own switch, and they all start off.
-            </p>
-          </div>
+          One centred intro and the three cases across the width under it.
 
-          <div class="split-do">
+          It was two columns with the claim sticky on the left, which left the bottom of that column
+          empty for the height of the list beside it — and put this section's heading on a different
+          axis from every other section's. Three cases are three columns.
+        -->
+        <div class="wrap sec">
+          <h2>Margin keeps checking the Amazon page after you list.</h2>
+          <p class="lead">
+            Every 15 minutes, or every few hours — you choose. You also set how small a price move it should ignore.
+            Each of the three below is its own switch, and they all start off.
+          </p>
+
           <ol class="rail">
             <li>
               <h3>Amazon changes the price</h3>
@@ -407,7 +413,6 @@
             Notifications name the product rather than its product code, and forty price changes arrive as one
             notification rather than forty.
           </p>
-          </div>
         </div>
       </section>
 
@@ -519,13 +524,10 @@
                   against.
                 </p>
                 <p>
-                  The rates come from each site&rsquo;s own published fee table, per category, in all four shapes eBay
-                  uses: a flat rate, a rate that changes above a threshold, a whole sale re-rated at one rate, and
-                  banded tiers. Where a site charges a regulatory operating fee, that is included too. We checked
-                  eBay UK&rsquo;s table against real order statements from a working seller account — which is why
-                  there is a setting for the extra percentage an invoice shows on top, for Promoted Listings and
-                  anything else eBay takes off the same sale without publishing a rate. After a sale, the Orders tab
-                  shows what eBay actually charged.
+                  Rates come from each site&rsquo;s published table, per category, in all four shapes eBay uses, with
+                  the regulatory operating fee included. eBay UK&rsquo;s is checked against real order statements — which
+                  is why you can add the extra percentage an invoice shows on top, for Promoted Listings and anything
+                  else eBay takes without publishing a rate. After a sale, the Orders tab shows what it actually charged.
                 </p>
               </div>
             </details>
@@ -538,10 +540,10 @@
                   fee table and site id.
                 </p>
                 <p>
-                  Whether you are a business or a private seller changes the fee enough that Margin asks eBay and
-                  remembers the answer for a day. A private seller on eBay UK pays no final value fee at all; a private
-                  seller on eBay US pays the same as a business. If eBay will not say, Margin assumes business — quoting
-                  you no fee when you will be charged one is the expensive way to be wrong.
+                  Business and private sellers pay different fees, so Margin asks eBay and remembers the answer for a
+                  day. A private seller on eBay UK pays no final value fee; on eBay US they pay what a business pays. If
+                  eBay will not say, Margin assumes business — quoting no fee when you will be charged one is the
+                  expensive way to be wrong.
                 </p>
               </div>
             </details>
