@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&family=Geist+Mono:wght@400;500&display=swap" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-BKc28HbQ.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/index-CZoNZaYb.js">
-    <link rel="stylesheet" crossorigin href="../assets/index-B7AX7D_W.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-CNj4a1Tj.css">
+    <script type="module" crossorigin src="../assets/dashboard-BT6xv_b8.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-DC7_k1qs.js">
+    <link rel="stylesheet" crossorigin href="../assets/index-CgdkZBOe.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-B6lg2DPF.css">
   </head>
   <body>
     <!--
@@ -189,27 +189,6 @@
                     </figure>
                   </div>
                 </section>
-
-                <section class="card">
-                  <header><h2>How much each product made</h2><span class="meta" id="productsMeta"></span></header>
-                  <div class="pad">
-                    <div class="scroller">
-                      <table id="productTable">
-                        <thead>
-                          <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col" class="n">Sold</th>
-                            <th scope="col" class="n">Each</th>
-                            <th scope="col" class="n">Margin</th>
-                            <th scope="col" class="n">Kept</th>
-                          </tr>
-                        </thead>
-                        <tbody></tbody>
-                      </table>
-                    </div>
-                    <p class="empty" id="productsEmpty" hidden>Nothing sold in this period.</p>
-                  </div>
-                </section>
               </div>
 
               <div class="col">
@@ -229,6 +208,36 @@
                 </section>
               </div>
             </div>
+
+            <!--
+              The products table has the whole width, under the two columns rather than inside one.
+
+              Two reasons, and they are the same reason. In the left column it was 660px wide, which
+              cut every product name at about thirty characters — "NEEWER 6 Pack ND CPL Filter Set
+              7…" — on the one table whose whole job is to say which product made the money. And it
+              was what made the left column half as tall again as the right, leaving four hundred
+              and ninety pixels of nothing down the right of the page.
+            -->
+            <section class="card overviewProducts">
+              <header><h2>How much each product made</h2><span class="meta" id="productsMeta"></span></header>
+              <div class="pad">
+                <div class="scroller">
+                  <table id="productTable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col" class="n">Sold</th>
+                        <th scope="col" class="n">Each</th>
+                        <th scope="col" class="n">Margin</th>
+                        <th scope="col" class="n">Kept</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <p class="empty" id="productsEmpty" hidden>Nothing sold in this period.</p>
+              </div>
+            </section>
 
             <p class="foot">
               Sales and eBay's fee are the figures eBay reports. What the stock cost is the Amazon price at the last
