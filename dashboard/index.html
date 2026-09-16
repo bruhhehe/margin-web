@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-BEy4djdq.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-RBxJIgZv.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-CbNztzYy.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DFmpa30K.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-nJsnAP4S.css">
   </head>
   <body>
     <!--
@@ -233,23 +233,46 @@
                     </details>
                   </div>
                 </section>
+
+                <!--
+                  The state of the shop under the charts, not beside the orders.
+
+                  These two are a pair — what is listed, and what the watching did to it — and they
+                  were the fourth and fifth cards of a column that already held three. That left the
+                  right of the page running five hundred pixels past the bottom of the left, which
+                  is the same fault the products table was moved out of the column to fix.
+                -->
+                <div class="pair">
+                  <section class="card">
+                    <header><h2>Your listings right now</h2></header>
+                    <dl class="health" id="shopHealth"></dl>
+                  </section>
+
+                  <section class="card">
+                    <header><h2>What the checks did</h2><span class="meta">last 24 hours</span></header>
+                    <dl class="health" id="checkHealth"></dl>
+                  </section>
+                </div>
               </div>
 
               <div class="col">
+                <section class="card">
+                  <header><h2>Where your orders are</h2><span class="meta" id="postingMeta"></span></header>
+                  <dl class="health" id="postingHealth"></dl>
+                  <p class="cardFoot" id="postingSaid"></p>
+                </section>
+
                 <section class="card">
                   <header><h2>Orders still to post</h2><span class="meta" id="dispatchMeta"></span></header>
                   <div id="dispatchList"></div>
                 </section>
 
-                <section class="card">
-                  <header><h2>Your listings right now</h2></header>
-                  <dl class="health" id="shopHealth"></dl>
+                <section class="card" id="reviewsCard" hidden>
+                  <header><h2>What buyers say</h2><span class="meta" id="reviewsMeta"></span></header>
+                  <dl class="health" id="reviewsHealth"></dl>
+                  <div id="reviewsList"></div>
                 </section>
 
-                <section class="card">
-                  <header><h2>What the checks did</h2><span class="meta">last 24 hours</span></header>
-                  <dl class="health" id="checkHealth"></dl>
-                </section>
               </div>
             </div>
 
