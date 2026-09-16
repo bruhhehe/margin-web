@@ -34,10 +34,10 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black ground." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#8b3dff" />
-    <script type="module" crossorigin src="./assets/index-p8Ukbmzq.js"></script>
+    <script type="module" crossorigin src="./assets/index-BdH25QAo.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/index-nNKhj-QV.js">
     <link rel="stylesheet" crossorigin href="./assets/index-B7AX7D_W.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-DxpAe6av.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CLWWsug9.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -53,7 +53,6 @@
           <a href="#pricing">Pricing</a>
           <a href="#watching">Watching</a>
           <a href="#plans">Plans</a>
-          <a href="./dashboard/">Dashboard</a>
         </nav>
         <!--
           The Web Store address, in three places and nowhere else.
@@ -63,7 +62,10 @@
           a real href rather than a script-written one, so the button works before any JavaScript
           runs and cannot become the dead control this page used to have.
         -->
-        <a class="btn primary" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID">Add to Chrome</a>
+        <div class="top-do">
+          <a class="btn ghost" href="./dashboard/">Dashboard</a>
+          <a class="btn primary" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID">Add to Chrome</a>
+        </div>
       </div>
     </header>
 
@@ -79,34 +81,7 @@
               the product is, in the order a seller meets them — and they say "one place" by being
               one list rather than by claiming it.
             -->
-            <h1>Relisting on eBay, all in one place.</h1>
-            <p class="lead">
-              A Chrome extension and a dashboard for sellers who relist products from other stores on eBay.
-            </p>
-            <ul class="hero-list">
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Relist in a couple of clicks.</b> From Amazon or AliExpress, one at a time or a page at once.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Price from your profit.</b> Type what you want to make and it adds eBay&rsquo;s fee for you.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Track and reprice.</b> It watches the source price and stock, and moves yours to match.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>See what you made.</b> Sales, eBay&rsquo;s fees, stock costs and profit, across every shop.</span>
-              </li>
-            </ul>
-            <div class="hero-do">
-              <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-                Add to Chrome</a>
-              <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
-            </div>
-            <p class="hero-fine">Free plan, no card needed. No tracking in the extension or on this page.</p>
+            <h1 class="hero-head"><span>Relisting on eBay,</span> <b>all in one place.</b></h1>
           </div>
         </div>
 
@@ -202,6 +177,43 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!--
+          What the product is, under the picture of it rather than above.
+
+          The headline and the frame are one idea — here is the thing — and the four lines are the
+          second: here is what it does. Putting them after the frame lets the first screen be the
+          claim and the product, which is the order somebody actually meets it in.
+        -->
+        <div class="wrap hero-more">
+          <p class="lead">
+            A Chrome extension and a dashboard for sellers who relist products from other stores on eBay.
+          </p>
+            <ul class="hero-list">
+              <li>
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+                <span><b>Relist in a couple of clicks.</b> From Amazon or AliExpress, one at a time or a page at once.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+                <span><b>Price from your profit.</b> Type what you want to make and it adds eBay&rsquo;s fee for you.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+                <span><b>Track and reprice.</b> It watches the source price and stock, and moves yours to match.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
+                <span><b>See what you made.</b> Sales, eBay&rsquo;s fees, stock costs and profit, across every shop.</span>
+              </li>
+            </ul>
+            <div class="hero-do">
+              <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                Add to Chrome</a>
+              <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
+            </div>
+            <p class="hero-fine">Free plan, no card needed. No tracking in the extension or on this page.</p>
         </div>
       </section>
 
