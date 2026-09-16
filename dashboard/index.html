@@ -6,15 +6,12 @@
     <title>Dashboard — Margin</title>
     <meta name="description" content="What your eBay shops sold, what eBay took, what the stock cost and what you kept." />
     <meta name="robots" content="noindex" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&family=Geist+Mono:wght@400;500&display=swap" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CJZZhbUr.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/index-BxbQHS1w.js">
-    <link rel="stylesheet" crossorigin href="../assets/index-BE5FMuKi.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-QdJAJfKH.css">
+    <script type="module" crossorigin src="../assets/dashboard-_9dEtPHD.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-DAyRD01s.js">
+    <link rel="stylesheet" crossorigin href="../assets/index-Bf63Z9R7.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-BEi4vap8.css">
   </head>
   <body>
     <!--
@@ -22,6 +19,21 @@
       arranged for scanning: the money first at any width, the run of trading under it, then the
       products, then what the watching has been doing. Four views, one shell, no page loads.
     -->
+
+    <!--
+      What is on screen while the stored session is being checked.
+
+      Both of the two things below start hidden, so until `/api/account/me` answered the page was a
+      blank white rectangle — no wordmark, no spinner, no text — for as long as that took. Measured
+      at a five-second answer it was still empty at four. This is here from the first paint and goes
+      the moment either of them is shown.
+    -->
+    <main class="gate" id="booting">
+      <div class="card gateCard">
+        <span class="lock gateLock"><span class="tile" aria-hidden="true"></span><b>Margin</b></span>
+        <p class="loading" role="status"><span class="spinner" aria-hidden="true"></span>Reading your account…</p>
+      </div>
+    </main>
 
     <!-- Signed out. Nothing else exists until this is answered. -->
     <main class="gate" id="gate" hidden>
@@ -143,7 +155,7 @@
             </div>
           </div>
 
-          <div class="loading" id="loading" hidden><span class="spinner" aria-hidden="true"></span>Reading your shop…</div>
+          <div class="loading" id="loading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your shop…</div>
 
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
@@ -286,7 +298,7 @@
             </div>
           </div>
 
-          <div class="loading" id="listingsLoading" hidden><span class="spinner" aria-hidden="true"></span>Reading your listings…</div>
+          <div class="loading" id="listingsLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your listings…</div>
 
           <section class="card" id="listingsCard" hidden>
             <header><h2 id="listingsCount">Listings</h2><span class="meta" id="listingsMeta"></span></header>
@@ -320,7 +332,7 @@
             </div>
           </div>
 
-          <div class="loading" id="shopsLoading" hidden><span class="spinner" aria-hidden="true"></span>Reading your shops…</div>
+          <div class="loading" id="shopsLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your shops…</div>
           <div id="shopList" class="shopGrid"></div>
 
           <section class="card addShop">
@@ -348,7 +360,7 @@
             </div>
           </div>
 
-          <div class="loading" id="planLoading" hidden><span class="spinner" aria-hidden="true"></span>Reading your plan…</div>
+          <div class="loading" id="planLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your plan…</div>
           <div class="plans" id="planList"></div>
           <p class="formError" id="planError" role="alert" hidden></p>
           <p class="foot" id="planFoot"></p>
