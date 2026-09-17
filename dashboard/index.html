@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DU-VVv0m.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-D9AaqcRa.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DXS4i5d8.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-CWKpA4Ls.css">
   </head>
   <body>
     <!--
@@ -164,195 +164,109 @@
             <dl class="cards" id="cards"></dl>
             <p class="founded" id="founded"></p>
 
-            <div class="two">
-              <div class="col">
-                <!--
-                  One chart, two series, one hover.
+            <!--
+              The page in rows, each answering one question, in the order a seller asks them.
 
-                  This was two cards: "Profit, week by week" and "Orders a day", one above the
-                  other, on the same dates, drawn with the same bars — the reader compared them by
-                  moving their eyes between two pictures that were already aligned. They are one
-                  drawing now, the money as a filled run and the orders as a strip beneath it, and
-                  the guide line reads both at once.
-                -->
-                <section class="card chartCard">
-                  <header>
-                    <h2 id="trendTitle">Sales and profit</h2>
-                    <span class="meta" id="trendMeta"></span>
-                    <!-- A line says which way it is going; bars compare one period against another. -->
-                    <div class="seg small" role="group" aria-label="Chart type">
-                      <button type="button" data-look="area" aria-pressed="true">Line</button>
-                      <button type="button" data-look="bars" aria-pressed="false">Bars</button>
-                    </div>
-                  </header>
-                  <div class="pad">
-                    <!--
-                      The caption goes under the drawing.
-
-                      Above it, it was three lines of explanation between the heading and the
-                      picture — and the tooltip, which sits level with the point it describes, landed
-                      on it on any week worth reading. Under the chart it is what a caption is: there
-                      for the first read, out of the way of every one after it.
-                    -->
-                    <!--
-                      The key, carrying each series' total for the period.
-
-                      A legend that only names the marks earns none of its space: the reader already
-                      knows which line is which from the colour, and what they actually want beside
-                      the picture is what each one comes to. So the swatch, the name and the figure
-                      travel together, and the chart gains a summary instead of a label.
-                    -->
-                    <div class="key" id="trendKey"></div>
-                    <figure>
-                      <div class="chartHost" id="trendChart"></div>
-                      <figcaption id="trendSays">Sales is what buyers paid. Profit is sales minus eBay's fees minus what the stock cost.</figcaption>
-                    </figure>
-                    <!--
-                      The figures as a table, under both of them.
-
-                      A day's mark is a 24px-wide target on a thirty-day window, under the floor
-                      WCAG 2.2 asks of a pointer target and with its neighbours the same distance
-                      away, so the spacing exception does not save it. A table is the equivalent
-                      that does not depend on hitting anything — and it is where the fees and the
-                      stock cost behind each figure are, which no chart of one line can show.
-                    -->
-                    <details>
-                      <summary>Show these as a table</summary>
-                      <div class="scroller">
-                        <table id="weeksTable">
-                          <thead>
-                            <tr>
-                              <th scope="col" id="trendWhen">Week ending</th>
-                              <th scope="col" class="n">Orders</th>
-                              <th scope="col" class="n">Sales</th>
-                              <th scope="col" class="n">Fees</th>
-                              <th scope="col" class="n">Cost</th>
-                              <th scope="col" class="n">Profit</th>
-                            </tr>
-                          </thead>
-                          <tbody></tbody>
-                        </table>
-                      </div>
-                    </details>
+              It was two columns: a chart and two small cards on the left, eight cards stacked on the
+              right — so the right ran a thousand pixels past the left, and "traffic", "buyers",
+              "categories" and "feedback" sat in one pile with nothing saying which of them mattered.
+              A row is a question. The first is "how is it going and what needs me"; the second
+              "where do buyers come from and where do they stop"; the third "which products"; the
+              last "is the shop in good shape". A card that has nothing to say drops out of its row
+              and the row closes over it, rather than leaving a hole in a column.
+            -->
+            <div class="band lead">
+              <section class="card chartCard">
+                <header>
+                  <h2 id="trendTitle">Sales and profit</h2>
+                  <span class="meta" id="trendMeta"></span>
+                  <!-- A line says which way it is going; bars compare one period against another. -->
+                  <div class="seg small" role="group" aria-label="Chart type">
+                    <button type="button" data-look="area" aria-pressed="true">Line</button>
+                    <button type="button" data-look="bars" aria-pressed="false">Bars</button>
                   </div>
-                </section>
-
-                <!--
-                  The state of the shop under the charts, not beside the orders.
-
-                  These two are a pair — what is listed, and what the watching did to it — and they
-                  were the fourth and fifth cards of a column that already held three. That left the
-                  right of the page running five hundred pixels past the bottom of the left, which
-                  is the same fault the products table was moved out of the column to fix.
-                -->
-                <div class="pair">
-                  <section class="card">
-                    <header><h2>Listings</h2></header>
-                    <div class="insight" id="shopHealth"></div>
-                    <p class="cardFoot bad" id="shopSaid" hidden></p>
-                  </section>
-
-                  <section class="card">
-                    <header><h2>Stock and price checks</h2><span class="meta">last 24h</span></header>
-                    <div class="insight" id="checkHealth"></div>
-                  </section>
-                </div>
-              </div>
-
-              <div class="col">
-                <!--
-                  Where the orders are and which ones are waiting, on one card.
-
-                  They were two, one under the other, and they are one subject: what came in, and
-                  what of it is still sitting here. Two headings said it twice and cost the column a
-                  card's worth of height it did not have to spare.
-                -->
-                <section class="card" id="ordersCard">
-                  <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
+                </header>
+                <div class="pad">
+                  <!-- The key carries each series' total, so the chart gains a summary instead of a label. -->
+                  <div class="key" id="trendKey"></div>
+                  <figure>
+                    <div class="chartHost" id="trendChart"></div>
+                    <figcaption id="trendSays">Sales is what buyers paid. Profit is sales minus eBay's fees minus what the stock cost.</figcaption>
+                  </figure>
                   <!--
-                    The stages, in proportion, with the count and the change on each.
-
-                    An order goes ready → partly → posted. The separate proportion bar this used to
-                    carry said that well and said it once, above a two-by-two of numbers that said
-                    nothing about order at all; now every row carries its own share, so the shape and
-                    the figures are the same object rather than two drawings of one fact.
+                    The figures as a table: a day's mark is a 24px target on a thirty-day window, and
+                    the table is where the fees and stock cost behind each figure are.
                   -->
-                  <div class="insight" id="postingHealth"></div>
-                  <p class="cardFoot" id="postingSaid"></p>
-                  <div id="dispatchList"></div>
-                </section>
+                  <details>
+                    <summary>Show these as a table</summary>
+                    <div class="scroller">
+                      <table id="weeksTable">
+                        <thead>
+                          <tr>
+                            <th scope="col" id="trendWhen">Week ending</th>
+                            <th scope="col" class="n">Orders</th>
+                            <th scope="col" class="n">Sales</th>
+                            <th scope="col" class="n">Fees</th>
+                            <th scope="col" class="n">Cost</th>
+                            <th scope="col" class="n">Profit</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </details>
+                </div>
+              </section>
 
-                <!--
-                  The three cards under Orders read as one funnel, in order: how many people saw the
-                  listings, who bought, and what they bought. Traffic leads because it is the only
-                  one of the three this tool cannot work out for itself — and the only one that
-                  separates "nothing sells" from "nothing is seen".
-                -->
-                <!--
-                  Returns sit with the orders they came out of, not with the money.
+              <!--
+                What needs doing, in one place, beside the chart.
 
-                  A return is the one thing on this page that is both: money that went back, and a
-                  parcel coming the other way with something to do about it. It is the same subject
-                  as the card above it, so it is the same card rather than a fifth heading in a
-                  column that already has four.
-                -->
-                <!--
-                  What changed, which is the question this page is opened with.
-
-                  The product table beside it answers "what makes me money", and that barely moves
-                  month to month. This answers "what is different", and that is the one that leads
-                  somewhere: a product down three hundred pounds has a price, a competitor or a stock
-                  problem behind it, and one that is up is the thing to buy more of.
-                -->
-                <section class="card" id="moversCard" hidden>
-                  <header><h2>What changed</h2><span class="meta" id="moversMeta"></span></header>
-                  <div id="moversList"></div>
-                </section>
-
-                <section class="card" id="returnsCard" hidden>
-                  <header><h2>Returns</h2><span class="meta" id="returnsMeta"></span></header>
-                  <div class="insight" id="returnsHealth"></div>
-                </section>
-
-                <section class="card" id="trafficCard" hidden>
-                  <header><h2>Traffic</h2><span class="meta" id="trafficMeta"></span></header>
-                  <div class="insight" id="trafficHealth"></div>
-                  <p class="cardFoot" id="trafficSaid" hidden></p>
-                </section>
-
-                <!--
-                  Who bought, and what sold, which no money figure on this page can say.
-                  Both are worked out from orders the page already has; neither costs a call.
-                -->
-                <section class="card" id="buyersCard" hidden>
-                  <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
-                  <div class="insight" id="buyersHealth"></div>
-                  <p class="cardFoot" id="buyersSaid"></p>
-                </section>
-
-                <section class="card" id="categoriesCard" hidden>
-                  <header><h2>Sales by category</h2><span class="meta" id="categoriesMeta"></span></header>
-                  <div id="categoriesList"></div>
-                </section>
-
-                <section class="card" id="reviewsCard" hidden>
-                  <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
-                  <div class="insight" id="reviewsHealth"></div>
-                  <div id="reviewsList"></div>
-                </section>
-
-              </div>
+                Late orders, stock that is still on sale with nothing behind it, listings under the
+                margin floor, pages the checks could not read — each of these used to be a red
+                figure inside a different card, so finding out whether anything needed you meant
+                reading every card. Now it is one list, and the orders waiting to go out sit under
+                it, because they are the commonest thing on it.
+              -->
+              <section class="card" id="attentionCard">
+                <header><h2>Needs you</h2><span class="meta" id="attentionMeta"></span></header>
+                <div id="attentionList"></div>
+                <div id="dispatchList"></div>
+              </section>
             </div>
 
             <!--
-              The products table has the whole width, under the two columns rather than inside one.
-
-              Two reasons, and they are the same reason. In the left column it was 660px wide, which
-              cut every product name at about thirty characters — "NEEWER 6 Pack ND CPL Filter Set
-              7…" — on the one table whose whole job is to say which product made the money. And it
-              was what made the left column half as tall again as the right, leaving four hundred
-              and ninety pixels of nothing down the right of the page.
+              The funnel: seen, bought, came back. Traffic leads because it is the one figure this
+              tool cannot work out for itself — and the only one that separates "nothing sells"
+              from "nothing is seen".
             -->
+            <p class="bandTitle">Where buyers come from</p>
+            <div class="band three">
+              <section class="card" id="trafficCard" hidden>
+                <header><h2>Traffic</h2><span class="meta" id="trafficMeta"></span></header>
+                <div class="insight" id="trafficHealth"></div>
+                <p class="cardFoot" id="trafficSaid" hidden></p>
+              </section>
+
+              <section class="card" id="ordersCard">
+                <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
+                <div class="insight" id="postingHealth"></div>
+                <p class="cardFoot" id="postingSaid"></p>
+              </section>
+
+              <section class="card" id="buyersCard" hidden>
+                <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
+                <div class="insight" id="buyersHealth"></div>
+                <p class="cardFoot" id="buyersSaid"></p>
+              </section>
+            </div>
+
+            <!--
+              Which products. The table has the whole width, because its one job is to say which
+              product made the money and a narrower one cut every name at thirty characters. Under
+              it, what is different about them: what moved against the period before, what they
+              sold as, and what came back.
+            -->
+            <p class="bandTitle">Products</p>
             <section class="card overviewProducts">
               <header>
                 <h2>Product sales</h2>
@@ -365,13 +279,7 @@
                   <option value="units">Most sold</option>
                   <option value="sales">Most revenue</option>
                 </select>
-                <!--
-                  The figures, out.
-
-                  Every seller eventually has to hand these to an accountant, a spreadsheet or the
-                  tax return, and a table on a web page is where numbers go to be retyped. It is the
-                  same rows the table is showing, in the order it is showing them.
-                -->
+                <!-- The same rows the table shows, in the order it shows them, for the spreadsheet. -->
                 <button type="button" id="productsCsv" class="ghost">Download CSV</button>
               </header>
               <div class="pad">
@@ -394,6 +302,44 @@
                 <p class="empty" id="productsEmpty" hidden>Nothing sold in this period.</p>
               </div>
             </section>
+
+            <div class="band three">
+              <section class="card" id="moversCard" hidden>
+                <header><h2>What changed</h2><span class="meta" id="moversMeta"></span></header>
+                <div id="moversList"></div>
+              </section>
+
+              <section class="card" id="categoriesCard" hidden>
+                <header><h2>Sales by category</h2><span class="meta" id="categoriesMeta"></span></header>
+                <div id="categoriesList"></div>
+              </section>
+
+              <section class="card" id="returnsCard" hidden>
+                <header><h2>Returns</h2><span class="meta" id="returnsMeta"></span></header>
+                <div class="insight" id="returnsHealth"></div>
+              </section>
+            </div>
+
+            <!-- The shop's own state: what is listed, what the checks did to it, and what buyers say of it. -->
+            <p class="bandTitle">Shop health</p>
+            <div class="band three">
+              <section class="card">
+                <header><h2>Listings</h2></header>
+                <div class="insight" id="shopHealth"></div>
+                <p class="cardFoot bad" id="shopSaid" hidden></p>
+              </section>
+
+              <section class="card">
+                <header><h2>Stock and price checks</h2><span class="meta">last 24h</span></header>
+                <div class="insight" id="checkHealth"></div>
+              </section>
+
+              <section class="card" id="reviewsCard" hidden>
+                <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
+                <div class="insight" id="reviewsHealth"></div>
+                <div id="reviewsList"></div>
+              </section>
+            </div>
 
             <p class="foot">
               Sales and eBay's fee are the figures eBay reports. What the stock cost is the Amazon price at the last
