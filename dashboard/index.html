@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-BKdmMeCX.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-CeCA3S2p.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-COKeIwrv.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-8Wu9dtzC.css">
   </head>
   <body>
     <!--
@@ -194,6 +194,15 @@
                       on it on any week worth reading. Under the chart it is what a caption is: there
                       for the first read, out of the way of every one after it.
                     -->
+                    <!--
+                      The key, carrying each series' total for the period.
+
+                      A legend that only names the marks earns none of its space: the reader already
+                      knows which line is which from the colour, and what they actually want beside
+                      the picture is what each one comes to. So the swatch, the name and the figure
+                      travel together, and the chart gains a summary instead of a label.
+                    -->
+                    <div class="key" id="trendKey"></div>
                     <figure>
                       <div class="chartHost" id="trendChart"></div>
                       <figcaption id="trendSays">Sales is what buyers paid. Profit is sales minus eBay's fees minus what the stock cost.</figcaption>
@@ -239,13 +248,13 @@
                 <div class="pair">
                   <section class="card">
                     <header><h2>Listings</h2></header>
-                    <dl class="health" id="shopHealth"></dl>
+                    <div class="insight" id="shopHealth"></div>
                     <p class="cardFoot bad" id="shopSaid" hidden></p>
                   </section>
 
                   <section class="card">
                     <header><h2>Stock and price checks</h2><span class="meta">last 24h</span></header>
-                    <dl class="health" id="checkHealth"></dl>
+                    <div class="insight" id="checkHealth"></div>
                   </section>
                 </div>
               </div>
@@ -261,16 +270,14 @@
                 <section class="card" id="ordersCard">
                   <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
                   <!--
-                    The four figures are stages, not four facts.
+                    The stages, in proportion, with the count and the change on each.
 
-                    An order goes ready → partly → posted, and a two-by-two of numbers says nothing
-                    about that: it is the same grid this page uses for the listing counts and the
-                    check counts, which are unordered. One bar, in proportion, says how much of the
-                    period has actually gone out at a glance — and the figures underneath say how
-                    many, for anybody who needs the number rather than the shape.
+                    An order goes ready → partly → posted. The separate proportion bar this used to
+                    carry said that well and said it once, above a two-by-two of numbers that said
+                    nothing about order at all; now every row carries its own share, so the shape and
+                    the figures are the same object rather than two drawings of one fact.
                   -->
-                  <div class="stages" id="postingStages" aria-hidden="true"></div>
-                  <dl class="health" id="postingHealth"></dl>
+                  <div class="insight" id="postingHealth"></div>
                   <p class="cardFoot" id="postingSaid"></p>
                   <div id="dispatchList"></div>
                 </section>
@@ -291,13 +298,12 @@
                 -->
                 <section class="card" id="returnsCard" hidden>
                   <header><h2>Returns</h2><span class="meta" id="returnsMeta"></span></header>
-                  <dl class="health" id="returnsHealth"></dl>
-                  <div id="returnsWhy"></div>
+                  <div class="insight" id="returnsHealth"></div>
                 </section>
 
                 <section class="card" id="trafficCard" hidden>
                   <header><h2>Traffic</h2><span class="meta" id="trafficMeta"></span></header>
-                  <dl class="health" id="trafficHealth"></dl>
+                  <div class="insight" id="trafficHealth"></div>
                   <p class="cardFoot" id="trafficSaid" hidden></p>
                 </section>
 
@@ -307,7 +313,7 @@
                 -->
                 <section class="card" id="buyersCard" hidden>
                   <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
-                  <dl class="health" id="buyersHealth"></dl>
+                  <div class="insight" id="buyersHealth"></div>
                   <p class="cardFoot" id="buyersSaid"></p>
                 </section>
 
@@ -318,7 +324,7 @@
 
                 <section class="card" id="reviewsCard" hidden>
                   <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
-                  <dl class="health" id="reviewsHealth"></dl>
+                  <div class="insight" id="reviewsHealth"></div>
                   <div id="reviewsList"></div>
                 </section>
 
