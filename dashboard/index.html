@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-RBxJIgZv.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-CapB1Wwl.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-CbNztzYy.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-nJsnAP4S.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DVEal1nO.css">
   </head>
   <body>
     <!--
@@ -164,66 +164,58 @@
 
             <div class="two">
               <div class="col">
-                <section class="card">
+                <!--
+                  One chart, two series, one hover.
+
+                  This was two cards: "Profit, week by week" and "Orders a day", one above the
+                  other, on the same dates, drawn with the same bars — the reader compared them by
+                  moving their eyes between two pictures that were already aligned. They are one
+                  drawing now, the money as a filled run and the orders as a strip beneath it, and
+                  the guide line reads both at once.
+                -->
+                <section class="card chartCard">
                   <header>
-                    <h2 id="weeksTitle">Profit, week by week</h2>
-                    <span class="meta" id="weeksMeta"></span>
-                    <!-- Bars compare one period against another; a line says which way it is going. -->
-                    <div class="seg small" role="group" aria-label="How to draw the profit chart">
-                      <button type="button" data-look="bars" aria-pressed="true">Bars</button>
-                      <button type="button" data-look="line" aria-pressed="false">Line</button>
+                    <h2 id="trendTitle">Profit and orders</h2>
+                    <span class="meta" id="trendMeta"></span>
+                    <!-- A run says which way it is going; columns compare one period against another. -->
+                    <div class="seg small" role="group" aria-label="How to draw what was kept">
+                      <button type="button" data-look="area" aria-pressed="true">Run</button>
+                      <button type="button" data-look="bars" aria-pressed="false">Columns</button>
                     </div>
                   </header>
                   <div class="pad">
+                    <!--
+                      The caption goes under the drawing.
+
+                      Above it, it was three lines of explanation between the heading and the
+                      picture — and the tooltip, which sits level with the point it describes, landed
+                      on it on any week worth reading. Under the chart it is what a caption is: there
+                      for the first read, out of the way of every one after it.
+                    -->
                     <figure>
-                      <figcaption id="weeksSays">Your sales, minus eBay's fee, minus what the stock cost you — for each week of the period.</figcaption>
-                      <div class="chartScroll"><svg class="chart" id="weeksChart" role="img" viewBox="0 0 760 240" preserveAspectRatio="xMidYMid meet"></svg></div>
+                      <div class="chartHost" id="trendChart"></div>
+                      <figcaption id="trendSays">Your sales, minus eBay's fee, minus what the stock cost you — against how many orders came in.</figcaption>
                     </figure>
+                    <!--
+                      The figures as a table, under both of them.
+
+                      A day's mark is a 24px-wide target on a thirty-day window, under the floor
+                      WCAG 2.2 asks of a pointer target and with its neighbours the same distance
+                      away, so the spacing exception does not save it. A table is the equivalent
+                      that does not depend on hitting anything — and it is where the fees and the
+                      stock cost behind each figure are, which no chart of one line can show.
+                    -->
                     <details>
-                      <summary>Show this as a table</summary>
+                      <summary>Show these as a table</summary>
                       <div class="scroller">
                         <table id="weeksTable">
                           <thead>
                             <tr>
-                              <th scope="col">Week ending</th>
+                              <th scope="col" id="trendWhen">Week ending</th>
                               <th scope="col" class="n">Orders</th>
                               <th scope="col" class="n">Sales</th>
                               <th scope="col" class="n">Fees</th>
                               <th scope="col" class="n">Cost</th>
-                              <th scope="col" class="n">Kept</th>
-                            </tr>
-                          </thead>
-                          <tbody></tbody>
-                        </table>
-                      </div>
-                    </details>
-                  </div>
-                </section>
-
-                <section class="card">
-                  <header><h2 id="daysTitle">Orders a day</h2><span class="meta" id="daysMeta"></span></header>
-                  <div class="pad">
-                    <figure>
-                      <figcaption id="daysSays">How many orders came in on each day.</figcaption>
-                      <div class="chartScroll"><svg class="chart" id="daysChart" role="img" viewBox="0 0 760 150" preserveAspectRatio="xMidYMid meet"></svg></div>
-                    </figure>
-                    <!--
-                      The same table the weeks chart offers, for the same reason and one more.
-
-                      A day's bar is a 24px-wide target on a thirty-day window, under the 24px floor
-                      WCAG 2.2 asks of a pointer target and with its neighbours the same distance
-                      away, so the spacing exception does not save it. A table is the equivalent
-                      that does not depend on hitting anything.
-                    -->
-                    <details>
-                      <summary>Show this as a table</summary>
-                      <div class="scroller">
-                        <table id="daysTable">
-                          <thead>
-                            <tr>
-                              <th scope="col">Day</th>
-                              <th scope="col" class="n">Orders</th>
-                              <th scope="col" class="n">Sales</th>
                               <th scope="col" class="n">Kept</th>
                             </tr>
                           </thead>
@@ -249,21 +241,34 @@
                   </section>
 
                   <section class="card">
-                    <header><h2>What the checks did</h2><span class="meta">last 24 hours</span></header>
+                    <header><h2>What the checks did</h2><span class="meta">last 24h</span></header>
                     <dl class="health" id="checkHealth"></dl>
                   </section>
                 </div>
               </div>
 
               <div class="col">
-                <section class="card">
-                  <header><h2>Where your orders are</h2><span class="meta" id="postingMeta"></span></header>
+                <!--
+                  Where the orders are and which ones are waiting, on one card.
+
+                  They were two, one under the other, and they are one subject: what came in, and
+                  what of it is still sitting here. Two headings said it twice and cost the column a
+                  card's worth of height it did not have to spare.
+                -->
+                <section class="card" id="ordersCard">
+                  <header><h2>Your orders</h2><span class="meta" id="postingMeta"></span></header>
+                  <!--
+                    The four figures are stages, not four facts.
+
+                    An order goes ready → partly → posted, and a two-by-two of numbers says nothing
+                    about that: it is the same grid this page uses for the listing counts and the
+                    check counts, which are unordered. One bar, in proportion, says how much of the
+                    period has actually gone out at a glance — and the figures underneath say how
+                    many, for anybody who needs the number rather than the shape.
+                  -->
+                  <div class="stages" id="postingStages" aria-hidden="true"></div>
                   <dl class="health" id="postingHealth"></dl>
                   <p class="cardFoot" id="postingSaid"></p>
-                </section>
-
-                <section class="card">
-                  <header><h2>Orders still to post</h2><span class="meta" id="dispatchMeta"></span></header>
                   <div id="dispatchList"></div>
                 </section>
 
