@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DrMXXFJE.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-OAjileJZ.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-C8ye4znD.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-COKeIwrv.css">
   </head>
   <body>
     <!--
@@ -273,6 +273,18 @@
                   <dl class="health" id="postingHealth"></dl>
                   <p class="cardFoot" id="postingSaid"></p>
                   <div id="dispatchList"></div>
+                </section>
+
+                <!--
+                  The three cards under Orders read as one funnel, in order: how many people saw the
+                  listings, who bought, and what they bought. Traffic leads because it is the only
+                  one of the three this tool cannot work out for itself — and the only one that
+                  separates "nothing sells" from "nothing is seen".
+                -->
+                <section class="card" id="trafficCard" hidden>
+                  <header><h2>Traffic</h2><span class="meta" id="trafficMeta"></span></header>
+                  <dl class="health" id="trafficHealth"></dl>
+                  <p class="cardFoot" id="trafficSaid" hidden></p>
                 </section>
 
                 <!--
