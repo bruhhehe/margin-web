@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-Cebq0l3H.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DSg7RL_E.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DTKFWNmx.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-C2ys9ck3.css">
   </head>
   <body>
     <!--
@@ -136,6 +136,8 @@
 
       <main id="main" tabindex="-1">
         <p class="strip" id="failure" role="alert" hidden></p>
+        <!-- Said when the deployed backend is older than this page; see checkTheServer. -->
+        <p class="strip warn" id="behind" role="status" hidden></p>
 
         <!-- ---------------------------------------------------------------- Overview -->
         <section class="view" data-view="overview">
@@ -175,12 +177,12 @@
                 -->
                 <section class="card chartCard">
                   <header>
-                    <h2 id="trendTitle">Profit and orders</h2>
+                    <h2 id="trendTitle">Sales and profit</h2>
                     <span class="meta" id="trendMeta"></span>
-                    <!-- A run says which way it is going; columns compare one period against another. -->
-                    <div class="seg small" role="group" aria-label="How to draw what was kept">
-                      <button type="button" data-look="area" aria-pressed="true">Run</button>
-                      <button type="button" data-look="bars" aria-pressed="false">Columns</button>
+                    <!-- A line says which way it is going; bars compare one period against another. -->
+                    <div class="seg small" role="group" aria-label="Chart type">
+                      <button type="button" data-look="area" aria-pressed="true">Line</button>
+                      <button type="button" data-look="bars" aria-pressed="false">Bars</button>
                     </div>
                   </header>
                   <div class="pad">
@@ -194,7 +196,7 @@
                     -->
                     <figure>
                       <div class="chartHost" id="trendChart"></div>
-                      <figcaption id="trendSays">Your sales, minus eBay's fee, minus what the stock cost you — against how many orders came in.</figcaption>
+                      <figcaption id="trendSays">Sales is what buyers paid. Profit is sales minus eBay's fees minus what the stock cost.</figcaption>
                     </figure>
                     <!--
                       The figures as a table, under both of them.
@@ -236,13 +238,13 @@
                 -->
                 <div class="pair">
                   <section class="card">
-                    <header><h2>Your listings right now</h2></header>
+                    <header><h2>Listings</h2></header>
                     <dl class="health" id="shopHealth"></dl>
                     <p class="cardFoot bad" id="shopSaid" hidden></p>
                   </section>
 
                   <section class="card">
-                    <header><h2>What the checks did</h2><span class="meta">last 24h</span></header>
+                    <header><h2>Stock and price checks</h2><span class="meta">last 24h</span></header>
                     <dl class="health" id="checkHealth"></dl>
                   </section>
                 </div>
@@ -257,7 +259,7 @@
                   card's worth of height it did not have to spare.
                 -->
                 <section class="card" id="ordersCard">
-                  <header><h2>Your orders</h2><span class="meta" id="postingMeta"></span></header>
+                  <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
                   <!--
                     The four figures are stages, not four facts.
 
@@ -274,7 +276,7 @@
                 </section>
 
                 <section class="card" id="reviewsCard" hidden>
-                  <header><h2>What buyers say</h2><span class="meta" id="reviewsMeta"></span></header>
+                  <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
                   <dl class="health" id="reviewsHealth"></dl>
                   <div id="reviewsList"></div>
                 </section>
