@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-E-_Tcljl.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DU-VVv0m.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-xIujbDif.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DXS4i5d8.css">
   </head>
   <body>
     <!--
@@ -296,6 +296,19 @@
                   as the card above it, so it is the same card rather than a fifth heading in a
                   column that already has four.
                 -->
+                <!--
+                  What changed, which is the question this page is opened with.
+
+                  The product table beside it answers "what makes me money", and that barely moves
+                  month to month. This answers "what is different", and that is the one that leads
+                  somewhere: a product down three hundred pounds has a price, a competitor or a stock
+                  problem behind it, and one that is up is the thing to buy more of.
+                -->
+                <section class="card" id="moversCard" hidden>
+                  <header><h2>What changed</h2><span class="meta" id="moversMeta"></span></header>
+                  <div id="moversList"></div>
+                </section>
+
                 <section class="card" id="returnsCard" hidden>
                   <header><h2>Returns</h2><span class="meta" id="returnsMeta"></span></header>
                   <div class="insight" id="returnsHealth"></div>
@@ -352,6 +365,14 @@
                   <option value="units">Most sold</option>
                   <option value="sales">Most revenue</option>
                 </select>
+                <!--
+                  The figures, out.
+
+                  Every seller eventually has to hand these to an accountant, a spreadsheet or the
+                  tax return, and a table on a web page is where numbers go to be retyped. It is the
+                  same rows the table is showing, in the order it is showing them.
+                -->
+                <button type="button" id="productsCsv" class="ghost">Download CSV</button>
               </header>
               <div class="pad">
                 <div class="scroller">
