@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DSg7RL_E.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DrMXXFJE.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-C2ys9ck3.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-C8ye4znD.css">
   </head>
   <body>
     <!--
@@ -275,6 +275,21 @@
                   <div id="dispatchList"></div>
                 </section>
 
+                <!--
+                  Who bought, and what sold, which no money figure on this page can say.
+                  Both are worked out from orders the page already has; neither costs a call.
+                -->
+                <section class="card" id="buyersCard" hidden>
+                  <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
+                  <dl class="health" id="buyersHealth"></dl>
+                  <p class="cardFoot" id="buyersSaid"></p>
+                </section>
+
+                <section class="card" id="categoriesCard" hidden>
+                  <header><h2>Sales by category</h2><span class="meta" id="categoriesMeta"></span></header>
+                  <div id="categoriesList"></div>
+                </section>
+
                 <section class="card" id="reviewsCard" hidden>
                   <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
                   <dl class="health" id="reviewsHealth"></dl>
@@ -344,6 +359,15 @@
             <div class="tools">
               <label class="sr-only" for="listingShop">Shop</label>
               <select id="listingShop"></select>
+              <label class="sr-only" for="listingView">Show</label>
+              <select id="listingView" class="sortPick">
+                <option value="all">All listings</option>
+                <option value="trouble">Needs attention</option>
+                <option value="gone">Out of stock</option>
+                <option value="live">On sale</option>
+                <option value="ended">Ended</option>
+                <option value="unlinked">No Amazon link</option>
+              </select>
               <label class="sr-only" for="listingSort">Order by</label>
               <select id="listingSort" class="sortPick">
                 <option value="attention">Needs attention</option>
