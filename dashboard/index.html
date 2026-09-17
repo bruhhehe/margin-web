@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-Bajy7d7r.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-Cebq0l3H.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-cWS9qkrd.js">
     <link rel="stylesheet" crossorigin href="../assets/index-BjjZpZqa.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BPDMiSsE.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DTKFWNmx.css">
   </head>
   <body>
     <!--
@@ -216,7 +216,7 @@
                               <th scope="col" class="n">Sales</th>
                               <th scope="col" class="n">Fees</th>
                               <th scope="col" class="n">Cost</th>
-                              <th scope="col" class="n">Kept</th>
+                              <th scope="col" class="n">Profit</th>
                             </tr>
                           </thead>
                           <tbody></tbody>
@@ -292,7 +292,18 @@
               and ninety pixels of nothing down the right of the page.
             -->
             <section class="card overviewProducts">
-              <header><h2>How much each product made</h2><span class="meta" id="productsMeta"></span></header>
+              <header>
+                <h2>Product sales</h2>
+                <span class="meta" id="productsMeta"></span>
+                <!-- Best by profit is the right default; which "best" means is the reader's to say. -->
+                <label class="sr-only" for="productSort">Order products by</label>
+                <select id="productSort" class="sortPick">
+                  <option value="profit">Most profit</option>
+                  <option value="margin">Best margin</option>
+                  <option value="units">Most sold</option>
+                  <option value="sales">Most revenue</option>
+                </select>
+              </header>
               <div class="pad">
                 <div class="scroller">
                   <table id="productTable">
@@ -300,9 +311,11 @@
                       <tr>
                         <th scope="col">Product</th>
                         <th scope="col" class="n">Sold</th>
-                        <th scope="col" class="n">Each</th>
+                        <th scope="col" class="n">eBay price</th>
+                        <th scope="col" class="n">Amazon cost</th>
+                        <th scope="col" class="n">Profit each</th>
                         <th scope="col" class="n">Margin</th>
-                        <th scope="col" class="n">Kept</th>
+                        <th scope="col" class="n">Profit</th>
                       </tr>
                     </thead>
                     <tbody></tbody>
@@ -329,6 +342,14 @@
             <div class="tools">
               <label class="sr-only" for="listingShop">Shop</label>
               <select id="listingShop"></select>
+              <label class="sr-only" for="listingSort">Order by</label>
+              <select id="listingSort" class="sortPick">
+                <option value="attention">Needs attention</option>
+                <option value="profit">Most profit</option>
+                <option value="margin">Best margin</option>
+                <option value="price">Highest price</option>
+                <option value="title">By name</option>
+              </select>
               <label class="sr-only" for="listingSearch">Search</label>
               <input type="search" id="listingSearch" placeholder="Search by title or code" />
               <button class="btn ghost" type="button" id="refreshListings">Refresh</button>
@@ -341,13 +362,15 @@
             <header><h2 id="listingsCount">Listings</h2><span class="meta" id="listingsMeta"></span></header>
             <div class="pad">
               <div class="scroller">
-                <table id="listingsTable">
+                <table id="listingsTable" class="tight">
                   <thead>
                     <tr>
                       <th scope="col">Item</th>
                       <th scope="col">Shop</th>
-                      <th scope="col" class="n">Cost</th>
-                      <th scope="col" class="n">On eBay</th>
+                      <th scope="col" class="n">Amazon</th>
+                      <th scope="col" class="n">eBay</th>
+                      <th scope="col" class="n">Profit</th>
+                      <th scope="col" class="n">Margin</th>
                       <th scope="col">State</th>
                     </tr>
                   </thead>
