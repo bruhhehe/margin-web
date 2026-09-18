@@ -31,10 +31,10 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black ground." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#8b3dff" />
-    <script type="module" crossorigin src="./assets/index-B3moNeWu.js"></script>
+    <script type="module" crossorigin src="./assets/index-dH5gHw30.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/index-13XF9ClQ.js">
     <link rel="stylesheet" crossorigin href="./assets/index-CPXntny9.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-Bh_0jBpK.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-2qc3jxgK.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -46,7 +46,7 @@
           <b>Margin</b>
         </a>
         <nav class="top-nav" aria-label="Sections">
-          <a href="#reading">Reading</a>
+          <a href="#scanning">Scanning</a>
           <a href="#pricing">Pricing</a>
           <a href="#watching">Watching</a>
           <a href="#orders">Orders</a>
@@ -209,7 +209,7 @@
                 Add to Chrome</a>
               <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
             </div>
-            <p class="hero-fine">Free plan, no card needed. No tracking in the extension or on this page.</p>
+            <p class="hero-fine">Free plan, no card needed. No analytics, no trackers, nothing sold on &mdash; here or in the extension.</p>
         </div>
       </section>
 
@@ -223,6 +223,60 @@
         A source that is not live yet says so. A row of names with nothing marked is a claim that
         all of them work today, and two of them do.
       -->
+      <section class="sources" id="sources" aria-labelledby="sources-head">
+        <div class="wrap">
+          <h2 id="sources-head" class="sources-head">Works with the stores you already buy from</h2>
+        </div>
+        <!--
+          One copy of each mark, referenced twice by the two halves of the track.
+
+          A `<symbol>` per store rather than the same path written out twelve times: the row is the
+          same six names twice over, and a mark that has to be edited in twelve places is a mark
+          that ends up different in one of them.
+        -->
+        <svg class="markDefs" aria-hidden="true" focusable="false">
+          <symbol id="m-amazon" viewBox="0 0 24 24">
+            <path d="M3.4 15.1c3.9 2.9 9.4 4 14.6 2.6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" />
+            <path d="M14.6 15.4l3.9 1.9-1.4 4" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+          </symbol>
+          <symbol id="m-aliexpress" viewBox="0 0 24 24">
+            <path d="M4.8 19 12 4.8 19.2 19M8.1 13.6h7.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+          </symbol>
+          <symbol id="m-walmart" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <path d="M12 2.8v5.4" /><path d="M12 15.8v5.4" />
+              <path d="M3.9 7.4l4.7 2.7" /><path d="M15.4 13.9l4.7 2.7" />
+              <path d="M3.9 16.6l4.7-2.7" /><path d="M15.4 10.1l4.7-2.7" />
+            </g>
+          </symbol>
+          <symbol id="m-onebuy" viewBox="0 0 24 24">
+            <path d="M8.6 8.4 12.8 5v14M8.6 19h8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+          </symbol>
+          <symbol id="m-temu" viewBox="0 0 24 24">
+            <path d="M4.6 6.2h14.8M12 6.2V19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+          </symbol>
+          <symbol id="m-alibaba" viewBox="0 0 24 24">
+            <path d="M11.5 12 3.9 6c-1.5 3.8-1.5 8.2 0 12zm1 0 7.6-6c1.5 3.8 1.5 8.2 0 12z" fill="currentColor" />
+          </symbol>
+        </svg>
+        <div class="marquee" data-marquee>
+          <ul class="marquee-track">
+            <li><span class="mark" style="--brand: #ff9900"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-amazon" /></svg></span>Amazon</li>
+            <li><span class="mark" style="--brand: #e62e04"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-aliexpress" /></svg></span>AliExpress</li>
+            <li><span class="mark" style="--brand: #0071ce"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-walmart" /></svg></span>Walmart<span class="soon">soon</span></li>
+            <li><span class="mark" style="--brand: #12a5a0"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-onebuy" /></svg></span>OneBuy<span class="soon">soon</span></li>
+            <li><span class="mark" style="--brand: #fb7701"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-temu" /></svg></span>Temu<span class="soon">soon</span></li>
+            <li><span class="mark" style="--brand: #ff6a00"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-alibaba" /></svg></span>Alibaba<span class="soon">soon</span></li>
+            <li aria-hidden="true"><span class="mark" style="--brand: #ff9900"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-amazon" /></svg></span>Amazon</li>
+            <li aria-hidden="true"><span class="mark" style="--brand: #e62e04"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-aliexpress" /></svg></span>AliExpress</li>
+            <li aria-hidden="true"><span class="mark" style="--brand: #0071ce"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-walmart" /></svg></span>Walmart<span class="soon">soon</span></li>
+            <li aria-hidden="true"><span class="mark" style="--brand: #12a5a0"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-onebuy" /></svg></span>OneBuy<span class="soon">soon</span></li>
+            <li aria-hidden="true"><span class="mark" style="--brand: #fb7701"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-temu" /></svg></span>Temu<span class="soon">soon</span></li>
+            <li aria-hidden="true"><span class="mark" style="--brand: #ff6a00"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-alibaba" /></svg></span>Alibaba<span class="soon">soon</span></li>
+          </ul>
+        </div>
+      </section>
+
       <!--
         The whole thing in five lines, before any of it is explained.
 
@@ -263,51 +317,27 @@
         </div>
       </section>
 
-      <section class="sources" id="sources" aria-labelledby="sources-head">
-        <div class="wrap">
-          <h2 id="sources-head" class="sources-head">Works with the stores you already buy from</h2>
-        </div>
-        <div class="marquee" data-marquee>
-          <ul class="marquee-track">
-          <li>Amazon</li>
-          <li>AliExpress</li>
-          <li>Walmart<span class="soon">soon</span></li>
-          <li>OneBuy<span class="soon">soon</span></li>
-          <li>Temu<span class="soon">soon</span></li>
-          <li>Alibaba<span class="soon">soon</span></li>
-          <li aria-hidden="true">Amazon</li>
-          <li aria-hidden="true">AliExpress</li>
-          <li aria-hidden="true">Walmart<span class="soon">soon</span></li>
-          <li aria-hidden="true">OneBuy<span class="soon">soon</span></li>
-          <li aria-hidden="true">Temu<span class="soon">soon</span></li>
-          <li aria-hidden="true">Alibaba<span class="soon">soon</span></li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="band" id="reading">
+      <section class="band" id="scanning">
         <div class="wrap sec">
-          <h2>It reads the page you already have open.</h2>
+          <h2>It scans the page you have open.</h2>
           <p class="lead">
-            In your own browser, signed in as you, on a page the extension keeps to itself — so nothing opens and
-            nothing takes your focus. No API, and nothing sent to a server to be scraped: a store serves a captcha to
-            datacentre traffic anyway. Twenty-two Amazon sites and AliExpress today, the same fields out of every one.
+            In your browser, signed in as you. No scraper for a store to block, and no server to send your account to.
+            Twenty-two Amazon sites and AliExpress, the same fields out of every one.
           </p>
 
           <div class="pair">
             <div>
-              <h3>Paste a list, or point it at a page</h3>
+              <h3>Hundreds at a time, not one</h3>
               <p>
-                Links however they come, bare product codes, or a column off a spreadsheet. Or open a search, a
-                best-seller chart, a category or a storefront and take every product off it — and off the pages after
-                it. You trim the list before anything is prepared.
+                Paste links, product codes or a spreadsheet column. Or open a search, a best-seller chart, a category or
+                a storefront and take every product on it, page after page.
               </p>
             </div>
             <div>
-              <h3>Nothing goes live until you have seen it</h3>
+              <h3>Duplicates caught before they cost you</h3>
               <p>
-                A long run reads a few at a time with a pause, so it finishes instead of stalling halfway. Products you
-                have listed before are flagged and skipped, and you review the whole batch before it publishes.
+                Anything you have listed before is flagged and skipped. You trim the batch yourself before a single
+                listing is prepared.
               </p>
             </div>
           </div>
@@ -344,15 +374,10 @@
 
       <section id="pricing">
         <div class="wrap sec">
-          <h2>The price already covers eBay&rsquo;s fee.</h2>
+          <h2>Set your margin. Margin sets the price.</h2>
           <p class="lead">
-            Type the profit you want. Margin finds the price that pays eBay&rsquo;s fee and still leaves it &mdash; at your
-            site&rsquo;s rate, for your category, checked twice because some categories charge more above a threshold.
-          </p>
-
-          <p class="sum">
-            <span><em>target</em> = what you pay + the profit you want + your own costs</span>
-            <span><em>price</em> = (target + eBay&rsquo;s fixed fee) ÷ (1 − eBay&rsquo;s rate)</span>
+            It adds eBay&rsquo;s fee for your site and your category on top, so the profit you asked for is the profit
+            you get.
           </p>
 
           <form class="solver card" id="solver" novalidate>
@@ -454,10 +479,10 @@
           axis from every other section's. Three cases are three columns.
         -->
         <div class="wrap sec">
-          <h2>Margin keeps checking the product page after you list.</h2>
+          <h2>It keeps watching after you list.</h2>
           <p class="lead">
-            Every 15 minutes, or every few hours — you choose. You also set how small a price move it should ignore.
-            Each of the three below is its own switch, and they all start off.
+            The source price moves, the source runs out, your listing sells out. Three switches, all off until you turn
+            them on, checking as often as every 15 minutes.
           </p>
 
           <ol class="rail">
@@ -733,10 +758,8 @@
 
       <section id="install">
         <div class="wrap sec close">
-          <h2>Install it, and open it beside the page you were already reading.</h2>
-          <p class="lead">
-            Alt+E, or the toolbar icon, on whichever tab you are on. Everything else you have already read on this page.
-          </p>
+          <h2>Install it. Open it on any product page.</h2>
+          <p class="lead">Alt+E, or the toolbar icon, on whichever tab you are on.</p>
           <div class="hero-do">
             <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
               Add to Chrome</a>
@@ -754,7 +777,7 @@
           <b>Margin</b>
         </a>
         <nav class="foot-nav" aria-label="Footer">
-          <a href="#reading">Reading</a>
+          <a href="#scanning">Scanning</a>
           <a href="#pricing">Pricing</a>
           <a href="#watching">Watching</a>
           <a href="#orders">Orders</a>
