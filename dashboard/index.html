@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CIit2A-x.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-ywfe3LW0.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-13XF9ClQ.js">
     <link rel="stylesheet" crossorigin href="../assets/index-CPXntny9.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BEyNBihg.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-v_FSAdrb.css">
   </head>
   <body>
     <!--
@@ -112,6 +112,11 @@
           <select id="shopSelect"></select>
         </div>
 
+        <button class="jump" type="button" id="openCmd">
+          <svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="4" /><path d="m9.2 9.2 3 3" /></svg>
+          Jump to…<kbd>Ctrl K</kbd>
+        </button>
+
         <nav class="side" aria-label="Views">
           <button type="button" data-view="overview" class="here"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13V7M8 13V3M13 13v-4" /></svg>Overview</button>
           <button type="button" data-view="listings"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8" /></svg>Listings</button>
@@ -162,6 +167,17 @@
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
             <dl class="cards" id="cards"></dl>
+            <!--
+              Where every pound of sales went, as one bar.
+
+              The four tiles are the arithmetic — sales less eBay's fee less the stock is the profit
+              — but read as four separate figures a seller still has to do the division to answer the
+              question they actually have, which is what share of a sale they keep.
+            -->
+            <div class="split" id="flowSplit" hidden>
+              <div class="splitBar" id="splitBar" aria-hidden="true"></div>
+              <p class="splitKey" id="splitKey"></p>
+            </div>
             <p class="founded" id="founded"></p>
 
             <!--
@@ -287,13 +303,14 @@
                   <table id="productTable">
                     <thead>
                       <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col" class="n">Sold</th>
-                        <th scope="col" class="n">eBay price</th>
-                        <th scope="col" class="n">Amazon cost</th>
-                        <th scope="col" class="n">Profit each</th>
-                        <th scope="col" class="n">Margin</th>
-                        <th scope="col" class="n">Profit</th>
+                        <!-- Every heading sorts by its own column; the select beside the table stays in step. -->
+                        <th scope="col"><button type="button" class="sortBy" data-key="name">Product<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="units">Sold<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="price">eBay price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="cost">Amazon cost<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="each">Profit each<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="margin">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n" aria-sort="descending"><button type="button" class="sortBy" data-key="profit">Profit<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       </tr>
                     </thead>
                     <tbody></tbody>
@@ -470,5 +487,15 @@
     </div>
 
     <div id="tip" role="status" aria-live="polite"></div>
+    <!--
+      Jump to: every page and every action on this dashboard, from the keyboard.
+
+      A native dialog, so it sits above every card and scroller on the page without a stack of
+      z-indexes, and so Escape and the backdrop close it without a line of code.
+    -->
+    <dialog class="cmd" id="cmd" aria-label="Jump to">
+      <input type="text" id="cmdInput" placeholder="Type a page or an action" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="cmdList" />
+      <ul id="cmdList" role="listbox"></ul>
+    </dialog>
   </body>
 </html>
