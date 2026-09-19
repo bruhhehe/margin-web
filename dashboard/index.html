@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CARkENEs.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-cYdP83w1.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-13XF9ClQ.js">
     <link rel="stylesheet" crossorigin href="../assets/index-CPXntny9.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-CMga8QE1.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-eusoHWfj.css">
   </head>
   <body>
     <!--
@@ -216,7 +216,7 @@
                   <details>
                     <summary>Show these as a table</summary>
                     <div class="scroller">
-                      <table id="weeksTable">
+                      <table id="weeksTable" aria-labelledby="trendTitle">
                         <thead>
                           <tr>
                             <th scope="col" id="trendWhen">Week ending</th>
@@ -285,7 +285,7 @@
             <p class="bandTitle">Products</p>
             <section class="card overviewProducts">
               <header>
-                <h2>Product sales</h2>
+                <h2 id="productsTitle">Product sales</h2>
                 <span class="meta" id="productsMeta"></span>
                 <!-- Best by profit is the right default; which "best" means is the reader's to say. -->
                 <label class="sr-only" for="productSort">Order products by</label>
@@ -300,7 +300,7 @@
               </header>
               <div class="pad">
                 <div class="scroller">
-                  <table id="productTable">
+                  <table id="productTable" aria-labelledby="productsTitle">
                     <thead>
                       <tr>
                         <!-- Every heading sorts by its own column; the select beside the table stays in step. -->
@@ -404,7 +404,7 @@
             <header><h2 id="listingsCount">Listings</h2><span class="meta" id="listingsMeta"></span></header>
             <div class="pad">
               <div class="scroller">
-                <table id="listingsTable" class="tight">
+                <table id="listingsTable" class="tight" aria-labelledby="listingsCount">
                   <thead>
                     <tr>
                       <th scope="col">Item</th>
