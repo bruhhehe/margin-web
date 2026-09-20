@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CEOKGgI9.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/index-13XF9ClQ.js">
+    <script type="module" crossorigin src="../assets/dashboard-Bihg1zdu.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-ibYLRNDY.js">
     <link rel="stylesheet" crossorigin href="../assets/index-CPXntny9.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-C3Gw7GY2.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DDjdl7N8.css">
   </head>
   <body>
     <!--
@@ -120,6 +120,8 @@
         <nav class="side" aria-label="Views">
           <button type="button" data-view="overview" class="here"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13V7M8 13V3M13 13v-4" /></svg>Overview</button>
           <button type="button" data-view="listings"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8" /></svg>Listings</button>
+          <button type="button" data-view="orders"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h11v8h-11z" /><path d="M2.5 5.5 4 2.5h8l1.5 3M6 8.5h4" /></svg>Orders<span class="dot" id="ordersDot" hidden></span></button>
+          <button type="button" data-view="activity"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8.5h3l2-5 3 10 2-5h3" /></svg>Activity</button>
           <button type="button" data-view="shops"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5h11l-1 7h-9z" /><path d="M5.5 6.5V4a2.5 2.5 0 0 1 5 0v2.5" /></svg>Shops</button>
           <button type="button" data-view="plan"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="2" /><path d="M2 7h12" /></svg>Plan</button>
         </nav>
@@ -207,6 +209,10 @@
                   <div class="key" id="trendKey"></div>
                   <figure>
                     <div class="chartHost" id="trendChart"></div>
+                    <!-- Too few orders to draw a line worth reading: the days that had any, listed.
+                         Four orders over thirty days is twenty-six days of flat line and a chart
+                         that takes the largest card on the page to say almost nothing. -->
+                    <div class="thinDays" id="trendThin" hidden></div>
                     <figcaption id="trendSays">Sales is what buyers paid. Profit is sales minus eBay's fees minus what the stock cost.</figcaption>
                   </figure>
                   <!--
@@ -343,11 +349,65 @@
               <section class="card">
                 <header><h2>Listings</h2></header>
                 <div class="insight" id="shopHealth"></div>
+                <!-- What eBay will let this account list this month. A new seller is capped and
+                     nothing warns them; the publish simply starts failing. -->
+                <div class="cardFoot" id="limitFoot" hidden>
+                  <p class="limitSaid" id="limitSaid"></p>
+                  <i class="limitTrack" aria-hidden="true"><i id="limitFill"></i></i>
+                </div>
               </section>
 
               <section class="card">
                 <header><h2>Stock and price checks</h2><span class="meta">last 24h</span></header>
                 <div class="insight" id="checkHealth"></div>
+                <!-- When this browser was last awake. The checking runs in the seller's own Chrome,
+                     so the failure worth reporting is silence rather than an error. -->
+                <p class="cardFoot" id="checkHealthMeta"></p>
+              </section>
+
+              <!--
+                Of the listings on sale, how many sold at least once.
+
+                Profit says how the shop did; this says whether to list more or list better, which
+                is the decision a reseller actually makes each week. Forty-one listings and four
+                that sold is a listing problem; four and four is a supply problem.
+              -->
+              <section class="card" id="sellThroughCard" hidden>
+                <header><h2>Sell-through</h2><span class="meta" id="sellThroughMeta"></span></header>
+                <div class="insight" id="sellThroughHealth"></div>
+              </section>
+
+              <!--
+                What the tool itself did, from the events it already records.
+
+                A tool that changes a live listing on its own earns its keep by saying what it
+                changed. Deliberately no "protected about £X": what a listing hidden before an order
+                arrived saved is a guess about orders that never happened.
+              -->
+              <section class="card" id="didCard" hidden>
+                <header><h2>What Margin did</h2><span class="meta">this period</span></header>
+                <div class="insight" id="didHealth"></div>
+              </section>
+
+              <!--
+                What is on the shelf: the question beside eBay's selling limit, and the one a
+                reseller asks before buying more stock. None of it is money spent — nothing is
+                bought until it sells.
+              -->
+              <!--
+                When the orders actually arrive.
+
+                Small, and it answers two things no money figure does: when to be at the desk, and
+                when a promoted listing would earn its fee.
+              -->
+              <section class="card" id="whenCard" hidden>
+                <header><h2>When you sell</h2><span class="meta" id="whenMeta"></span></header>
+                <div class="pad"><div class="whenGrid" id="whenGrid"></div></div>
+              </section>
+
+              <section class="card" id="shelfCard" hidden>
+                <header><h2>On the shelf</h2><span class="meta" id="shelfMeta"></span></header>
+                <div class="insight" id="shelfHealth"></div>
               </section>
 
               <section class="card" id="reviewsCard" hidden>
@@ -383,6 +443,11 @@
                 <option value="live">On sale</option>
                 <option value="ended">Ended</option>
                 <option value="unlinked">No source link</option>
+                <!-- Saved views: the shapes a problem actually arrives in, one press each. -->
+                <option value="stale">Not checked in 24 hours</option>
+                <option value="floor">Below profit floor</option>
+                <option value="exposed">Orderable, nothing to fill it</option>
+                <option value="quiet">Sold nothing this period</option>
               </select>
               <label class="sr-only" for="listingSort">Order by</label>
               <select id="listingSort" class="sortPick">
@@ -391,6 +456,7 @@
                 <option value="margin">Best margin</option>
                 <option value="price">Highest price</option>
                 <option value="title">By name</option>
+                <option value="checked">Longest unchecked</option>
               </select>
               <label class="sr-only" for="listingSearch">Search</label>
               <input type="search" id="listingSearch" placeholder="Search by title or code" />
@@ -402,18 +468,38 @@
 
           <section class="card" id="listingsCard" hidden>
             <header><h2 id="listingsCount">Listings</h2><span class="meta" id="listingsMeta"></span></header>
+            <!--
+              What to do with what is ticked.
+
+              Only the two the server can actually do, and neither can end a listing: a quantity of
+              nought hides one and costs no relisting fee, and putting it back is the same route the
+              rules use when a source returns. Repricing is not here because the rule that solves a
+              price lives in the panel's settings and not on the server yet.
+            -->
+            <div class="bulkBar" id="listingsBulk" hidden>
+              <span id="bulkCount"></span>
+              <button class="btn ghost" type="button" id="bulkZero">Set to 0</button>
+              <button class="btn ghost" type="button" id="bulkRestock">Put back on sale</button>
+              <button class="linkish" type="button" id="bulkClear">Clear</button>
+              <span class="meta" id="bulkSaid"></span>
+            </div>
             <div class="pad">
               <div class="scroller">
                 <table id="listingsTable" class="tight" aria-labelledby="listingsCount">
                   <thead>
                     <tr>
+                      <th scope="col" class="pick"><input type="checkbox" id="pickAll" aria-label="Select every listing shown" /></th>
                       <th scope="col">Item</th>
-                      <th scope="col">Shop</th>
+                      <th scope="col" id="listingShopCol">Shop</th>
                       <th scope="col" class="n">Amazon</th>
                       <th scope="col" class="n">eBay</th>
                       <th scope="col" class="n">Profit</th>
                       <th scope="col" class="n">Margin</th>
                       <th scope="col">State</th>
+                      <!-- When it was last read. A shelf that is being checked every quarter of an
+                           hour and one nothing has looked at since Friday read identically without
+                           it, which is the question this page was most often opened with. -->
+                      <th scope="col">Checked</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -426,6 +512,120 @@
         </section>
 
         <!-- ---------------------------------------------------------------- Shops -->
+        <!--
+          Orders, on a phone.
+
+          This existed only in the panel, which means only in desktop Chrome on the one machine the
+          extension is installed on — and a dashboard is the thing a seller opens away from the
+          desk. Everything here is on routes that were already serving the panel.
+
+          Buying with the address filled in stays an extension job: it drives a retailer's own
+          checkout in a tab, which a page on another origin cannot do.
+        -->
+        <section class="view" data-view="orders" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Orders</h1>
+              <p class="sub">What sold, what has to be posted, and by when.</p>
+            </div>
+            <div class="tools">
+              <!-- Which shop is the sidebar's picker, as everywhere else. Orders are fetched per shop. -->
+              <label class="sr-only" for="orderView">Show</label>
+              <select id="orderView" class="sortPick">
+                <option value="open" selected>To dispatch</option>
+                <option value="late">Late</option>
+                <option value="all">All orders</option>
+                <option value="sent">Dispatched</option>
+              </select>
+            </div>
+          </div>
+          <section class="card">
+            <header><h2 id="ordersCount">Orders</h2><span class="meta" id="ordersMeta"></span></header>
+            <div id="ordersList"></div>
+            <p class="empty" id="ordersEmpty" hidden></p>
+          </section>
+        </section>
+
+        <!--
+          What Margin changed, when, why, and what eBay answered.
+
+          A tool that reprices a live listing on its own earns trust by showing its work. Every one
+          of these is already recorded and sent up by whichever browser ran the check; the website
+          could count them on a card and could not show a single one, so "why is this £24.87?" had
+          no answer anywhere a seller could reach.
+        -->
+        <section class="view" data-view="activity" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Activity</h1>
+              <p class="sub">What Margin changed on eBay, when, and what eBay said back.</p>
+            </div>
+            <div class="tools">
+              <label class="sr-only" for="activitySearch">Search</label>
+              <input type="search" id="activitySearch" placeholder="Search by product or reason…" autocomplete="off" />
+              <label class="sr-only" for="activityView">Show</label>
+              <select id="activityView" class="sortPick">
+                <option value="all" selected>Everything</option>
+                <option value="listing_synced">Changes to eBay</option>
+                <option value="refused">Refused by eBay</option>
+                <option value="price_changed">Price changes</option>
+                <option value="stock_changed">Stock changes</option>
+                <option value="check_failed">Failed checks</option>
+              </select>
+            </div>
+          </div>
+          <section class="card">
+            <header><h2 id="activityCount">Activity</h2><span class="meta" id="activityMeta"></span></header>
+            <div id="activityList"></div>
+            <p class="empty" id="activityEmpty" hidden></p>
+          </section>
+        </section>
+
+        <!--
+          One listing's whole story, which every other card on this page is a way into.
+
+          Everything on it was already collected and could only be read a column at a time, spread
+          across four screens: what it costs, what it sells for, what the checks have done to it,
+          what it has sold, and which variations it has.
+        -->
+        <section class="view" data-view="listing" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <button class="linkish" type="button" id="listingBack">← All listings</button>
+              <h1 id="oneTitle">Listing</h1>
+              <p class="sub" id="oneSub"></p>
+            </div>
+            <div class="tools" id="oneActs"></div>
+          </div>
+          <div class="deck two">
+            <section class="card">
+              <header><h2>What it costs and what it sells for</h2><span class="meta" id="onePriceMeta"></span></header>
+              <div class="pad"><div class="priceChart" id="onePrices"></div></div>
+              <p class="cardFoot" id="onePriceNone" hidden></p>
+            </section>
+            <section class="card">
+              <header><h2>Where it stands</h2></header>
+              <div class="insight" id="oneFigures"></div>
+            </section>
+          </div>
+          <section class="card" id="oneVariantsCard" hidden>
+            <header><h2>Variations</h2><span class="meta" id="oneVariantsMeta"></span></header>
+            <div class="pad"><div class="scroller"><table class="tight" id="oneVariants"><tbody></tbody></table></div></div>
+          </section>
+          <div class="deck two">
+            <section class="card">
+              <header><h2>What it has sold</h2><span class="meta" id="oneOrdersMeta"></span></header>
+              <div id="oneOrders"></div>
+              <p class="empty" id="oneOrdersEmpty" hidden>Nothing yet in the orders this page holds.</p>
+            </section>
+            <section class="card">
+              <header><h2>What the checks did</h2><span class="meta" id="oneLogMeta"></span></header>
+              <div id="oneLog"></div>
+              <p class="empty" id="oneLogEmpty" hidden>Nothing recorded for this listing yet.</p>
+            </section>
+          </div>
+        </section>
+
         <section class="view" data-view="shops" hidden>
           <div class="pagehead">
             <div class="titles">
