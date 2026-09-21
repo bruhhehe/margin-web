@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-Bihg1zdu.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/index-ibYLRNDY.js">
-    <link rel="stylesheet" crossorigin href="../assets/index-CPXntny9.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DDjdl7N8.css">
+    <script type="module" crossorigin src="../assets/dashboard-BthBweO_.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-LslOicQy.js">
+    <link rel="stylesheet" crossorigin href="../assets/keys-BtBziKSG.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-ywNcGW49.css">
   </head>
   <body>
     <!--
@@ -199,7 +199,7 @@
                   <h2 id="trendTitle">Sales and profit</h2>
                   <span class="meta" id="trendMeta"></span>
                   <!-- A line says which way it is going; bars compare one period against another. -->
-                  <div class="seg small" role="group" aria-label="Chart type">
+                  <div class="seg small" id="trendLook" role="group" aria-label="Chart type">
                     <button type="button" data-look="area" aria-pressed="true">Line</button>
                     <button type="button" data-look="bars" aria-pressed="false">Bars</button>
                   </div>
@@ -279,6 +279,32 @@
                 <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
                 <div class="insight" id="buyersHealth"></div>
                 <p class="cardFoot" id="buyersSaid"></p>
+              </section>
+            </div>
+
+            <!--
+              The same three counts over time. The card above is the period's total, which says how
+              big the funnel was and nothing about which way it is going - a shop losing half its
+              impressions over a fortnight reads identically to one holding steady. eBay reports
+              this per day and the read already carries it; it was being thrown away.
+            -->
+            <div class="deck lead">
+              <section class="card chartCard" id="trafficTrendCard" hidden>
+                <header>
+                  <h2>Being found</h2>
+                  <span class="meta" id="trafficTrendMeta"></span>
+                  <div class="seg small" id="trafficLook" role="group" aria-label="Chart type">
+                    <button type="button" data-look="area" aria-pressed="true">Line</button>
+                    <button type="button" data-look="bars" aria-pressed="false">Bars</button>
+                  </div>
+                </header>
+                <div class="pad">
+                  <div class="key" id="trafficKey"></div>
+                  <figure>
+                    <div class="chartHost" id="trafficChart"></div>
+                    <figcaption id="trafficTrendSaid">Times seen is how often a listing appeared in eBay's results. Opened is how many of those turned into somebody looking at it. Bars underneath are the sales eBay counted.</figcaption>
+                  </figure>
+                </div>
               </section>
             </div>
 
