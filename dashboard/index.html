@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-BthBweO_.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DGBnmjoW.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LslOicQy.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-BtBziKSG.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-ywNcGW49.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-Ct6u0sxW.css">
   </head>
   <body>
     <!--
@@ -209,10 +209,6 @@
                   <div class="key" id="trendKey"></div>
                   <figure>
                     <div class="chartHost" id="trendChart"></div>
-                    <!-- Too few orders to draw a line worth reading: the days that had any, listed.
-                         Four orders over thirty days is twenty-six days of flat line and a chart
-                         that takes the largest card on the page to say almost nothing. -->
-                    <div class="thinDays" id="trendThin" hidden></div>
                     <figcaption id="trendSays">Sales is what buyers paid. Profit is sales minus eBay's fees minus what the stock cost.</figcaption>
                   </figure>
                   <!--
@@ -262,13 +258,7 @@
               from "nothing is seen".
             -->
             <p class="deckTitle">Where buyers come from</p>
-            <div class="deck three">
-              <section class="card" id="trafficCard" hidden>
-                <header><h2>Traffic</h2><span class="meta" id="trafficMeta"></span></header>
-                <div class="insight" id="trafficHealth"></div>
-                <p class="cardFoot" id="trafficSaid" hidden></p>
-              </section>
-
+            <div class="deck two">
               <section class="card" id="ordersCard">
                 <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
                 <div class="insight" id="postingHealth"></div>
@@ -283,28 +273,31 @@
             </div>
 
             <!--
-              The same three counts over time. The card above is the period's total, which says how
-              big the funnel was and nothing about which way it is going - a shop losing half its
-              impressions over a fortnight reads identically to one holding steady. eBay reports
-              this per day and the read already carries it; it was being thrown away.
+              Traffic, as one card rather than two.
+              The funnel's totals and the same counts day by day are one question - how many people
+              found the shop, and which way that is going - and they were split across a narrow card
+              of figures and a wide card of chart, two sections apart, each repeating the other's
+              numbers. The totals lead, the drawing is underneath them, and the period control at the
+              top of the page moves both.
             -->
-            <div class="deck lead">
-              <section class="card chartCard" id="trafficTrendCard" hidden>
+            <div class="deck">
+              <section class="card chartCard" id="trafficCard" hidden>
                 <header>
-                  <h2>Being found</h2>
-                  <span class="meta" id="trafficTrendMeta"></span>
+                  <h2>Traffic</h2>
+                  <span class="meta" id="trafficMeta"></span>
                   <div class="seg small" id="trafficLook" role="group" aria-label="Chart type">
                     <button type="button" data-look="area" aria-pressed="true">Line</button>
                     <button type="button" data-look="bars" aria-pressed="false">Bars</button>
                   </div>
                 </header>
-                <div class="pad">
-                  <div class="key" id="trafficKey"></div>
+                <div class="insight" id="trafficHealth"></div>
+                <div class="pad" id="trafficPad" hidden>
                   <figure>
                     <div class="chartHost" id="trafficChart"></div>
                     <figcaption id="trafficTrendSaid">Times seen is how often a listing appeared in eBay's results. Opened is how many of those turned into somebody looking at it. Bars underneath are the sales eBay counted.</figcaption>
                   </figure>
                 </div>
+                <p class="cardFoot" id="trafficSaid" hidden></p>
               </section>
             </div>
 
@@ -557,10 +550,16 @@
             <div class="tools">
               <!-- Which shop is the sidebar's picker, as everywhere else. Orders are fetched per shop. -->
               <label class="sr-only" for="orderView">Show</label>
+              <!--
+                All orders is the default, because "To dispatch" was and a shop that has posted
+                everything opened this page on "Nothing matches that." - which reads as a broken
+                page, not as an empty filter. Anything actually waiting is on the count beside the
+                nav entry and on the Overview, so nothing is lost by opening on what sold.
+              -->
               <select id="orderView" class="sortPick">
-                <option value="open" selected>To dispatch</option>
+                <option value="all" selected>All orders</option>
+                <option value="open">To dispatch</option>
                 <option value="late">Late</option>
-                <option value="all">All orders</option>
                 <option value="sent">Dispatched</option>
               </select>
             </div>
