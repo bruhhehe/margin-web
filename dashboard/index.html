@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DGBnmjoW.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-BwBf6Qbo.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LslOicQy.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-BtBziKSG.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-Ct6u0sxW.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-C43v7Zyx.css">
   </head>
   <body>
     <!--
@@ -258,20 +258,6 @@
               from "nothing is seen".
             -->
             <p class="deckTitle">Where buyers come from</p>
-            <div class="deck two">
-              <section class="card" id="ordersCard">
-                <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
-                <div class="insight" id="postingHealth"></div>
-                <p class="cardFoot" id="postingSaid"></p>
-              </section>
-
-              <section class="card" id="buyersCard" hidden>
-                <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
-                <div class="insight" id="buyersHealth"></div>
-                <p class="cardFoot" id="buyersSaid"></p>
-              </section>
-            </div>
-
             <!--
               Traffic, as one card rather than two.
               The funnel's totals and the same counts day by day are one question - how many people
@@ -290,14 +276,40 @@
                     <button type="button" data-look="bars" aria-pressed="false">Bars</button>
                   </div>
                 </header>
-                <div class="insight" id="trafficHealth"></div>
+                <!--
+                  The four eBay reports, as a scorecard strip, then one drawing of whichever is
+                  picked.
+
+                  The shape is the standard analytics one for a reason: a strip of KPI tiles reads
+                  at a glance, and each tile carries a label, the figure, the change against the
+                  period before and a sparkline - which is the part that tells a steady climb from
+                  a spike that has already fallen back, since those are the same number at both
+                  ends. Picking a tile plots it underneath, full width, on an axis that is its own.
+                  Three series on one picture meant two of them were drawn against a scale that was
+                  not theirs; two of them were a rate and a count sharing an axis.
+                -->
+                <div class="kpis" id="trafficKpis" role="group" aria-label="Pick what to draw"></div>
                 <div class="pad" id="trafficPad" hidden>
                   <figure>
                     <div class="chartHost" id="trafficChart"></div>
-                    <figcaption id="trafficTrendSaid">Times seen is how often a listing appeared in eBay's results. Opened is how many of those turned into somebody looking at it. Bars underneath are the sales eBay counted.</figcaption>
+                    <figcaption id="trafficTrendSaid"></figcaption>
                   </figure>
                 </div>
                 <p class="cardFoot" id="trafficSaid" hidden></p>
+              </section>
+            </div>
+
+            <div class="deck two">
+              <section class="card" id="ordersCard">
+                <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
+                <div class="insight" id="postingHealth"></div>
+                <p class="cardFoot" id="postingSaid"></p>
+              </section>
+
+              <section class="card" id="buyersCard" hidden>
+                <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
+                <div class="insight" id="buyersHealth"></div>
+                <p class="cardFoot" id="buyersSaid"></p>
               </section>
             </div>
 
