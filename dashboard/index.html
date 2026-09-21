@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-tGRmO472.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DblzIJRR.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LslOicQy.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-BtBziKSG.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-Dp42qubQ.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-hKjtxJJr.css">
   </head>
   <body>
     <!--
@@ -509,7 +509,14 @@
             -->
             <div class="bulkBar" id="listingsBulk" hidden>
               <span id="bulkCount"></span>
-              <button class="btn ghost" type="button" id="bulkZero">Set to 0</button>
+              <!--
+                No "set to 0" here.
+
+                Taking a listing off sale when its source runs out is the job this tool does on its
+                own, on every check: a button asking the seller to do it by hand is either a job
+                already done or a job about to be, and either way it is theatre. What is left is the
+                one direction a person actually decides - putting something back on sale.
+              -->
               <button class="btn ghost" type="button" id="bulkRestock">Put back on sale</button>
               <button class="linkish" type="button" id="bulkClear">Clear</button>
               <span class="meta" id="bulkSaid"></span>
@@ -528,9 +535,11 @@
                         ratio — not a second fact of its own — and giving it a column of its own
                         weight said otherwise while pushing a real figure off the right-hand edge.
                       -->
-                      <th scope="col" class="n">Cost</th>
+                      <th scope="col" class="n c-cost">Cost</th>
                       <th scope="col" class="n">Sells at</th>
                       <th scope="col" class="n">Profit</th>
+                      <!-- The same profit as a share, with a mark at 30% to read it against. -->
+                      <th scope="col" class="n c-margin">Margin</th>
                       <th scope="col">State</th>
                       <!-- When it was last read. A shelf that is being checked every quarter of an
                            hour and one nothing has looked at since Friday read identically without
