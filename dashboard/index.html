@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-C-UK4Z2_.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-wy-g44uW.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LslOicQy.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-BtBziKSG.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-Dm1rkZ8L.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-Dp-Wajme.css">
   </head>
   <body>
     <!--
@@ -177,8 +177,14 @@
               question they actually have, which is what share of a sale they keep.
             -->
             <div class="split" id="flowSplit" role="img" hidden>
-              <div class="splitBar" id="splitBar" aria-hidden="true"></div>
-              <div class="splitKey" id="splitKey" aria-hidden="true"></div>
+              <!-- The same three shares twice, because they answer two different questions: the ring
+                   is "what fraction of a sale do I keep", read at a glance against a whole; the bar
+                   is the order the money leaves and where each share starts and stops. -->
+              <div class="splitPie" id="splitPie" aria-hidden="true"></div>
+              <div class="splitBars">
+                <div class="splitBar" id="splitBar" aria-hidden="true"></div>
+                <div class="splitKey" id="splitKey" aria-hidden="true"></div>
+              </div>
             </div>
             <p class="founded" id="founded"></p>
 
