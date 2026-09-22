@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DJV0Jyt7.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DqO_T8RO.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-D2UYFjL_.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-CLajlkwv.css">
     <link rel="stylesheet" crossorigin href="../assets/dashboard-FBQZcZtK.css">
@@ -560,6 +560,13 @@
                 one direction a person actually decides - putting something back on sale.
               -->
               <button class="btn ghost" type="button" id="bulkRestock">Put back on sale</button>
+              <!--
+                Shown only where there is something to undo: a row the seller stopped watching.
+
+                Stopping was a one-way door until now, and only from the panel - the record left
+                that browser and no screen anywhere could bring it back.
+              -->
+              <button class="btn ghost" type="button" id="bulkWatch" hidden>Watch again</button>
               <button class="linkish" type="button" id="bulkClear">Clear</button>
               <span class="meta" id="bulkSaid"></span>
             </div>
