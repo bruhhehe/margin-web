@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DyUPeDV-.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-BBvBxKu8.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-Dk2tzgC3.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-GD0nshoz.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-2p1EArOf.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-dth-zvZv.css">
   </head>
   <body>
     <!--
@@ -171,8 +171,30 @@
                 <button type="button" data-days="30" aria-pressed="true">30 days</button>
                 <button type="button" data-days="90">90 days</button>
                 <button type="button" data-days="365">A year</button>
+                <!--
+                  A period the seller draws themselves.
+
+                  Four presets answer "how is it going"; they cannot answer "how did that fortnight
+                  in August go", which is the question somebody asks after a promotion, a price
+                  change or a bad week. It sits with them rather than somewhere else, because it is
+                  the same control.
+                -->
+                <button type="button" id="rangeOpen" aria-expanded="false" aria-controls="rangeRow">Dates…</button>
               </div>
               <button class="btn ghost" type="button" id="refresh">Refresh</button>
+            </div>
+            <!--
+              The two ends, revealed by the button above rather than standing there. `type="date"`
+              is the browser's own picker, its own calendar and its own locale — a month grid this
+              page drew itself would be worse in every one of those and a thousand lines besides.
+            -->
+            <div class="rangeRow" id="rangeRow" hidden>
+              <label for="rangeFrom">From</label>
+              <input type="date" id="rangeFrom" />
+              <label for="rangeTo">Until</label>
+              <input type="date" id="rangeTo" />
+              <button class="btn" type="button" id="rangeGo">Show</button>
+              <span class="rangeSaid" id="rangeSaid" role="status"></span>
             </div>
           </div>
 
