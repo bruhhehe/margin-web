@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DYndsH3K.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-CvqUwH7-.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LslOicQy.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-BtBziKSG.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BqHPte9T.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-CEb0Bk0Q.css">
   </head>
   <body>
     <!--
@@ -39,6 +39,18 @@
     <main class="gate" id="gate" hidden>
       <div class="card gateCard">
         <a class="lock gateLock" href="../"><span class="tile" aria-hidden="true"></span><b>Margin</b></a>
+
+        <!--
+          The page's heading, which it did not have.
+
+          A screen has to say what it is, and this one opened with a wordmark, two buttons and a
+          form: to anything reading the document outline - a screen reader's heading list, a
+          browser's reader view, a search engine - the sign-in page was a page about nothing. It is
+          visually hidden rather than drawn, because the card already says the same thing twice in
+          the wordmark above it and the pressed button below it, and a third is noise on screen and
+          silence off it.
+        -->
+        <h1 class="sr-only" id="gateHeading">Sign in to Margin</h1>
 
         <!--
           Two buttons that change one form, said as two buttons that change one form.
@@ -669,7 +681,25 @@
           </div>
           <section class="card" id="oneVariantsCard" hidden>
             <header><h2>Variations</h2><span class="meta" id="oneVariantsMeta"></span></header>
-            <div class="pad"><div class="scroller"><table class="tight" id="oneVariants"><tbody></tbody></table></div></div>
+            <!--
+              Two columns of money with nothing saying which is which.
+
+              This table had no header row at all: every variation printed a figure, then another
+              figure, then a status, and the reader was left to work out from the sizes which one
+              was the cost and which one was what it sells for. On the one page whose job is to
+              answer "why is this £24.87?", that is the question it was silent about.
+            -->
+            <div class="pad"><div class="scroller"><table class="tight" id="oneVariants">
+              <thead>
+                <tr>
+                  <th scope="col">Variation</th>
+                  <th scope="col" class="n">Costs</th>
+                  <th scope="col" class="n">Sells at</th>
+                  <th scope="col">State</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table></div></div>
           </section>
           <div class="deck two">
             <section class="card">
