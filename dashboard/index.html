@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-en2gYAUo.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-C8-xhori.js">
+    <script type="module" crossorigin src="../assets/dashboard-D_uxHENu.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-DlDSN0_a.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-CLajlkwv.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-FBQZcZtK.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-B9asOkMh.css">
   </head>
   <body>
     <!--
@@ -591,7 +591,7 @@
                       <th scope="col" class="n c-cost">Cost</th>
                       <th scope="col" class="n">Sells at</th>
                       <th scope="col" class="n">Profit</th>
-                      <!-- The same profit as a share, with a mark at 30% to read it against. -->
+                      <!-- The same profit as a share, with a mark at the margin the price rule aims for. -->
                       <th scope="col" class="n c-margin">Margin</th>
                       <th scope="col">State</th>
                       <!-- When it was last read. A shelf that is being checked every quarter of an
@@ -701,7 +701,11 @@
               <h1 id="oneTitle">Listing</h1>
               <p class="sub" id="oneSub"></p>
             </div>
-            <div class="tools" id="oneActs"></div>
+            <div class="tools">
+              <!-- Which variation the chart and the figures are about, where there are several. -->
+              <label class="variantPick" id="oneVariantPick" hidden>Variation <select id="oneVariant"></select></label>
+              <div class="acts" id="oneActs"></div>
+            </div>
           </div>
           <div class="deck two">
             <section class="card">
@@ -730,7 +734,7 @@
               <thead>
                 <tr>
                   <th scope="col">Variation</th>
-                  <th scope="col" class="n">Costs</th>
+                  <th scope="col" class="n">Cost</th>
                   <th scope="col" class="n">Sells at</th>
                   <th scope="col">State</th>
                 </tr>
