@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,8 +8,8 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-voHsEeZy.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-D2UYFjL_.js">
+    <script type="module" crossorigin src="../assets/dashboard-en2gYAUo.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-C8-xhori.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-CLajlkwv.css">
     <link rel="stylesheet" crossorigin href="../assets/dashboard-FBQZcZtK.css">
   </head>
@@ -31,7 +31,7 @@
     <main class="gate" id="booting">
       <div class="card gateCard">
         <span class="lock gateLock"><span class="tile" aria-hidden="true"></span><b>Margin</b></span>
-        <p class="loading" role="status"><span class="spinner" aria-hidden="true"></span>Reading your account…</p>
+        <p class="loading" role="status"><span class="spinner" aria-hidden="true"></span>Loading your account…</p>
       </div>
     </main>
 
@@ -195,14 +195,14 @@
             <div class="rangeRow" id="rangeRow" hidden>
               <label for="rangeFrom">From</label>
               <input type="date" id="rangeFrom" />
-              <label for="rangeTo">Until</label>
+              <label for="rangeTo">To</label>
               <input type="date" id="rangeTo" />
               <button class="btn" type="button" id="rangeGo">Show</button>
               <span class="rangeSaid" id="rangeSaid" role="status"></span>
             </div>
           </div>
 
-          <div class="loading" id="loading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your shop…</div>
+          <div class="loading" id="loading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your shop…</div>
 
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
@@ -283,7 +283,7 @@
               <!--
                 What needs doing, in one place, beside the chart.
 
-                Late orders, stock that is still on sale with nothing behind it, listings under the
+                Late orders, listings still for sale with no stock behind them, listings under the
                 margin floor, pages the checks could not read — each of these used to be a red
                 figure inside a different card, so finding out whether anything needed you meant
                 reading every card. Now it is one list, and the orders waiting to go out sit under
@@ -332,7 +332,7 @@
                   Three series on one picture meant two of them were drawn against a scale that was
                   not theirs; two of them were a rate and a count sharing an axis.
                 -->
-                <div class="kpis" id="trafficKpis" role="group" aria-label="Pick what to draw"></div>
+                <div class="kpis" id="trafficKpis" role="group" aria-label="Choose what to chart"></div>
                 <div class="pad" id="trafficPad" hidden>
                   <figure>
                     <div class="chartHost" id="trafficChart"></div>
@@ -369,7 +369,7 @@
                 <h2 id="productsTitle">Product sales</h2>
                 <span class="meta" id="productsMeta"></span>
                 <!-- Best by profit is the right default; which "best" means is the reader's to say. -->
-                <label class="sr-only" for="productSort">Order products by</label>
+                <label class="sr-only" for="productSort">Sort products by</label>
                 <select id="productSort" class="sortPick">
                   <option value="profit">Most profit</option>
                   <option value="margin">Best margin</option>
@@ -441,7 +441,7 @@
               </section>
 
               <!--
-                Of the listings on sale, how many sold at least once.
+                Of the listings for sale, how many sold at least once.
 
                 Profit says how the shop did; this says whether to list more or list better, which
                 is the decision a reseller actually makes each week. Forty-one listings and four
@@ -493,8 +493,8 @@
             </div>
 
             <p class="foot">
-              Sales and eBay's fee are the figures eBay reports. What the stock cost is the Amazon price at the last
-              check, so it is an estimate of what you actually paid on the day.
+              Sales and eBay's fee are the figures eBay reports. Stock cost is the Amazon price at the last check, so
+              it is an estimate of what you actually paid at the time.
             </p>
           </div>
         </section>
@@ -515,7 +515,7 @@
                 <option value="all">All listings</option>
                 <option value="trouble">Needs attention</option>
                 <option value="gone">Out of stock</option>
-                <option value="live">On sale</option>
+                <option value="live">For sale</option>
                 <option value="ended">Ended</option>
                 <!-- Still on eBay; the seller told the panel to leave it alone. Findable, not counted. -->
                 <option value="stopped">Stopped watching</option>
@@ -523,10 +523,10 @@
                 <!-- Saved views: the shapes a problem actually arrives in, one press each. -->
                 <option value="stale">Not checked in 24 hours</option>
                 <option value="floor">Below profit floor</option>
-                <option value="exposed">Orderable, nothing to fill it</option>
+                <option value="exposed">For sale with no stock</option>
                 <option value="quiet">Sold nothing this period</option>
               </select>
-              <label class="sr-only" for="listingSort">Order by</label>
+              <label class="sr-only" for="listingSort">Sort by</label>
               <select id="listingSort" class="sortPick">
                 <option value="attention">Needs attention</option>
                 <option value="profit">Most profit</option>
@@ -541,7 +541,7 @@
             </div>
           </div>
 
-          <div class="loading" id="listingsLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your listings…</div>
+          <div class="loading" id="listingsLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your listings…</div>
 
           <section class="card" id="listingsCard" hidden>
             <header><h2 id="listingsCount">Listings</h2><span class="meta" id="listingsMeta"></span></header>
@@ -563,7 +563,7 @@
                 already done or a job about to be, and either way it is theatre. What is left is the
                 one direction a person actually decides - putting something back on sale.
               -->
-              <button class="btn ghost" type="button" id="bulkRestock">Put back on sale</button>
+              <button class="btn ghost" type="button" id="bulkRestock">Put back in stock</button>
               <!--
                 Shown only where there is something to undo: a row the seller stopped watching.
 
@@ -579,7 +579,7 @@
                 <table id="listingsTable" class="tight" aria-labelledby="listingsCount">
                   <thead>
                     <tr>
-                      <th scope="col" class="pick"><input type="checkbox" id="pickAll" aria-label="Select every listing shown" /></th>
+                      <th scope="col" class="pick"><input type="checkbox" id="pickAll" aria-label="Select all listings shown" /></th>
                       <th scope="col">Item</th>
                       <th scope="col" id="listingShopCol">Shop</th>
                       <!--
@@ -626,7 +626,7 @@
           <div class="pagehead">
             <div class="titles">
               <h1>Orders</h1>
-              <p class="sub">What sold, what has to be posted, and by when.</p>
+              <p class="sub">What sold, what needs to ship, and by when.</p>
             </div>
             <div class="tools">
               <!-- Which shop is the sidebar's picker, as everywhere else. Orders are fetched per shop. -->
@@ -639,7 +639,7 @@
               -->
               <select id="orderView" class="sortPick">
                 <option value="all" selected>All orders</option>
-                <option value="open">To dispatch</option>
+                <option value="open">To ship</option>
                 <option value="late">Late</option>
                 <option value="sent">Dispatched</option>
               </select>
@@ -664,7 +664,7 @@
           <div class="pagehead">
             <div class="titles">
               <h1>Activity</h1>
-              <p class="sub">What Margin changed on eBay, when, and what eBay said back.</p>
+              <p class="sub">What Margin changed on eBay, when, and how eBay responded.</p>
             </div>
             <div class="tools">
               <label class="sr-only" for="activitySearch">Search</label>
@@ -742,7 +742,7 @@
             <section class="card">
               <header><h2>What it has sold</h2><span class="meta" id="oneOrdersMeta"></span></header>
               <div id="oneOrders"></div>
-              <p class="empty" id="oneOrdersEmpty" hidden>Nothing yet in the orders this page holds.</p>
+              <p class="empty" id="oneOrdersEmpty" hidden>No sales yet in the orders loaded here.</p>
             </section>
             <section class="card">
               <header><h2>What the checks did</h2><span class="meta" id="oneLogMeta"></span></header>
@@ -760,7 +760,7 @@
             </div>
           </div>
 
-          <div class="loading" id="shopsLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your shops…</div>
+          <div class="loading" id="shopsLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your shops…</div>
           <div id="shopList" class="shopGrid"></div>
 
           <section class="card addShop">
@@ -788,7 +788,7 @@
             </div>
           </div>
 
-          <div class="loading" id="planLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Reading your plan…</div>
+          <div class="loading" id="planLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your plan…</div>
           <div class="plans" id="planList"></div>
           <p class="formError" id="planError" role="alert" hidden></p>
           <p class="foot" id="planFoot"></p>
