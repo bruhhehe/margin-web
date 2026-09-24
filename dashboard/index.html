@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-BTfDwm2X.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-CP8n-hql.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-HdIHvjRy.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-CHOqFqIq.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BRUEdqt1.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-1Ifat6gJ.css">
   </head>
   <body>
     <!--
@@ -161,6 +161,11 @@
         <p class="strip warn" id="checkerQuiet" role="status" hidden></p>
         <!-- Said when the app is close to eBay's daily limit, which every shop shares; see allowanceSaid. -->
         <p class="strip warn" id="allowanceWarn" role="status" hidden></p>
+        <!--
+          Said when a source has stopped selling a listing eBay still sells; see views/GoneStrip. It
+          asks and never acts: each button confirms first, and neither can end a listing.
+        -->
+        <div id="goneWarn" hidden></div>
 
         <!-- ---------------------------------------------------------------- Overview -->
         <section class="view" data-view="overview">
