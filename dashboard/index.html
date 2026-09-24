@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CP8n-hql.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-HdIHvjRy.js">
-    <link rel="stylesheet" crossorigin href="../assets/keys-CHOqFqIq.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-1Ifat6gJ.css">
+    <script type="module" crossorigin src="../assets/dashboard-CrB8hNDm.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-CUTvw_pD.js">
+    <link rel="stylesheet" crossorigin href="../assets/keys-9JGGmMp7.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-CdwQLesh.css">
   </head>
   <body>
     <!--
@@ -581,7 +581,8 @@
                   <thead>
                     <tr>
                       <th scope="col" class="pick"><input type="checkbox" id="pickAll" aria-label="Select all listings shown" /></th>
-                      <th scope="col">Item</th>
+                      <!-- Every heading that is a button sorts by its column: once up, again down. See listingSort.ts. -->
+                      <th scope="col" aria-sort="none"><button type="button" class="sortBy" data-key="title">Item<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       <th scope="col" id="listingShopCol">Shop</th>
                       <!--
                         Three bands, not nine equal columns: what it is, what it makes, where it
@@ -590,15 +591,15 @@
                         weight said otherwise while pushing a real figure off the right-hand edge.
                       -->
                       <th scope="col" class="n c-cost">Cost</th>
-                      <th scope="col" class="n">Sells at</th>
-                      <th scope="col" class="n">Profit</th>
+                      <th scope="col" class="n" aria-sort="none"><button type="button" class="sortBy" data-key="price">Price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                      <th scope="col" class="n" aria-sort="none"><button type="button" class="sortBy" data-key="profit">Profit<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       <!-- The same profit as a share, with a mark at the margin the price rule aims for. -->
-                      <th scope="col" class="n c-margin">Margin</th>
+                      <th scope="col" class="n c-margin" aria-sort="none"><button type="button" class="sortBy" data-key="margin">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       <th scope="col">State</th>
                       <!-- When it was last read. A shelf that is being checked every quarter of an
                            hour and one nothing has looked at since Friday read identically without
                            it, which is the question this page was most often opened with. -->
-                      <th scope="col">Checked</th>
+                      <th scope="col" aria-sort="none"><button type="button" class="sortBy" data-key="checked">Checked<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                     </tr>
                   </thead>
                   <!-- Named so React can own exactly this much: the head above it, the scroller
