@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CrB8hNDm.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-CUTvw_pD.js">
+    <script type="module" crossorigin src="../assets/dashboard-25TQQ2cp.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-DwEZf2TS.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-9JGGmMp7.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-CdwQLesh.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-CyQWzgeI.css">
   </head>
   <body>
     <!--
@@ -129,7 +129,7 @@
           Jump to…<kbd>Ctrl K</kbd>
         </button>
 
-        <nav class="side" aria-label="Views">
+        <nav class="side" aria-label="Pages">
           <button type="button" data-view="overview" class="here"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13V7M8 13V3M13 13v-4" /></svg>Overview</button>
           <button type="button" data-view="listings"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8" /></svg>Listings</button>
           <button type="button" data-view="orders"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h11v8h-11z" /><path d="M2.5 5.5 4 2.5h8l1.5 3M6 8.5h4" /></svg>Orders<span class="dot" id="ordersDot" hidden></span></button>
@@ -202,7 +202,7 @@
               <input type="date" id="rangeFrom" />
               <label for="rangeTo">To</label>
               <input type="date" id="rangeTo" />
-              <button class="btn" type="button" id="rangeGo">Show</button>
+              <button class="btn" type="button" id="rangeGo">Show these dates</button>
               <span class="rangeSaid" id="rangeSaid" role="status"></span>
             </div>
           </div>
@@ -273,8 +273,8 @@
                             <th scope="col" id="trendWhen">Week ending</th>
                             <th scope="col" class="n">Orders</th>
                             <th scope="col" class="n">Sales</th>
-                            <th scope="col" class="n">Fees</th>
-                            <th scope="col" class="n">Cost</th>
+                            <th scope="col" class="n">eBay fees</th>
+                            <th scope="col" class="n">Item cost</th>
                             <th scope="col" class="n">Profit</th>
                           </tr>
                         </thead>
@@ -295,7 +295,7 @@
                 it, because they are the commonest thing on it.
               -->
               <section class="card" id="attentionCard">
-                <header><h2>Needs you</h2><span class="meta" id="attentionMeta"></span></header>
+                <header><h2>Needs attention</h2><span class="meta" id="attentionMeta"></span></header>
                 <div id="attentionList"></div>
                 <div id="dispatchList"></div>
               </section>
@@ -376,7 +376,7 @@
                   <option value="profit">Most profit</option>
                   <option value="margin">Best margin</option>
                   <option value="units">Most sold</option>
-                  <option value="sales">Most revenue</option>
+                  <option value="sales">Most sales</option>
                 </select>
                 <!-- The same rows the table shows, in the order it shows them, for the spreadsheet. -->
                 <button type="button" id="productsCsv" class="ghost">Download CSV</button>
@@ -390,16 +390,16 @@
                         <th scope="col"><button type="button" class="sortBy" data-key="name">Product<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                         <th scope="col" class="n"><button type="button" class="sortBy" data-key="units">Sold<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                         <th scope="col" class="n"><button type="button" class="sortBy" data-key="price">eBay price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="cost">Amazon cost<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="cost">Item cost<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                         <th scope="col" class="n"><button type="button" class="sortBy" data-key="each">Profit each<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="margin">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="margin" title="Profit as a share of item cost">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                         <th scope="col" class="n" aria-sort="descending"><button type="button" class="sortBy" data-key="profit">Profit<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       </tr>
                     </thead>
                     <tbody id="productsBody"></tbody>
                   </table>
                 </div>
-                <p class="empty" id="productsEmpty" hidden>Nothing sold in this period.</p>
+                <p class="empty" id="productsEmpty" hidden>No sales in this period yet.</p>
               </div>
             </section>
 
@@ -435,7 +435,7 @@
               </section>
 
               <section class="card">
-                <header><h2>Stock and price checks</h2><span class="meta">last 24h</span></header>
+                <header><h2>Stock and price checks</h2><span class="meta">last 24 hours</span></header>
                 <div class="insight" id="checkHealth"></div>
                 <!-- When this browser was last awake. The checking runs in the seller's own Chrome,
                      so the failure worth reporting is silence rather than an error. -->
@@ -450,7 +450,7 @@
                 that sold is a listing problem; four and four is a supply problem.
               -->
               <section class="card" id="sellThroughCard" hidden>
-                <header><h2>Sell-through</h2><span class="meta" id="sellThroughMeta"></span></header>
+                <header><h2>Listings that sold</h2><span class="meta" id="sellThroughMeta"></span></header>
                 <div class="insight" id="sellThroughHealth"></div>
               </section>
 
@@ -483,7 +483,7 @@
               </section>
 
               <section class="card" id="shelfCard" hidden>
-                <header><h2>On the shelf</h2><span class="meta" id="shelfMeta"></span></header>
+                <header><h2>Listed now</h2><span class="meta" id="shelfMeta"></span></header>
                 <div class="insight" id="shelfHealth"></div>
               </section>
 
@@ -495,8 +495,8 @@
             </div>
 
             <p class="foot">
-              Sales and eBay's fee are the figures eBay reports. Stock cost is the Amazon price at the last check, so
-              it is an estimate of what you actually paid at the time.
+              Sales and eBay fees are the figures eBay reports. Item cost is the product page's price at the last
+              check, so it is an estimate of what you paid.
             </p>
           </div>
         </section>
@@ -512,20 +512,20 @@
               <select id="listingShop"></select>
               <label class="sr-only" for="listingView">Show</label>
               <select id="listingView" class="sortPick">
-                <option value="active" selected>Active</option>
+                <option value="active" selected>All on eBay</option>
                 <option value="all">All listings</option>
                 <option value="trouble">Needs attention</option>
-                <option value="gone">Out of stock</option>
-                <option value="live">For sale</option>
+                <option value="gone">Out of stock at store</option>
+                <option value="live">In stock at store</option>
                 <option value="ended">Ended</option>
                 <!-- Still on eBay; the seller told the panel to leave it alone. Findable, not counted. -->
-                <option value="stopped">Stopped watching</option>
-                <option value="unlinked">No source link</option>
+                <option value="stopped">Checks stopped</option>
+                <option value="unlinked">No product page</option>
                 <!-- Saved views: the shapes a problem actually arrives in, one press each. -->
-                <option value="stale">Not checked in 24 hours</option>
-                <option value="floor">Below profit floor</option>
-                <option value="exposed">For sale with no stock</option>
-                <option value="quiet">Sold nothing this period</option>
+                <option value="stale">Not checked in a day</option>
+                <option value="floor">Below minimum profit</option>
+                <option value="exposed">For sale, no stock</option>
+                <option value="quiet">No sales this period</option>
               </select>
               <label class="sr-only" for="listingSort">Sort by</label>
               <select id="listingSort" class="sortPick">
@@ -537,7 +537,7 @@
                 <option value="checked">Longest unchecked</option>
               </select>
               <label class="sr-only" for="listingSearch">Search</label>
-              <input type="search" id="listingSearch" placeholder="Search by title or code" />
+              <input type="search" id="listingSearch" placeholder="Search listings" aria-label="Search by title, SKU or Amazon product code" title="Search by title, SKU or Amazon product code" />
               <button class="btn ghost" type="button" id="refreshListings">Refresh</button>
             </div>
           </div>
@@ -571,8 +571,8 @@
                 Stopping was a one-way door until now, and only from the panel - the record left
                 that browser and no screen anywhere could bring it back.
               -->
-              <button class="btn ghost" type="button" id="bulkWatch" hidden>Watch again</button>
-              <button class="linkish" type="button" id="bulkClear">Clear</button>
+              <button class="btn ghost" type="button" id="bulkWatch" hidden>Resume checks</button>
+              <button class="linkish" type="button" id="bulkClear">Clear selection</button>
               <span class="meta" id="bulkSaid"></span>
             </div>
             <div class="pad">
@@ -590,12 +590,12 @@
                         ratio — not a second fact of its own — and giving it a column of its own
                         weight said otherwise while pushing a real figure off the right-hand edge.
                       -->
-                      <th scope="col" class="n c-cost">Cost</th>
-                      <th scope="col" class="n" aria-sort="none"><button type="button" class="sortBy" data-key="price">Price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                      <th scope="col" class="n c-cost">Item cost</th>
+                      <th scope="col" class="n" aria-sort="none"><button type="button" class="sortBy" data-key="price">eBay price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       <th scope="col" class="n" aria-sort="none"><button type="button" class="sortBy" data-key="profit">Profit<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
                       <!-- The same profit as a share, with a mark at the margin the price rule aims for. -->
-                      <th scope="col" class="n c-margin" aria-sort="none"><button type="button" class="sortBy" data-key="margin">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                      <th scope="col">State</th>
+                      <th scope="col" class="n c-margin" aria-sort="none"><button type="button" class="sortBy" data-key="margin" title="Profit as a share of item cost">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                      <th scope="col">Status</th>
                       <!-- When it was last read. A shelf that is being checked every quarter of an
                            hour and one nothing has looked at since Friday read identically without
                            it, which is the question this page was most often opened with. -->
@@ -642,10 +642,11 @@
                 <option value="all" selected>All orders</option>
                 <option value="open">To ship</option>
                 <option value="late">Late</option>
-                <option value="sent">Dispatched</option>
+                <option value="sent">Shipped</option>
               </select>
             </div>
           </div>
+          <div class="loading" id="ordersLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your orders…</div>
           <section class="card">
             <header><h2 id="ordersCount">Orders</h2><span class="meta" id="ordersMeta"></span></header>
             <div id="ordersList"></div>
@@ -680,6 +681,7 @@
               </select>
             </div>
           </div>
+          <div class="loading" id="activityLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading activity…</div>
           <section class="card">
             <header><h2 id="activityCount">Activity</h2><span class="meta" id="activityMeta"></span></header>
             <div id="activityList"></div>
@@ -707,6 +709,7 @@
               <div class="acts" id="oneActs"></div>
             </div>
           </div>
+          <div class="loading" id="oneLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading this listing…</div>
           <div class="deck two">
             <section class="card">
               <header><h2>What it costs and what it sells for</h2><span class="meta" id="onePriceMeta"></span></header>
@@ -718,6 +721,7 @@
             <section class="card">
               <header><h2>Where it stands</h2></header>
               <div class="insight" id="oneFigures"></div>
+              <p class="cardFoot" id="oneWhy" hidden></p>
             </section>
           </div>
           <section class="card" id="oneVariantsCard" hidden>
@@ -734,9 +738,9 @@
               <thead>
                 <tr>
                   <th scope="col">Variation</th>
-                  <th scope="col" class="n">Cost</th>
-                  <th scope="col" class="n">Sells at</th>
-                  <th scope="col">State</th>
+                  <th scope="col" class="n">Item cost</th>
+                  <th scope="col" class="n">eBay price</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -746,7 +750,7 @@
             <section class="card">
               <header><h2>What it has sold</h2><span class="meta" id="oneOrdersMeta"></span></header>
               <div id="oneOrders"></div>
-              <p class="empty" id="oneOrdersEmpty" hidden>No sales yet in the orders loaded here.</p>
+              <p class="empty" id="oneOrdersEmpty" hidden>No sales of this listing in the last 30 days.</p>
             </section>
             <section class="card">
               <header><h2>What the checks did</h2><span class="meta" id="oneLogMeta"></span></header>

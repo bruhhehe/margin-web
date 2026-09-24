@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Margin — relisting on eBay, all in one place</title>
+    <title>Margin — dropshipping on eBay, all in one place</title>
     <meta
       name="description"
-      content="A Chrome extension and dashboard for sellers who relist products from other stores on eBay. Relist from Amazon or AliExpress, price from the profit you want, track the source price and reprice automatically, and see your sales, fees and profit in one place."
+      content="A Chrome extension and dashboard for eBay dropshippers. List from Amazon or AliExpress, price from the profit you want, update price and stock when the store changes them, and see your sales, fees and profit in one place."
     />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-180.png" />
@@ -19,10 +19,10 @@
     <link rel="canonical" href="https://margin-web-green.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Margin" />
-    <meta property="og:title" content="Margin — relisting on eBay, all in one place" />
+    <meta property="og:title" content="Margin — dropshipping on eBay, all in one place" />
     <meta
       property="og:description"
-      content="Relist from Amazon or AliExpress, price from the profit you want, track the source price and reprice automatically."
+      content="List from Amazon or AliExpress, price from the profit you want, and update price and stock when the store changes them."
     />
     <meta property="og:url" content="https://margin-web-green.vercel.app/" />
     <meta property="og:image" content="https://margin-web-green.vercel.app/og.png" />
@@ -31,8 +31,8 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black background." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#715aff" />
-    <script type="module" crossorigin src="./assets/index-pB7qMu2g.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/keys-CUTvw_pD.js">
+    <script type="module" crossorigin src="./assets/index-BL8RievM.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/keys-DwEZf2TS.js">
     <link rel="stylesheet" crossorigin href="./assets/keys-9JGGmMp7.css">
     <link rel="stylesheet" crossorigin href="./assets/index-D-zn1HWZ.css">
   </head>
@@ -46,9 +46,9 @@
           <b>Margin</b>
         </a>
         <nav class="top-nav" aria-label="Sections">
-          <a href="#scanning">Scanning</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#watching">Watching</a>
+          <a href="#scanning">How it reads</a>
+          <a href="#pricing">Price calculator</a>
+          <a href="#watching">Checks</a>
           <a href="#orders">Orders</a>
           <a href="#plans">Plans</a>
         </nav>
@@ -124,7 +124,7 @@
                       <span class="pg-line w85"></span>
                     </div>
                   </div>
-      <div class="panel" role="img" aria-label="The Margin side panel, showing a listing that sells for £30.18, costs £18.40, pays £4.42 in fees and keeps £7.36.">
+      <div class="panel" role="img" aria-label="The Margin side panel, showing a listing for £30.18 with an item cost of £18.40, £4.42 in fees and costs, and £7.36 profit.">
                     <div class="panel-chrome">
                       <span class="tile" aria-hidden="true"></span>
                       <b>Margin</b>
@@ -154,10 +154,10 @@
 
                       <div class="statement panel-statement">
                         <!-- The panel's own labels, because this is a picture of the panel and must not lie about it. -->
-                        <span class="st-row st-anim"><span class="st-label">Sells for</span><span class="num st-fig" data-fill="final">£30.18</span></span>
+                        <span class="st-row st-anim"><span class="st-label">List for</span><span class="num st-fig" data-fill="final">£30.18</span></span>
                         <span class="st-row st-anim"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-fill="minus-cost">− £18.40</span></span>
-                        <span class="st-row st-anim"><span class="st-label quiet">Fees and costs</span><span class="num st-fig quiet" data-fill="minus-fee">− £4.42</span></span>
-                        <span class="st-row st-total st-anim"><span class="st-label">You keep</span><span class="num st-fig" data-fill="profit">£7.36</span></span>
+                        <span class="st-row st-anim"><span class="st-label quiet">Fees</span><span class="num st-fig quiet" data-fill="minus-fee">− £4.42</span></span>
+                        <span class="st-row st-total st-anim"><span class="st-label">Profit</span><span class="num st-fig" data-fill="profit">£7.36</span></span>
                       </div>
 
                       <p class="panel-note">
@@ -166,7 +166,7 @@
                       </p>
 
                       <div class="panel-do">
-                        <span class="btn primary">Review &amp; publish</span>
+                        <span class="btn primary">Review and publish</span>
                         <span class="btn ghost">Show the math</span>
                       </div>
                     </div>
@@ -197,7 +197,7 @@
               </li>
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Auto-update price and stock</b> when the source changes.</span>
+                <span><b>Auto-update price and stock</b> when the store changes them.</span>
               </li>
               <li>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
@@ -306,11 +306,11 @@
             <li>
               <span class="step-n" aria-hidden="true">04</span>
               <h3>Publish to eBay</h3>
-              <p>Review the listing, fix anything flagged, and publish. Nothing goes to eBay until you click Publish.</p>
+              <p>Review the listing, fix anything flagged, and publish. Nothing goes to eBay until you publish it.</p>
             </li>
             <li>
               <span class="step-n" aria-hidden="true">05</span>
-              <h3>Margin keeps watch</h3>
+              <h3>Margin keeps checking</h3>
               <p>When the store changes its price or stock, Margin can update your listing to match, or set it to out of stock until the store restocks.</p>
             </li>
           </ol>
@@ -319,10 +319,11 @@
 
       <section class="band" id="scanning">
         <div class="wrap sec">
-          <h2>It scans the page you have open.</h2>
+          <h2>It reads the page you have open.</h2>
           <p class="lead">
-            It runs in your browser, signed in as you. There is no scraper for a store to block and no server to send your
-            account to. It reads the same fields from 22 Amazon sites and AliExpress.
+            Product pages are read in your own browser, signed in as you, so there&rsquo;s nothing on a remote computer for
+            a store to block. Margin&rsquo;s server keeps your eBay connection, encrypted. It reads the same fields from 22
+            Amazon sites and AliExpress.
           </p>
 
           <div class="pair">
@@ -346,12 +347,12 @@
             <summary>Every field it reads from a page</summary>
             <div class="sheet-wrap">
             <dl class="sheet">
-              <div><dt>Title</dt><dd>Trimmed to eBay&rsquo;s 80-character limit at a word break, with the store&rsquo;s padding removed</dd></div>
-              <div><dt>Brand</dt><dd>Taken from the byline, in eleven forms across five languages, and from the details table if the byline has none</dd></div>
-              <div><dt>Price</dt><dd>The buy-box price. Struck-through list prices are ignored, and the decimal separator is read, not assumed</dd></div>
+              <div><dt>Title</dt><dd>Trimmed to eBay&rsquo;s 80-character limit at a word break, without the filler words stores add</dd></div>
+              <div><dt>Brand</dt><dd>Taken from the brand line under the title, in eleven forms across five languages, or from the details table if there isn&rsquo;t one</dd></div>
+              <div><dt>Price</dt><dd>The main price next to Add to Cart. Struck-through list prices are ignored, and prices like 1.299,00 are read correctly</dd></div>
               <div><dt>In stock</dt><dd>Read from the availability line, never from the price. If the wording is unfamiliar, Margin treats it as out of stock</dd></div>
-              <div><dt>Photos</dt><dd>One per gallery position, at full size. Sprites and placeholder pixels are dropped</dd></div>
-              <div><dt>Specifications</dt><dd>The tables, the bullet points and the breadcrumb — which is also what picks the eBay category</dd></div>
+              <div><dt>Photos</dt><dd>One per gallery position, at full size. Tiny icons and blank images are skipped</dd></div>
+              <div><dt>Specifications</dt><dd>The tables, the bullet points and the category path at the top of the page, which also picks the eBay category</dd></div>
               <div><dt>Variations</dt><dd>The full color × size grid, each one with its own product code, photos and stock</dd></div>
               <div class="sheet-miss">
                 <dt>Anything it could not find</dt>
@@ -383,14 +384,14 @@
           <form class="solver card" id="solver" novalidate>
             <h3>Try it on a real item.</h3>
             <p class="solver-say">
-              This runs the extension&rsquo;s own pricing code, in your browser. Change any number and the answer
+              This uses the same math as the extension, in your browser. Change any number and the answer
               updates.
             </p>
 
             <div class="solver-grid">
               <div class="controls">
                 <p class="field">
-                  <label for="cost">What you pay for the item</label>
+                  <label for="cost">Item cost</label>
                   <span class="input"><span class="sym" data-sym>£</span><input id="cost" name="cost" type="number" min="0" step="0.01" value="18.40" inputmode="decimal" autocomplete="off" /></span>
                 </p>
                 <fieldset class="field seg-field">
@@ -401,7 +402,7 @@
                   </div>
                 </fieldset>
                 <p class="field">
-                  <label for="keep" id="keep-label">Margin on what you pay</label>
+                  <label for="keep" id="keep-label">Margin %</label>
                   <span class="input"><span class="sym" data-keep-sym>%</span><input id="keep" name="keep" type="number" min="0" step="1" value="40" inputmode="decimal" autocomplete="off" aria-labelledby="keep-label" /></span>
                 </p>
                 <p class="field">
@@ -429,15 +430,15 @@
 
               <div class="answer">
                 <output class="statement solve-statement" id="answer" for="cost keep site cat">
-                  <span class="st-row"><span class="st-label">List it at</span><span class="num st-fig" data-out="final">£30.18</span></span>
-                  <span class="st-row"><span class="st-label quiet">You pay</span><span class="num st-fig quiet" data-out="cost">− £18.40</span></span>
-                  <span class="st-row"><span class="st-label quiet">eBay takes</span><span class="num st-fig quiet" data-out="fee">− £4.02</span></span>
-                  <span class="st-row st-total"><span class="st-label">You make</span><span class="num st-fig" data-out="profit">£7.36</span></span>
+                  <span class="st-row"><span class="st-label">List for</span><span class="num st-fig" data-out="final">£30.18</span></span>
+                  <span class="st-row"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-out="cost">− £18.40</span></span>
+                  <span class="st-row"><span class="st-label quiet">eBay fees</span><span class="num st-fig quiet" data-out="fee">− £4.02</span></span>
+                  <span class="st-row st-total"><span class="st-label">Profit</span><span class="num st-fig" data-out="profit">£7.36</span></span>
                 </output>
                 <p class="basis" data-out="basis">Standard rate: 13.32% of the sale plus £0.40 per order.</p>
                 <p class="caveat">
                   eBay charges a different rate by category, so this answer is only as good as the category you picked
-                  above. The extension uses the category you are actually listing in.
+                  above. The extension uses the category you&rsquo;re actually listing in.
                 </p>
                 <p class="source" data-out="source"></p>
               </div>
@@ -448,7 +449,7 @@
           <ul class="hero-list">
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span><b>A price floor.</b> It will not list below it, no matter what the math says.</span>
+              <span><b>A minimum price.</b> It won&rsquo;t list below it, no matter what the math says.</span>
             </li>
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
@@ -456,7 +457,7 @@
             </li>
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span><b>A profit floor.</b> A reprice that would lose money is blocked, not published.</span>
+              <span><b>A minimum profit.</b> A reprice that would lose money is blocked, not published.</span>
             </li>
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
@@ -479,10 +480,10 @@
           axis from every other section's. Three cases are three columns.
         -->
         <div class="wrap sec">
-          <h2>It keeps watching after you list.</h2>
+          <h2>It keeps checking after you list.</h2>
           <p class="lead">
-            The source price moves, the source runs out, your listing sells out. Three switches, all off until you turn
-            them on, checking as often as every 15 minutes.
+            The store&rsquo;s price moves, the store runs out, your listing sells out. Three switches, all off until you
+            turn them on, checking as often as every 15 minutes.
           </p>
 
           <ol class="rail">
@@ -490,8 +491,8 @@
               <h3>The store changes the price</h3>
               <p>
                 Margin calculates a new eBay price from the new cost, using the same profit rule and that
-                listing&rsquo;s own category. If the new price would leave you less than your profit floor, Margin does
-                not send it. It flags the listing and keeps the old price.
+                listing&rsquo;s own category. If the new price would leave you less than your minimum profit, Margin doesn&rsquo;t
+                send it. It flags the listing and keeps the old price.
               </p>
             </li>
             <li>
@@ -535,8 +536,8 @@
         <div class="wrap sec">
           <h2>Orders and shipping</h2>
           <p class="lead">
-            Every sale shows what to buy, where to ship it, and when it is due. You buy the stock and you ship it.
-            Margin handles the listing, the price and the monitoring.
+            Every sale shows what to buy, where it goes, and when it&rsquo;s due. You place the order and get it to your
+            buyer. Margin handles the listing, the price and the checks.
           </p>
 
           <ol class="rail">
@@ -546,7 +547,7 @@
             </li>
             <li>
               <h3>Buy it without retyping</h3>
-              <p>Opens the product page with the quantity set and fills in the buyer&rsquo;s address at checkout. You click Buy now.</p>
+              <p>Opens the product page with the quantity set and fills in the buyer&rsquo;s address at checkout. You place the order yourself.</p>
             </li>
             <li>
               <h3>Send tracking to eBay</h3>
@@ -570,15 +571,15 @@
           <ul class="hero-list trust-list">
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>eBay tokens encrypted at rest, on the server, never in the extension</span>
+              <span>Your eBay sign-in key is stored encrypted on Margin&rsquo;s server, never in the extension</span>
             </li>
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>No analytics and no third-party calls, on this page or in the panel</span>
+              <span>No analytics and no trackers, on this page or in the panel</span>
             </li>
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>No Amazon API. Product pages are read in your own browser, signed in as you</span>
+              <span>Nothing talks to Amazon except your own browser. Product pages are read there, signed in as you</span>
             </li>
             <li>
               <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
@@ -641,10 +642,10 @@
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>One eBay shop</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>List from any store Margin reads</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Prices calculated from eBay’s own fee table</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Orders, dispatch deadlines and the dashboard</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Orders, ship-by dates and the dashboard</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Product pages checked once a day</span></li>
               </ul>
-              <a class="btn ghost" href="./dashboard/">Start on Free</a>
+              <a class="btn ghost" href="./dashboard/?plan=free">Start on Free</a>
             </article>
             <article class="card plan plan-lead">
               <header><h3>Pro</h3><span class="chip brand">Recommended</span></header>
@@ -656,7 +657,7 @@
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>List a whole page of search results in one pass</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Your price moves when the product page’s does</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Set to 0 when it runs out, restocked when it returns</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>A profit floor, so a price change never loses money</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>A minimum profit, so a price change never loses money</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Product pages checked throughout the day</span></li>
               </ul>
               <a class="btn primary" href="./dashboard/?plan=pro">Start on Pro</a>
@@ -676,9 +677,9 @@
           </div>
 
           <p class="plans-fine">
-            <b>Paid plans are not available yet.</b> Every account starts on Free and stays there until they are. The
-            prices above are what they will cost. There is nothing to install beyond the extension and nothing to
-            deploy. A plan covers hosting as well as the software, and there is no contract.
+            <b>Paid plans aren&rsquo;t available yet.</b> Until they are, every account has every feature, free. The
+            prices above are what they&rsquo;ll cost. There&rsquo;s nothing to install beyond the extension, and there&rsquo;s
+            no contract.
           </p>
         </div>
       </section>
@@ -691,9 +692,9 @@
               <summary>Is this allowed under eBay&rsquo;s dropshipping rules?</summary>
               <div>
                 <p>
-                  eBay allows dropshipping if you fulfill orders from a wholesale supplier, but not if another retailer
-                  ships the item directly to your buyer. Margin is built for the first kind of seller: you hold the
-                  stock and you ship it. Read eBay&rsquo;s own policy before you list.
+                  eBay has its own rules on dropshipping, including where you can buy the item and who ships it to your
+                  buyer, and they can differ by site. Margin doesn&rsquo;t check your orders against them, and following
+                  them is up to you. Read eBay&rsquo;s dropshipping policy for your site before you list.
                 </p>
               </div>
             </details>
@@ -701,12 +702,12 @@
               <summary>Is there anything to set up?</summary>
               <div>
                 <p>
-                  No. Install it, create an account, connect your eBay shop, and list. Margin runs the server. You do
-                  not deploy or configure anything.
+                  No. Install it, create an account, connect your eBay shop, and list. There&rsquo;s nothing else to install
+                  or configure.
                 </p>
                 <p>
-                  Your eBay refresh token is encrypted and stored on that server, not in the extension, because a
-                  browser extension is the wrong place to keep the key to your shop.
+                  Your eBay sign-in key is stored encrypted on Margin&rsquo;s server, not in the extension, because a browser
+                  extension is the wrong place to keep the key to your shop.
                 </p>
               </div>
             </details>
@@ -719,8 +720,8 @@
                   against.
                 </p>
                 <p>
-                  Rates come from each site&rsquo;s published table, per category, in all four formats eBay uses, with
-                  the regulatory operating fee included. eBay UK&rsquo;s rates are checked against real order statements.
+                  Rates come from each site&rsquo;s published table, per category, with the regulatory operating fee
+                  included. eBay UK&rsquo;s rates are checked against real order statements.
                   That is why you can add the extra percentage your invoice shows, for Promoted Listings and anything
                   else eBay charges without publishing a rate. After a sale, the Orders tab shows what eBay actually
                   charged.
@@ -732,13 +733,13 @@
               <div>
                 <p>
                   Fourteen: the United Kingdom, United States, Ireland, Germany, France, Italy, Spain, the
-                  Netherlands, Belgium, Austria, Switzerland, Poland, Canada and Australia. Each has its own currency,
-                  fee table and site ID.
+                  Netherlands, Belgium, Austria, Switzerland, Poland, Canada and Australia. Each has its own currency and
+                  fee table.
                 </p>
                 <p>
                   Business and private sellers pay different fees, so Margin asks eBay and remembers the answer for a
                   day. A private seller on eBay UK pays no final value fee. On eBay US, they pay what a business pays. If
-                  eBay does not say, Margin assumes business. Quoting no fee when you will be charged one is the
+                  eBay doesn&rsquo;t say, Margin assumes business. Quoting no fee when you will be charged one is the
                   expensive way to be wrong.
                 </p>
               </div>
@@ -760,13 +761,13 @@
       <section id="install">
         <div class="wrap sec close">
           <h2>Install it. Open it on any product page.</h2>
-          <p class="lead">Press Alt+E or click the toolbar icon, on any tab.</p>
+          <p class="lead">Press Alt+E or use the toolbar icon, on any tab.</p>
           <div class="hero-do">
             <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
               Add to Chrome</a>
             <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
           </div>
-          <p class="hero-fine">Free plan, no credit card needed. Cancel Pro or Max from the dashboard at any time.</p>
+          <p class="hero-fine">Free plan, no credit card needed.</p>
         </div>
       </section>
     </main>
@@ -778,9 +779,9 @@
           <b>Margin</b>
         </a>
         <nav class="foot-nav" aria-label="Footer">
-          <a href="#scanning">Scanning</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#watching">Watching</a>
+          <a href="#scanning">How it reads</a>
+          <a href="#pricing">Price calculator</a>
+          <a href="#watching">Checks</a>
           <a href="#orders">Orders</a>
           <a href="#plans">Plans</a>
           <a href="#faq">Questions</a>
