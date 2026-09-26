@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-Cw-xH5-3.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-QGRpXRLl.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LpsF9HHM.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-DYGsRYoZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BrQb56mR.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DhQijWNS.css">
   </head>
   <body>
     <!--
@@ -157,6 +157,7 @@
           -->
           <button class="linkish" type="button" id="errorReportsWhat" aria-haspopup="dialog">Error reports: Off</button>
           <p class="who" id="who"></p>
+          <button class="linkish" type="button" id="changePassword" aria-haspopup="dialog">Change password</button>
           <button class="linkish" type="button" id="signOut">Sign out</button>
         </div>
       </aside>
@@ -872,6 +873,54 @@
         <div class="askDo">
           <button class="btn ghost" type="button" id="errorReportsClear" hidden>Clear this list</button>
           <button class="btn primary" value="close">Done</button>
+        </div>
+      </form>
+    </dialog>
+    <!--
+      A new password, from the sidebar's "Change password" (and the panel's link to #password).
+
+      The server has taken one since accounts existed and nothing asked it. What it does to the
+      other sessions is said before anything is sent: this one stays, every other one, the panel's
+      included, is signed out. The fields are the sign-in card's own: hold to show, and the bar
+      that answers the length rule while it is typed.
+    -->
+    <dialog class="ask" id="passwordDialog" aria-labelledby="passwordTitle" aria-describedby="passwordText">
+      <form id="passwordForm" novalidate>
+        <h2 id="passwordTitle">Change your password</h2>
+        <div class="askText" id="passwordText">
+          <p>You'll stay signed in here. Everywhere else, including the Margin panel, you'll need to sign in again with the new password.</p>
+        </div>
+        <!-- For a password manager, which files the new password under the account it belongs to. -->
+        <input type="text" id="pwUser" name="username" autocomplete="username" hidden />
+        <div class="pwForm">
+          <label class="field">
+            <span>Current password</span>
+            <span class="pw">
+              <input type="password" id="pwCurrent" name="current" autocomplete="current-password" required />
+              <button type="button" class="pwPeek" id="peekCurrent" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+            </span>
+          </label>
+          <label class="field">
+            <span>New password</span>
+            <span class="pw">
+              <input type="password" id="pwNext" name="next" autocomplete="new-password" required />
+              <button type="button" class="pwPeek" id="peekNext" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+            </span>
+            <span class="pwBar" id="pwNextBar" aria-hidden="true"><i id="pwNextFill"></i></span>
+            <em id="pwNextSay">At least 10 characters. Length is what makes a password hard to guess.</em>
+          </label>
+          <label class="field">
+            <span>Confirm new password</span>
+            <span class="pw">
+              <input type="password" id="pwAgain" name="again" autocomplete="new-password" required />
+              <button type="button" class="pwPeek" id="peekAgain" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+            </span>
+          </label>
+          <p class="formError" id="pwError" role="alert" hidden></p>
+        </div>
+        <div class="askDo">
+          <button class="btn ghost" type="button" id="pwCancel">Cancel</button>
+          <button class="btn primary" type="submit" id="pwGo">Change password</button>
         </div>
       </form>
     </dialog>
