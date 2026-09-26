@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-B_vKm6X0.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-BPUBdf22.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LpsF9HHM.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-DYGsRYoZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BuLvM38r.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-BrQb56mR.css">
   </head>
   <body>
     <!--
@@ -150,6 +150,12 @@
               <option value="dark">Dark</option>
             </select>
           </label>
+          <!--
+            Error reports: off until turned on, here and in the panel separately, since each is its
+            own browser's say. The switch is in the window this opens, under what reports hold, so it
+            is read before it is chosen; the link says which way it is set. See errorReports.ts.
+          -->
+          <button class="linkish" type="button" id="errorReportsWhat" aria-haspopup="dialog">Error reports: Off</button>
           <p class="who" id="who"></p>
           <button class="linkish" type="button" id="signOut">Sign out</button>
         </div>
@@ -851,6 +857,24 @@
     </div>
 
     <div id="tip" role="status" aria-live="polite"></div>
+    <!-- What error reports hold, and what this browser has sent. Opened by "What's sent" in the sidebar. -->
+    <dialog class="ask" id="errorReportsDialog" aria-labelledby="errorReportsTitle" aria-describedby="errorReportsText">
+      <form method="dialog">
+        <h2 id="errorReportsTitle">Error reports</h2>
+        <div class="askText" id="errorReportsText">
+          <p>Off unless you turn it on. When it's on and something on this page breaks, it sends the error, where it happened, the site version, and your browser version.</p>
+          <p>Never your listings, orders, buyers, email, or passwords. Emails, numbers, and addresses are removed first. Connection problems aren't sent.</p>
+          <p>Only Margin's developer sees them. Each is deleted 30 days after it last happened. At most 10 an hour. The panel has its own switch in Settings.</p>
+        </div>
+        <label class="errPick"><input type="checkbox" class="tick" id="errorReports" /> Send error reports from this browser</label>
+        <h3 class="errSentHead">Sent from this browser</h3>
+        <ul class="errSent" id="errorReportsSent"></ul>
+        <div class="askDo">
+          <button class="btn ghost" type="button" id="errorReportsClear" hidden>Clear this list</button>
+          <button class="btn primary" value="close">Done</button>
+        </div>
+      </form>
+    </dialog>
     <!--
       Jump to: every page and every action on this dashboard, from the keyboard.
 
