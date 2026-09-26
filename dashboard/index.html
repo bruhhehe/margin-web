@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-BX7jYMdg.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-DlUXgcbg.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LpsF9HHM.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-DYGsRYoZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-B97-tmus.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DIAB1Ar2.css">
   </head>
   <body>
     <!--
@@ -136,6 +136,8 @@
           <button type="button" data-view="activity"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8.5h3l2-5 3 10 2-5h3" /></svg>Activity</button>
           <button type="button" data-view="shops"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5h11l-1 7h-9z" /><path d="M5.5 6.5V4a2.5 2.5 0 0 1 5 0v2.5" /></svg>Shops</button>
           <button type="button" data-view="plan"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="2" /><path d="M2 7h12" /></svg>Plan</button>
+          <!-- Shown only when the server says this account is the admin's. Hiding it is not the lock: see `services/admin.ts`. -->
+          <button type="button" data-view="admin" id="adminNav" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13.5 4v4c0 3.2-2.3 5.6-5.5 6.5C4.8 13.6 2.5 11.2 2.5 8V4z" /><path d="m5.8 8.2 1.6 1.6 3-3.2" /></svg>Admin</button>
         </nav>
 
         <div class="side-foot">
@@ -808,6 +810,26 @@
           <div class="plans" id="planList"></div>
           <p class="formError" id="planError" role="alert" hidden></p>
           <p class="foot" id="planFoot"></p>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Admin -->
+        <!--
+          Every account on this backend, for the one person who runs it. Nothing here is fetched
+          until the page is opened, and the server answers `/api/admin/overview` for ADMIN_EMAILS
+          and nobody else — anybody who types #admin sees the Overview.
+        -->
+        <section class="view" data-view="admin" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Admin</h1>
+              <p class="sub" id="adminSaid">Only you can see this page.</p>
+            </div>
+            <div class="tools">
+              <button class="btn ghost" type="button" id="adminRefresh">Refresh</button>
+            </div>
+          </div>
+          <div class="loading" id="adminLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading the admin page…</div>
+          <div class="adminBody" id="adminBody"></div>
         </section>
       </main>
 
