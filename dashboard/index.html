@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-QGRpXRLl.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-TBlO_LdJ.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LpsF9HHM.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-DYGsRYoZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-DhQijWNS.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-BvpLFGaj.css">
   </head>
   <body>
     <!--
@@ -109,6 +109,53 @@
           </label>
           <p class="formError" id="gateError" role="alert" hidden></p>
           <button class="btn primary" type="submit" id="gateGo">Sign in</button>
+          <button class="linkish gateLink onlyIn" type="button" id="forgotOpen">Forgot password?</button>
+        </form>
+
+        <!--
+          A forgotten password, step one: where to send the link.
+
+          The answer is the same whatever the address, so the card cannot be used to find out who has
+          an account; and where this server cannot send email it says so, rather than promising a link
+          that will never come.
+        -->
+        <form id="forgotForm" class="gateAlt" novalidate hidden>
+          <h2>Reset your password</h2>
+          <p class="gateSaid">Enter the email you signed up with. Margin will email you a link to choose a new password.</p>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="forgotEmail" name="email" autocomplete="username" spellcheck="false" required />
+          </label>
+          <p class="formError" id="forgotError" role="alert" hidden></p>
+          <p class="gateWanted" id="forgotDone" role="status" hidden></p>
+          <button class="btn primary" type="submit" id="forgotGo">Send reset link</button>
+          <button class="linkish gateLink" type="button" id="forgotBack">Back to sign in</button>
+        </form>
+
+        <!-- Step two, from the emailed link (?reset=…): the new password, and signed in with it. -->
+        <form id="resetForm" class="gateAlt" novalidate hidden>
+          <h2>Choose a new password</h2>
+          <p class="gateSaid">This signs you in here, and signs you out everywhere else, including the Margin panel.</p>
+          <input type="text" id="resetUser" name="username" autocomplete="username" hidden />
+          <label class="field">
+            <span>New password</span>
+            <span class="pw">
+              <input type="password" id="resetPassword" name="password" autocomplete="new-password" required />
+              <button type="button" class="pwPeek" id="peekReset" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+            </span>
+            <span class="pwBar" id="resetBar" aria-hidden="true"><i id="resetFill"></i></span>
+            <em id="resetSay">At least 10 characters. Length is what makes a password hard to guess.</em>
+          </label>
+          <label class="field">
+            <span>Confirm new password</span>
+            <span class="pw">
+              <input type="password" id="resetAgain" name="again" autocomplete="new-password" required />
+              <button type="button" class="pwPeek" id="peekResetAgain" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+            </span>
+          </label>
+          <p class="formError" id="resetError" role="alert" hidden></p>
+          <button class="btn primary" type="submit" id="resetGo">Set new password</button>
+          <button class="linkish gateLink" type="button" id="resetBack">Back to sign in</button>
         </form>
       </div>
     </main>
