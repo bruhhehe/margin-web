@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-B75VocU-.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-BX7jYMdg.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-LpsF9HHM.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-DYGsRYoZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-CPqzF_VG.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-B97-tmus.css">
   </head>
   <body>
     <!--
@@ -628,29 +628,36 @@
           <div class="pagehead">
             <div class="titles">
               <h1>Orders</h1>
+              <p class="sub" id="ordersSaid">&nbsp;</p>
             </div>
-            <div class="tools">
-              <!-- Which shop is the sidebar's picker, as everywhere else. Orders are fetched per shop. -->
-              <label class="sr-only" for="orderView">Show</label>
-              <!--
-                All orders is the default, because "To dispatch" was and a shop that has posted
-                everything opened this page on "Nothing matches that." - which reads as a broken
-                page, not as an empty filter. Anything actually waiting is on the count beside the
-                nav entry and on the Overview, so nothing is lost by opening on what sold.
-              -->
-              <select id="orderView" class="sortPick">
-                <option value="all" selected>All orders</option>
-                <option value="open">To ship</option>
-                <option value="late">Late</option>
-                <option value="sent">Shipped</option>
-              </select>
-            </div>
+            <!-- How old the list is and Refresh, drawn by `Fresh`. Which shop is the sidebar's picker, as everywhere else. -->
+            <div class="tools" id="ordersFresh"></div>
           </div>
           <div class="loading" id="ordersLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your orders…</div>
-          <!-- To ship, what is late or due today, and when this was read: the panel's first card, drawn by `ToShip`. -->
-          <section class="card shipCard" id="ordersSummary" aria-label="To ship" hidden></section>
-          <section class="card">
-            <header><h2 id="ordersCount">Orders</h2><span class="meta" id="ordersMeta"></span></header>
+          <!-- To ship, how many sold, and the newest sale, drawn by `OrderStats`. -->
+          <div class="cards oStats" id="ordersSummary" hidden></div>
+          <section class="card oCard" aria-labelledby="ordersCount">
+            <h2 class="sr-only" id="ordersCount">Orders</h2>
+            <div class="oBar">
+              <!--
+                All is the default, because "To dispatch" was and a shop that has posted everything
+                opened this page on "Nothing matches that." - which reads as a broken page, not as an
+                empty filter. Late is there only while something is late, or while it is chosen.
+              -->
+              <div class="seg" id="orderView" role="group" aria-label="Show">
+                <button type="button" data-show="all" aria-pressed="true">All <span class="n" id="ordersAllN">0</span></button>
+                <button type="button" data-show="open" aria-pressed="false">To ship <span class="n" id="ordersOpenN">0</span></button>
+                <button type="button" data-show="late" aria-pressed="false" hidden>Late <span class="n" id="ordersLateN">0</span></button>
+                <button type="button" data-show="sent" aria-pressed="false">Shipped <span class="n" id="ordersSentN">0</span></button>
+              </div>
+              <label class="sr-only" for="ordersSpan">Period</label>
+              <!-- The page's own period, apart from the Overview's: a month to start with, and as far back as a year. -->
+              <select id="ordersSpan" class="sortPick">
+                <option value="30" selected>Last 30 days</option>
+                <option value="90">Last 90 days</option>
+                <option value="365">Last year</option>
+              </select>
+            </div>
             <div id="ordersList"></div>
             <p class="empty" id="ordersEmpty" hidden></p>
           </section>
