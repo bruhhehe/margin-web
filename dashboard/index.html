@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CE0dguSt.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-DUJMVpmD.js">
+    <script type="module" crossorigin src="../assets/dashboard-B82XtZ--.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-CDvwlkgW.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-Cfaz3tHe.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-B6-pZpBd.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DCb--Erl.css">
   </head>
   <body>
     <!--
@@ -249,10 +249,11 @@
               </div>
               <button class="btn ghost" type="button" id="refresh">Refresh</button>
               <!--
-                Which cards the Overview shows, in what order, at what width: customize.ts. While it
-                is on, Done stands where Customize was, so the way out is where the way in was.
+                The Overview's own arrangement: customize.ts. While it is on, Done stands where
+                Customize was, so the way out is where the way in was. Not offered on a narrow
+                screen, where the grid is one column and arranging it is a wide-screen job.
               -->
-              <button class="btn ghost" type="button" id="customize" aria-controls="layoutBar board"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2" y="2" width="5" height="5" rx="1.2" /><rect x="9" y="2" width="5" height="5" rx="1.2" /><rect x="2" y="9" width="12" height="5" rx="1.2" /></svg><span class="lbl">Customize</span></button>
+              <button class="btn ghost" type="button" id="customize" aria-controls="editBar sects"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2" y="2" width="5" height="5" rx="1.2" /><rect x="9" y="2" width="5" height="5" rx="1.2" /><rect x="2" y="9" width="12" height="5" rx="1.2" /></svg><span class="lbl">Customize</span></button>
               <button class="btn primary" type="button" id="customizeDone" hidden>Done</button>
             </div>
             <!--
@@ -275,71 +276,70 @@
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
             <!--
-              Customizing the Overview: which cards show, in what order, at what width.
-
-              Shown only while Customize is on. The cards themselves carry their own controls then
-              (see customize.ts, which builds them), so this holds only what is about the page as a
-              whole: how to move a card, the cards put away, and the way back to the page as designed.
-              Done is in the page head, where it stays in reach however far down the page you are.
+              Customizing the Overview (customize.ts): three buttons and nothing to read, because
+              the page itself is what is being arranged and every element on it says what it is.
+              Shown only while Customize is on; Done is in the page head, where it stays in reach
+              however far down the page you are. The list under Add element is the elements that
+              are off the page, each with a line saying what it would show.
             -->
-            <div class="layoutBar" id="layoutBar" hidden>
-              <!-- A phone has no handle to drag by (see the stylesheet), so it is told about the arrows only. -->
-              <p class="layoutSaid"><span class="byDrag">Drag a card by its handle, or use the arrows, to move it.</span><span class="byArrow">Use a card's arrows to move it.</span> Hide the ones you don't need; they wait under Add a card.</p>
-              <div class="layoutActs">
-                <button class="btn ghost" type="button" id="layoutAdd" aria-expanded="false" aria-controls="layoutTray">Add a card<span class="count" id="layoutCount"></span></button>
-                <button class="btn ghost" type="button" id="layoutReset">Reset to default</button>
+            <div class="editBar" id="editBar" hidden>
+              <div class="addWrap">
+                <button class="btn ghost" type="button" id="addElement" aria-expanded="false" aria-controls="addTray">Add element</button>
+                <div class="addTray" id="addTray" hidden>
+                  <ul id="addList" aria-label="Elements you can add"></ul>
+                  <p class="addNone" id="addNone">Every element is on the Overview.</p>
+                </div>
               </div>
-              <div class="layoutTray" id="layoutTray" hidden>
-                <ul id="layoutHidden" aria-label="Hidden cards"></ul>
-                <p class="layoutNone" id="layoutNone">Every card is on the Overview.</p>
-              </div>
+              <button class="btn ghost" type="button" id="addSection">Add section</button>
+              <button class="btn ghost" type="button" id="layoutReset">Reset to default</button>
             </div>
+            <!-- What a keyboard does to an element while the page is arranged, read out when one takes the focus. -->
+            <p class="sr-only" id="elementKeys">Arrow keys move it. Shift and the arrow keys resize it. Delete removes it.</p>
 
             <!--
-              Every card on the page, in one row that wraps.
-
-              Each child is one card the seller can move, hide or resize, named by `data-card`; the
-              order here is the page as designed, and "Reset to default" puts it back (the list is
-              `CARDS` in layout.ts). customize.ts wraps each in a slot at start-up and moves the slots,
-              never what is inside them, so every id a `paint*` reaches for stays where it was.
-              A card's own `hidden`, which the figures set when there is nothing to show, is left
-              alone: the slot round it closes over it, as the rows used to.
+              The Overview: sections, each a title over a grid twelve columns wide. customize.ts
+              builds them from the layout (layout.ts) and moves each element below into its place.
             -->
-            <div class="board" id="board">
-              <div class="totals" data-card="money">
-                <dl class="cards" id="cards"></dl>
-                <!--
-                  Where every pound of sales went, as one bar.
+            <div class="sects" id="sects"></div>
 
-                  The four tiles are the arithmetic — sales less eBay's fee less the stock is the profit
-                  — but read as four separate figures a seller still has to do the division to answer the
-                  question they actually have, which is what share of a sale they keep.
-                -->
-                <div class="split" id="flowSplit" role="img" hidden>
-                  <!-- The same three shares twice, because they answer two different questions: the ring
-                       is "what fraction of a sale do I keep", read at a glance against a whole; the bar
-                       is the order the money leaves and where each share starts and stops. -->
-                  <div class="splitPie" id="splitPie" aria-hidden="true"></div>
-                  <div class="splitBars">
-                    <div class="splitBar" id="splitBar" aria-hidden="true"></div>
-                    <div class="splitKey" id="splitKey" aria-hidden="true"></div>
-                  </div>
+            <!--
+              Every element the Overview can place, named by `data-el` (the list, and where each
+              goes as designed, is `ELEMENTS` in layout.ts).
+
+              customize.ts wraps each one in a grid item at start-up and moves the items between
+              sections, never what is inside them, so every id a `paint*` reaches for stays where it
+              was and React's roots never notice. One the seller has taken off waits here, still
+              painted, out of sight. An element's own `hidden`, which the figures set when there is
+              nothing to show, is left alone: the item round it shows a quiet line in its place,
+              because a hole in a grid somebody arranged by hand would read as a fault.
+            -->
+            <div class="parked" id="parked" hidden>
+              <!--
+                The money, as four figures, a ring and a bar.
+
+                The four tiles are the arithmetic — sales less eBay's fee less the stock is the profit
+                — but read as four separate figures a seller still has to do the division to answer the
+                question they actually have, which is what share of a sale they keep. The ring and the
+                bar are the same three shares twice, because they answer two different questions: the
+                ring is "what fraction of a sale do I keep", read at a glance against a whole; the bar
+                is the order the money leaves and where each share starts and stops.
+              -->
+              <dl class="cards one" id="statSales" data-el="sales"></dl>
+              <dl class="cards one" id="statFees" data-el="fees"></dl>
+              <dl class="cards one" id="statCost" data-el="cost"></dl>
+              <dl class="cards one" id="statProfit" data-el="profit"></dl>
+              <section class="card ringCard" id="ringCard" data-el="profitRing" hidden>
+                <div class="splitPie" id="splitPie" role="img"></div>
+              </section>
+              <section class="card splitCard" id="splitCard" data-el="profitSplit" hidden>
+                <div class="splitBars" id="flowSplit" role="img">
+                  <div class="splitBar" id="splitBar" aria-hidden="true"></div>
+                  <div class="splitKey" id="splitKey" aria-hidden="true"></div>
                 </div>
                 <p class="founded" id="founded"></p>
-              </div>
+              </section>
 
-              <!--
-                The page in rows, each answering one question, in the order a seller asks them.
-
-                It was two columns: a chart and two small cards on the left, eight cards stacked on the
-                right — so the right ran a thousand pixels past the left, and "traffic", "buyers",
-                "categories" and "feedback" sat in one pile with nothing saying which of them mattered.
-                A row is a question. The first is "how is it going and what needs me"; the second
-                "where do buyers come from and where do they stop"; the third "which products"; the
-                last "is the shop in good shape". A card that has nothing to say drops out of its row
-                and the row closes over it, rather than leaving a hole in a column.
-              -->
-              <section class="card chartCard" data-card="trend">
+              <section class="card chartCard" id="trendCard" data-el="trend">
                 <header>
                   <h2 id="trendTitle">Sales and profit</h2>
                   <span class="meta" id="trendMeta"></span>
@@ -388,63 +388,62 @@
                 margin floor, pages the checks could not read — each of these used to be a red
                 figure inside a different card, so finding out whether anything needed you meant
                 reading every card. Now it is one list, and the orders waiting to go out sit under
-                it, because they are the commonest thing on it.
+                it by default, because they are the commonest thing on it.
               -->
-              <section class="card" id="attentionCard" data-card="attention">
+              <section class="card" id="attentionCard" data-el="attention">
                 <header><h2>Needs attention</h2><span class="meta" id="attentionMeta"></span></header>
                 <div id="attentionList"></div>
+              </section>
+              <section class="card" id="toShipCard" data-el="toShip" hidden>
+                <header><h2>Orders to ship</h2><span class="meta" id="toShipMeta"></span></header>
                 <div id="dispatchList"></div>
               </section>
 
               <!--
-                The funnel: seen, bought, came back. Traffic leads because it is the one figure this
+                The funnel: seen, opened, bought. Traffic leads because it is the one figure this
                 tool cannot work out for itself — and the only one that separates "nothing sells"
                 from "nothing is seen".
+
+                eBay's four reports, each a tile of its own: a label, the figure, the change against
+                the period before and a sparkline — which is the part that tells a steady climb from a
+                spike that has already fallen back, since those are the same number at both ends. The
+                chart draws one of them over the period on an axis that is its own, picked in its own
+                header: three series on one picture meant two of them were drawn against a scale that
+                was not theirs, and a rate and a count shared an axis.
               -->
-              <p class="deckTitle" data-card="buyersHeading">Where buyers come from</p>
-              <!--
-                Traffic, as one card rather than two.
-                The funnel's totals and the same counts day by day are one question - how many people
-                found the shop, and which way that is going - and they were split across a narrow card
-                of figures and a wide card of chart, two sections apart, each repeating the other's
-                numbers. The totals lead, the drawing is underneath them, and the period control at the
-                top of the page moves both.
-              -->
-              <section class="card chartCard" id="trafficCard" data-card="traffic" hidden>
+              <div class="card tileCard" id="kpiImpressions" data-el="impressions" hidden></div>
+              <div class="card tileCard" id="kpiViews" data-el="pageViews" hidden></div>
+              <div class="card tileCard" id="kpiCtr" data-el="clickThrough" hidden></div>
+              <div class="card tileCard" id="kpiConversion" data-el="conversion" hidden></div>
+              <section class="card chartCard" id="trafficCard" data-el="trafficChart" hidden>
                 <header>
                   <h2>Traffic</h2>
                   <span class="meta" id="trafficMeta"></span>
+                  <label class="sr-only" for="trafficMetric">Traffic figure to chart</label>
+                  <select id="trafficMetric" class="sortPick">
+                    <option value="impressions">Impressions</option>
+                    <option value="views">Listing page views</option>
+                    <option value="ctr">Click-through rate</option>
+                    <option value="conversion">Sales conversion rate</option>
+                  </select>
                   <div class="seg small" id="trafficLook" role="group" aria-label="Chart type">
                     <button type="button" data-look="area" aria-pressed="true">Line</button>
                     <button type="button" data-look="bars" aria-pressed="false">Bars</button>
                   </div>
                 </header>
-                <!--
-                  The four eBay reports, as a scorecard strip, then one drawing of whichever is
-                  picked.
-
-                  The shape is the standard analytics one for a reason: a strip of KPI tiles reads
-                  at a glance, and each tile carries a label, the figure, the change against the
-                  period before and a sparkline - which is the part that tells a steady climb from
-                  a spike that has already fallen back, since those are the same number at both
-                  ends. Picking a tile plots it underneath, full width, on an axis that is its own.
-                  Three series on one picture meant two of them were drawn against a scale that was
-                  not theirs; two of them were a rate and a count sharing an axis.
-                -->
-                <div class="kpis" id="trafficKpis" role="group" aria-label="Choose what to chart"></div>
                 <div class="pad" id="trafficPad" hidden>
                   <div class="chartHost" id="trafficChart"></div>
                 </div>
                 <p class="cardFoot" id="trafficSaid" hidden></p>
               </section>
 
-              <section class="card" id="ordersCard" data-card="orders">
+              <section class="card" id="ordersCard" data-el="orders">
                 <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
                 <div class="insight" id="postingHealth"></div>
                 <p class="cardFoot" id="postingSaid"></p>
               </section>
 
-              <section class="card" id="buyersCard" data-card="buyers" hidden>
+              <section class="card" id="buyersCard" data-el="buyers" hidden>
                 <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
                 <div class="insight" id="buyersHealth"></div>
                 <p class="cardFoot" id="buyersSaid"></p>
@@ -456,8 +455,7 @@
                 it, what is different about them: what moved against the period before, what they
                 sold as, and what came back.
               -->
-              <p class="deckTitle" data-card="productsHeading">Products</p>
-              <section class="card overviewProducts" data-card="products">
+              <section class="card overviewProducts" id="productsCard" data-el="products">
                 <header>
                   <h2 id="productsTitle">Product sales</h2>
                   <span class="meta" id="productsMeta"></span>
@@ -494,24 +492,23 @@
                 </div>
               </section>
 
-              <section class="card" id="moversCard" data-card="movers" hidden>
+              <section class="card" id="moversCard" data-el="movers" hidden>
                 <header><h2>What changed</h2><span class="meta" id="moversMeta"></span></header>
                 <div id="moversList"></div>
               </section>
 
-              <section class="card" id="categoriesCard" data-card="categories" hidden>
+              <section class="card" id="categoriesCard" data-el="categories" hidden>
                 <header><h2>Sales by category</h2><span class="meta" id="categoriesMeta"></span></header>
                 <div id="categoriesList"></div>
               </section>
 
-              <section class="card" id="returnsCard" data-card="returns" hidden>
+              <section class="card" id="returnsCard" data-el="returns" hidden>
                 <header><h2>Returns</h2><span class="meta" id="returnsMeta"></span></header>
                 <div class="insight" id="returnsHealth"></div>
               </section>
 
               <!-- The shop's own state: what is listed, what the checks did to it, and what buyers say of it. -->
-              <p class="deckTitle" data-card="healthHeading">Shop health</p>
-              <section class="card" data-card="listings">
+              <section class="card" id="stockCard" data-el="listings">
                 <header><h2>Listings</h2></header>
                 <div class="insight" id="shopHealth"></div>
                 <!-- What eBay will let this account list this month. A new seller is capped and
@@ -522,7 +519,7 @@
                 </div>
               </section>
 
-              <section class="card" data-card="checks">
+              <section class="card" id="checksCard" data-el="checks">
                 <header><h2>Stock and price checks</h2><span class="meta">last 24 hours</span></header>
                 <div class="insight" id="checkHealth"></div>
                 <!-- When this browser was last awake. The checking runs in the seller's own Chrome,
@@ -537,7 +534,7 @@
                 is the decision a reseller actually makes each week. Forty-one listings and four
                 that sold is a listing problem; four and four is a supply problem.
               -->
-              <section class="card" id="sellThroughCard" data-card="sellThrough" hidden>
+              <section class="card" id="sellThroughCard" data-el="sellThrough" hidden>
                 <header><h2>Listings that sold</h2><span class="meta" id="sellThroughMeta"></span></header>
                 <div class="insight" id="sellThroughHealth"></div>
               </section>
@@ -549,7 +546,7 @@
                 changed. Deliberately no "protected about £X": what a listing hidden before an order
                 arrived saved is a guess about orders that never happened.
               -->
-              <section class="card" id="didCard" data-card="did" hidden>
+              <section class="card" id="didCard" data-el="did" hidden>
                 <header><h2>What Margin did</h2><span class="meta">this period</span></header>
                 <div class="insight" id="didHealth"></div>
               </section>
@@ -565,23 +562,22 @@
                 Small, and it answers two things no money figure does: when to be at the desk, and
                 when a promoted listing would earn its fee.
               -->
-              <section class="card" id="whenCard" data-card="when" hidden>
+              <section class="card" id="whenCard" data-el="when" hidden>
                 <header><h2>When you sell</h2><span class="meta" id="whenMeta"></span></header>
                 <div class="pad"><div class="whenGrid" id="whenGrid"></div></div>
               </section>
 
-              <section class="card" id="shelfCard" data-card="shelf" hidden>
+              <section class="card" id="shelfCard" data-el="shelf" hidden>
                 <header><h2>Listed now</h2><span class="meta" id="shelfMeta"></span></header>
                 <div class="insight" id="shelfHealth"></div>
               </section>
 
-              <section class="card" id="reviewsCard" data-card="reviews" hidden>
+              <section class="card" id="reviewsCard" data-el="reviews" hidden>
                 <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
                 <div class="insight" id="reviewsHealth"></div>
                 <div id="reviewsList"></div>
               </section>
             </div>
-
             <p class="foot">
               Sales and eBay fees are the figures eBay reports. Item cost is the product page's price at the last
               check, so it is an estimate of what you paid.
