@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DNOJU_he.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-BguoHVaY.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-DK_CLnvR.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-Cfaz3tHe.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-QTCkvOad.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-BoOHhVjw.css">
   </head>
   <body>
     <!--
@@ -110,6 +110,12 @@
           <p class="formError" id="gateError" role="alert" hidden></p>
           <button class="btn primary" type="submit" id="gateGo">Sign in</button>
           <button class="linkish gateLink onlyIn" type="button" id="forgotOpen">Forgot password?</button>
+          <!--
+            After Sign out on this site, the page stops taking the panel's session by itself (it
+            signed the seller straight back in). This is the way to take it on purpose.
+          -->
+          <button class="linkish gateLink" type="button" id="usePanel" hidden>Use the Margin panel's sign-in</button>
+          <p class="gateWanted" id="panelSaid" role="status" hidden></p>
         </form>
 
         <!--
@@ -157,6 +163,9 @@
           <button class="btn primary" type="submit" id="resetGo">Set new password</button>
           <button class="linkish gateLink" type="button" id="resetBack">Back to sign in</button>
         </form>
+
+        <!-- Where a password typed on this card goes, whenever that is not Margin's own server. -->
+        <p class="gateServer" id="gateServer" hidden></p>
       </div>
     </main>
 
