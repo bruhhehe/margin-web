@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-DKyMXtId.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-CDvwlkgW.js">
+    <script type="module" crossorigin src="../assets/dashboard-DNOJU_he.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-DK_CLnvR.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-Cfaz3tHe.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-Dky_6-Y1.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-QTCkvOad.css">
   </head>
   <body>
     <!--
@@ -276,14 +276,15 @@
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
             <!--
-              Customizing the Overview (customize.ts): three buttons and nothing to read, because
+              Customizing the Overview (customize.ts): four buttons and nothing to read, because
               the page itself is what is being arranged and every element on it says what it is.
               Shown only while Customize is on; Save is in the page head, where it stays in reach
               however far down the page you are. The list under Add element is the elements that
-              are off the page, each with a line saying what it would show.
+              are off the page, each with a line saying what it would show. Layouts (library.ts) is
+              the premade arrangements and the seller's own, to load, save, rename, update and delete.
             -->
             <div class="editBar" id="editBar" hidden>
-              <div class="addWrap">
+              <div class="addWrap" id="addWrap">
                 <button class="btn ghost" type="button" id="addElement" aria-expanded="false" aria-controls="addTray">Add element</button>
                 <div class="addTray" id="addTray" hidden>
                   <ul id="addList" aria-label="Elements you can add"></ul>
@@ -291,6 +292,21 @@
                 </div>
               </div>
               <button class="btn ghost" type="button" id="addSection">Add section</button>
+              <div class="addWrap" id="layoutsWrap">
+                <button class="btn ghost" type="button" id="layoutsOpen" aria-expanded="false" aria-controls="layoutsTray">Layouts</button>
+                <div class="addTray layoutsTray" id="layoutsTray" hidden>
+                  <button class="btn ghost" type="button" id="layoutNew">Save as new layout</button>
+                  <form class="layoutNew" id="layoutNewForm" hidden>
+                    <label class="sr-only" for="layoutNewName">Name for the new layout</label>
+                    <input type="text" id="layoutNewName" maxlength="40" autocomplete="off" aria-describedby="layoutNewErr" />
+                    <button class="btn primary" type="submit">Save</button>
+                    <button class="btn ghost" type="button" id="layoutNewCancel">Cancel</button>
+                    <p class="lyErr" id="layoutNewErr" hidden></p>
+                  </form>
+                  <ul id="layoutList" aria-label="Layouts"></ul>
+                  <button class="linkish" type="button" id="layoutsBack" hidden>Bring back premade layouts</button>
+                </div>
+              </div>
               <button class="btn ghost" type="button" id="layoutReset">Reset to default</button>
             </div>
             <!-- What a keyboard does to an element while the page is arranged, read out when one takes the focus. -->
