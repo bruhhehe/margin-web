@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-B3Rhz9qW.js"></script>
+    <script type="module" crossorigin src="../assets/dashboard-CC3Ua_vo.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-DK_CLnvR.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-Cfaz3tHe.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BoOHhVjw.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-7UxELdH8.css">
   </head>
   <body>
     <!--
@@ -66,11 +66,23 @@
 
         <!-- What was pressed on the pricing table, carried through so the card knows why you are here. -->
         <p class="gateWanted" id="gateWanted" hidden></p>
+        <!-- What the page that went before said as it left, when it was news rather than a refusal: an account deleted. -->
+        <p class="gateWanted" id="gateNotice" role="status" hidden></p>
 
         <form id="gateForm" novalidate>
+          <!--
+            One box, two questions: signing in takes an email or a username (a username never has an
+            @ in it, which is how the server tells them apart); creating an account asks for the
+            email here and the username under it. `setMode` changes the label, type and autocomplete.
+          -->
           <label class="field">
-            <span>Email</span>
-            <input type="email" id="email" name="email" autocomplete="username" spellcheck="false" required />
+            <span id="emailLabel">Email or username</span>
+            <input type="text" id="email" name="email" autocomplete="username" autocapitalize="none" spellcheck="false" required />
+          </label>
+          <label class="field onlyUp" hidden>
+            <span>Username</span>
+            <input type="text" id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="30" aria-describedby="usernameSay" />
+            <em id="usernameSay">3–30 letters, numbers, dots, dashes or underscores. You can change it once every 7 days.</em>
           </label>
           <!--
             Hold to read it back.
@@ -193,6 +205,7 @@
           <button type="button" data-view="shops"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5h11l-1 7h-9z" /><path d="M5.5 6.5V4a2.5 2.5 0 0 1 5 0v2.5" /></svg>Shops</button>
           <button type="button" data-view="leaderboard"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 13.5h13M2.5 13.5v-4h3.5v4M6 13.5v-7h4v7M10 13.5v-3h3.5v3" /></svg>Leaderboard</button>
           <button type="button" data-view="plan"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="2" /><path d="M2 7h12" /></svg>Plan</button>
+          <button type="button" data-view="account"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="2.5" /><path d="M3 13.5c.7-2.4 2.6-3.7 5-3.7s4.3 1.3 5 3.7" /></svg>Account</button>
           <!-- Shown only when the server says this account is the admin's. Hiding it is not the lock: see `services/admin.ts`. -->
           <button type="button" data-view="admin" id="adminNav" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13.5 4v4c0 3.2-2.3 5.6-5.5 6.5C4.8 13.6 2.5 11.2 2.5 8V4z" /><path d="m5.8 8.2 1.6 1.6 3-3.2" /></svg>Admin</button>
         </nav>
@@ -214,7 +227,7 @@
           -->
           <button class="linkish" type="button" id="errorReportsWhat" aria-haspopup="dialog">Error reports: Off</button>
           <p class="who" id="who"></p>
-          <button class="linkish" type="button" id="changePassword" aria-haspopup="dialog">Change password</button>
+          <button class="linkish" type="button" id="changePassword">Change password</button>
           <button class="linkish" type="button" id="signOut">Sign out</button>
         </div>
       </aside>
@@ -936,6 +949,126 @@
           <p class="foot" id="planFoot"></p>
         </section>
 
+        <!-- ---------------------------------------------------------------- Account -->
+        <!--
+          Who the account is and what it can do about itself: the username (once a week), the
+          password, and deleting it. The sidebar's "Change password" and the panel's link to
+          #password open this page at the Password card; #account at the top.
+        -->
+        <section class="view" data-view="account" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Account</h1>
+            </div>
+          </div>
+
+          <div class="acctGrid">
+            <section class="card" id="profileCard" aria-labelledby="profileTitle">
+              <header><h2 id="profileTitle">Profile</h2></header>
+              <div class="pad acctBody">
+                <p class="acctNudge" id="usernameNudge" hidden>Pick a username and you can sign in with it instead of your email, here and in the Margin panel.</p>
+                <form id="usernameForm" class="inlineForm" novalidate>
+                  <label class="field">
+                    <span id="usernameLabel">Username</span>
+                    <input type="text" id="usernameBox" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="30" aria-describedby="usernameHint" />
+                  </label>
+                  <button class="btn primary" type="submit" id="usernameGo">Save</button>
+                </form>
+                <p class="acctHint" id="usernameHint" aria-live="polite">3–30 letters, numbers, dots, dashes or underscores. You can change it once every 7 days.</p>
+                <p class="formError" id="usernameError" role="alert" hidden></p>
+                <div class="acctFact">
+                  <span>Email</span>
+                  <b id="accountEmail"></b>
+                </div>
+              </div>
+            </section>
+
+            <!--
+              A new password: moved here from a window over the overview, so there is one place to
+              do it. What it does to the other sessions is said before anything is sent: this one
+              stays, every other one, the panel's included, is signed out.
+            -->
+            <section class="card" id="passwordCard" aria-labelledby="passwordTitle">
+              <header><h2 id="passwordTitle">Password</h2></header>
+              <div class="pad acctBody">
+                <p class="acctText">You'll stay signed in here. Everywhere else, including the Margin panel, you'll need to sign in again with the new password.</p>
+                <form id="passwordForm" class="pwForm" novalidate>
+                  <!-- For a password manager, which files the new password under the account it belongs to. -->
+                  <input type="text" id="pwUser" name="username" autocomplete="username" hidden />
+                  <label class="field">
+                    <span>Current password</span>
+                    <span class="pw">
+                      <input type="password" id="pwCurrent" name="current" autocomplete="current-password" required />
+                      <button type="button" class="pwPeek" id="peekCurrent" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+                    </span>
+                  </label>
+                  <label class="field">
+                    <span>New password</span>
+                    <span class="pw">
+                      <input type="password" id="pwNext" name="next" autocomplete="new-password" required />
+                      <button type="button" class="pwPeek" id="peekNext" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+                    </span>
+                    <span class="pwBar" id="pwNextBar" aria-hidden="true"><i id="pwNextFill"></i></span>
+                    <em id="pwNextSay">At least 10 characters. Length is what makes a password hard to guess.</em>
+                  </label>
+                  <label class="field">
+                    <span>Confirm new password</span>
+                    <span class="pw">
+                      <input type="password" id="pwAgain" name="again" autocomplete="new-password" required />
+                      <button type="button" class="pwPeek" id="peekAgain" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+                    </span>
+                  </label>
+                  <p class="formError" id="pwError" role="alert" hidden></p>
+                  <div class="acctDo">
+                    <button class="btn primary" type="submit" id="pwGo">Change password</button>
+                  </div>
+                </form>
+                <!-- The emailed link, for somebody signed in who no longer knows the password they are asked for above. -->
+                <div class="acctForgot">
+                  <p>Forgot your current password?</p>
+                  <button class="btn ghost" type="button" id="resetMe">Email me a reset link</button>
+                  <p class="acctHint" id="resetMeSaid" role="status" hidden></p>
+                </div>
+              </div>
+            </section>
+
+            <!--
+              Deleting the account. Quiet until it is filled in: the button is the one red thing on
+              the page, and stays off until the password and the word are both there. What it does
+              and does not do is said first — above all that nothing on eBay changes.
+            -->
+            <section class="card acctDanger" id="deleteCard" aria-labelledby="deleteTitle">
+              <header><h2 id="deleteTitle">Delete account</h2></header>
+              <div class="pad acctBody">
+                <p class="acctText">Deleting your account removes everything Margin keeps for it: your shops and their eBay connections, the listings Margin watches, check history, costs you typed in, orders you marked, your layouts and your theme.</p>
+                <ul class="acctList">
+                  <li><b>Your listings stay live on eBay.</b> Margin stops managing them, so their prices and stock won't be updated anymore.</li>
+                  <li>The Margin panel in Chrome will be signed out.</li>
+                  <li>This can't be undone.</li>
+                </ul>
+                <form id="deleteForm" class="pwForm" novalidate>
+                  <input type="text" id="deleteUser" name="username" autocomplete="username" hidden />
+                  <label class="field">
+                    <span>Password</span>
+                    <span class="pw">
+                      <input type="password" id="deletePassword" name="password" autocomplete="current-password" required />
+                      <button type="button" class="pwPeek" id="peekDelete" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
+                    </span>
+                  </label>
+                  <label class="field">
+                    <span>Type DELETE to confirm</span>
+                    <input type="text" id="deleteWord" name="confirm" autocomplete="off" autocapitalize="characters" spellcheck="false" required />
+                  </label>
+                  <p class="formError" id="deleteError" role="alert" hidden></p>
+                  <div class="acctDo">
+                    <button class="btn danger" type="submit" id="deleteGo" disabled>Delete my account</button>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </section>
+
         <!-- ---------------------------------------------------------------- Admin -->
         <!--
           Every account on this backend, for the one person who runs it. Nothing here is fetched
@@ -990,54 +1123,6 @@
         <div class="askDo">
           <button class="btn ghost" type="button" id="errorReportsClear" hidden>Clear this list</button>
           <button class="btn primary" value="close">Done</button>
-        </div>
-      </form>
-    </dialog>
-    <!--
-      A new password, from the sidebar's "Change password" (and the panel's link to #password).
-
-      The server has taken one since accounts existed and nothing asked it. What it does to the
-      other sessions is said before anything is sent: this one stays, every other one, the panel's
-      included, is signed out. The fields are the sign-in card's own: hold to show, and the bar
-      that answers the length rule while it is typed.
-    -->
-    <dialog class="ask" id="passwordDialog" aria-labelledby="passwordTitle" aria-describedby="passwordText">
-      <form id="passwordForm" novalidate>
-        <h2 id="passwordTitle">Change your password</h2>
-        <div class="askText" id="passwordText">
-          <p>You'll stay signed in here. Everywhere else, including the Margin panel, you'll need to sign in again with the new password.</p>
-        </div>
-        <!-- For a password manager, which files the new password under the account it belongs to. -->
-        <input type="text" id="pwUser" name="username" autocomplete="username" hidden />
-        <div class="pwForm">
-          <label class="field">
-            <span>Current password</span>
-            <span class="pw">
-              <input type="password" id="pwCurrent" name="current" autocomplete="current-password" required />
-              <button type="button" class="pwPeek" id="peekCurrent" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
-            </span>
-          </label>
-          <label class="field">
-            <span>New password</span>
-            <span class="pw">
-              <input type="password" id="pwNext" name="next" autocomplete="new-password" required />
-              <button type="button" class="pwPeek" id="peekNext" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
-            </span>
-            <span class="pwBar" id="pwNextBar" aria-hidden="true"><i id="pwNextFill"></i></span>
-            <em id="pwNextSay">At least 10 characters. Length is what makes a password hard to guess.</em>
-          </label>
-          <label class="field">
-            <span>Confirm new password</span>
-            <span class="pw">
-              <input type="password" id="pwAgain" name="again" autocomplete="new-password" required />
-              <button type="button" class="pwPeek" id="peekAgain" aria-label="Hold to show the password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" /><circle cx="12" cy="12" r="2.6" /></svg></button>
-            </span>
-          </label>
-          <p class="formError" id="pwError" role="alert" hidden></p>
-        </div>
-        <div class="askDo">
-          <button class="btn ghost" type="button" id="pwCancel">Cancel</button>
-          <button class="btn primary" type="submit" id="pwGo">Change password</button>
         </div>
       </form>
     </dialog>
