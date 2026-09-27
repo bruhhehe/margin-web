@@ -8,10 +8,10 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-TBlO_LdJ.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-LpsF9HHM.js">
+    <script type="module" crossorigin src="../assets/dashboard-D0gFFXaV.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-DhHHYrA5.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-DYGsRYoZ.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BvpLFGaj.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-BGHhBYs-.css">
   </head>
   <body>
     <!--
@@ -182,6 +182,7 @@
           <button type="button" data-view="orders"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h11v8h-11z" /><path d="M2.5 5.5 4 2.5h8l1.5 3M6 8.5h4" /></svg>Orders<span class="dot" id="ordersDot" hidden></span></button>
           <button type="button" data-view="activity"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8.5h3l2-5 3 10 2-5h3" /></svg>Activity</button>
           <button type="button" data-view="shops"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5h11l-1 7h-9z" /><path d="M5.5 6.5V4a2.5 2.5 0 0 1 5 0v2.5" /></svg>Shops</button>
+          <button type="button" data-view="leaderboard"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 13.5h13M2.5 13.5v-4h3.5v4M6 13.5v-7h4v7M10 13.5v-3h3.5v3" /></svg>Leaderboard</button>
           <button type="button" data-view="plan"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="2" /><path d="M2 7h12" /></svg>Plan</button>
           <!-- Shown only when the server says this account is the admin's. Hiding it is not the lock: see `services/admin.ts`. -->
           <button type="button" data-view="admin" id="adminNav" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13.5 4v4c0 3.2-2.3 5.6-5.5 6.5C4.8 13.6 2.5 11.2 2.5 8V4z" /><path d="m5.8 8.2 1.6 1.6 3-3.2" /></svg>Admin</button>
@@ -247,6 +248,12 @@
                 <button type="button" id="rangeOpen" aria-expanded="false" aria-controls="rangeRow">Dates…</button>
               </div>
               <button class="btn ghost" type="button" id="refresh">Refresh</button>
+              <!--
+                Which cards the Overview shows, in what order, at what width: customize.ts. While it
+                is on, Done stands where Customize was, so the way out is where the way in was.
+              -->
+              <button class="btn ghost" type="button" id="customize" aria-controls="layoutBar board"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2" y="2" width="5" height="5" rx="1.2" /><rect x="9" y="2" width="5" height="5" rx="1.2" /><rect x="2" y="9" width="12" height="5" rx="1.2" /></svg><span class="lbl">Customize</span></button>
+              <button class="btn primary" type="button" id="customizeDone" hidden>Done</button>
             </div>
             <!--
               The two ends, revealed by the button above rather than standing there. `type="date"`
@@ -267,39 +274,72 @@
 
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
-            <dl class="cards" id="cards"></dl>
             <!--
-              Where every pound of sales went, as one bar.
+              Customizing the Overview: which cards show, in what order, at what width.
 
-              The four tiles are the arithmetic — sales less eBay's fee less the stock is the profit
-              — but read as four separate figures a seller still has to do the division to answer the
-              question they actually have, which is what share of a sale they keep.
+              Shown only while Customize is on. The cards themselves carry their own controls then
+              (see customize.ts, which builds them), so this holds only what is about the page as a
+              whole: how to move a card, the cards put away, and the way back to the page as designed.
+              Done is in the page head, where it stays in reach however far down the page you are.
             -->
-            <div class="split" id="flowSplit" role="img" hidden>
-              <!-- The same three shares twice, because they answer two different questions: the ring
-                   is "what fraction of a sale do I keep", read at a glance against a whole; the bar
-                   is the order the money leaves and where each share starts and stops. -->
-              <div class="splitPie" id="splitPie" aria-hidden="true"></div>
-              <div class="splitBars">
-                <div class="splitBar" id="splitBar" aria-hidden="true"></div>
-                <div class="splitKey" id="splitKey" aria-hidden="true"></div>
+            <div class="layoutBar" id="layoutBar" hidden>
+              <!-- A phone has no handle to drag by (see the stylesheet), so it is told about the arrows only. -->
+              <p class="layoutSaid"><span class="byDrag">Drag a card by its handle, or use the arrows, to move it.</span><span class="byArrow">Use a card's arrows to move it.</span> Hide the ones you don't need; they wait under Add a card.</p>
+              <div class="layoutActs">
+                <button class="btn ghost" type="button" id="layoutAdd" aria-expanded="false" aria-controls="layoutTray">Add a card<span class="count" id="layoutCount"></span></button>
+                <button class="btn ghost" type="button" id="layoutReset">Reset to default</button>
+              </div>
+              <div class="layoutTray" id="layoutTray" hidden>
+                <ul id="layoutHidden" aria-label="Hidden cards"></ul>
+                <p class="layoutNone" id="layoutNone">Every card is on the Overview.</p>
               </div>
             </div>
-            <p class="founded" id="founded"></p>
 
             <!--
-              The page in rows, each answering one question, in the order a seller asks them.
+              Every card on the page, in one row that wraps.
 
-              It was two columns: a chart and two small cards on the left, eight cards stacked on the
-              right — so the right ran a thousand pixels past the left, and "traffic", "buyers",
-              "categories" and "feedback" sat in one pile with nothing saying which of them mattered.
-              A row is a question. The first is "how is it going and what needs me"; the second
-              "where do buyers come from and where do they stop"; the third "which products"; the
-              last "is the shop in good shape". A card that has nothing to say drops out of its row
-              and the row closes over it, rather than leaving a hole in a column.
+              Each child is one card the seller can move, hide or resize, named by `data-card`; the
+              order here is the page as designed, and "Reset to default" puts it back (the list is
+              `CARDS` in layout.ts). customize.ts wraps each in a slot at start-up and moves the slots,
+              never what is inside them, so every id a `paint*` reaches for stays where it was.
+              A card's own `hidden`, which the figures set when there is nothing to show, is left
+              alone: the slot round it closes over it, as the rows used to.
             -->
-            <div class="deck lead">
-              <section class="card chartCard">
+            <div class="board" id="board">
+              <div class="totals" data-card="money">
+                <dl class="cards" id="cards"></dl>
+                <!--
+                  Where every pound of sales went, as one bar.
+
+                  The four tiles are the arithmetic — sales less eBay's fee less the stock is the profit
+                  — but read as four separate figures a seller still has to do the division to answer the
+                  question they actually have, which is what share of a sale they keep.
+                -->
+                <div class="split" id="flowSplit" role="img" hidden>
+                  <!-- The same three shares twice, because they answer two different questions: the ring
+                       is "what fraction of a sale do I keep", read at a glance against a whole; the bar
+                       is the order the money leaves and where each share starts and stops. -->
+                  <div class="splitPie" id="splitPie" aria-hidden="true"></div>
+                  <div class="splitBars">
+                    <div class="splitBar" id="splitBar" aria-hidden="true"></div>
+                    <div class="splitKey" id="splitKey" aria-hidden="true"></div>
+                  </div>
+                </div>
+                <p class="founded" id="founded"></p>
+              </div>
+
+              <!--
+                The page in rows, each answering one question, in the order a seller asks them.
+
+                It was two columns: a chart and two small cards on the left, eight cards stacked on the
+                right — so the right ran a thousand pixels past the left, and "traffic", "buyers",
+                "categories" and "feedback" sat in one pile with nothing saying which of them mattered.
+                A row is a question. The first is "how is it going and what needs me"; the second
+                "where do buyers come from and where do they stop"; the third "which products"; the
+                last "is the shop in good shape". A card that has nothing to say drops out of its row
+                and the row closes over it, rather than leaving a hole in a column.
+              -->
+              <section class="card chartCard" data-card="trend">
                 <header>
                   <h2 id="trendTitle">Sales and profit</h2>
                   <span class="meta" id="trendMeta"></span>
@@ -350,29 +390,27 @@
                 reading every card. Now it is one list, and the orders waiting to go out sit under
                 it, because they are the commonest thing on it.
               -->
-              <section class="card" id="attentionCard">
+              <section class="card" id="attentionCard" data-card="attention">
                 <header><h2>Needs attention</h2><span class="meta" id="attentionMeta"></span></header>
                 <div id="attentionList"></div>
                 <div id="dispatchList"></div>
               </section>
-            </div>
 
-            <!--
-              The funnel: seen, bought, came back. Traffic leads because it is the one figure this
-              tool cannot work out for itself — and the only one that separates "nothing sells"
-              from "nothing is seen".
-            -->
-            <p class="deckTitle">Where buyers come from</p>
-            <!--
-              Traffic, as one card rather than two.
-              The funnel's totals and the same counts day by day are one question - how many people
-              found the shop, and which way that is going - and they were split across a narrow card
-              of figures and a wide card of chart, two sections apart, each repeating the other's
-              numbers. The totals lead, the drawing is underneath them, and the period control at the
-              top of the page moves both.
-            -->
-            <div class="deck">
-              <section class="card chartCard" id="trafficCard" hidden>
+              <!--
+                The funnel: seen, bought, came back. Traffic leads because it is the one figure this
+                tool cannot work out for itself — and the only one that separates "nothing sells"
+                from "nothing is seen".
+              -->
+              <p class="deckTitle" data-card="buyersHeading">Where buyers come from</p>
+              <!--
+                Traffic, as one card rather than two.
+                The funnel's totals and the same counts day by day are one question - how many people
+                found the shop, and which way that is going - and they were split across a narrow card
+                of figures and a wide card of chart, two sections apart, each repeating the other's
+                numbers. The totals lead, the drawing is underneath them, and the period control at the
+                top of the page moves both.
+              -->
+              <section class="card chartCard" id="trafficCard" data-card="traffic" hidden>
                 <header>
                   <h2>Traffic</h2>
                   <span class="meta" id="trafficMeta"></span>
@@ -399,87 +437,81 @@
                 </div>
                 <p class="cardFoot" id="trafficSaid" hidden></p>
               </section>
-            </div>
 
-            <div class="deck two">
-              <section class="card" id="ordersCard">
+              <section class="card" id="ordersCard" data-card="orders">
                 <header><h2>Orders</h2><span class="meta" id="postingMeta"></span></header>
                 <div class="insight" id="postingHealth"></div>
                 <p class="cardFoot" id="postingSaid"></p>
               </section>
 
-              <section class="card" id="buyersCard" hidden>
+              <section class="card" id="buyersCard" data-card="buyers" hidden>
                 <header><h2>Buyers</h2><span class="meta" id="buyersMeta"></span></header>
                 <div class="insight" id="buyersHealth"></div>
                 <p class="cardFoot" id="buyersSaid"></p>
               </section>
-            </div>
 
-            <!--
-              Which products. The table has the whole width, because its one job is to say which
-              product made the money and a narrower one cut every name at thirty characters. Under
-              it, what is different about them: what moved against the period before, what they
-              sold as, and what came back.
-            -->
-            <p class="deckTitle">Products</p>
-            <section class="card overviewProducts">
-              <header>
-                <h2 id="productsTitle">Product sales</h2>
-                <span class="meta" id="productsMeta"></span>
-                <!-- Best by profit is the right default; which "best" means is the reader's to say. -->
-                <label class="sr-only" for="productSort">Sort products by</label>
-                <select id="productSort" class="sortPick">
-                  <option value="profit">Most profit</option>
-                  <option value="margin">Best margin</option>
-                  <option value="units">Most sold</option>
-                  <option value="sales">Most sales</option>
-                </select>
-                <!-- The same rows the table shows, in the order it shows them, for the spreadsheet. -->
-                <button type="button" id="productsCsv" class="btn ghost">Download CSV</button>
-              </header>
-              <div class="pad">
-                <div class="scroller">
-                  <table id="productTable" aria-labelledby="productsTitle">
-                    <thead>
-                      <tr>
-                        <!-- Every heading sorts by its own column; the select beside the table stays in step. -->
-                        <th scope="col"><button type="button" class="sortBy" data-key="name">Product<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="units">Sold<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="price">eBay price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="cost">Item cost<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="each">Profit each<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n"><button type="button" class="sortBy" data-key="margin" title="Profit as a share of item cost">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                        <th scope="col" class="n" aria-sort="descending"><button type="button" class="sortBy" data-key="profit">Profit<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
-                      </tr>
-                    </thead>
-                    <tbody id="productsBody"></tbody>
-                  </table>
+              <!--
+                Which products. The table has the whole width, because its one job is to say which
+                product made the money and a narrower one cut every name at thirty characters. Under
+                it, what is different about them: what moved against the period before, what they
+                sold as, and what came back.
+              -->
+              <p class="deckTitle" data-card="productsHeading">Products</p>
+              <section class="card overviewProducts" data-card="products">
+                <header>
+                  <h2 id="productsTitle">Product sales</h2>
+                  <span class="meta" id="productsMeta"></span>
+                  <!-- Best by profit is the right default; which "best" means is the reader's to say. -->
+                  <label class="sr-only" for="productSort">Sort products by</label>
+                  <select id="productSort" class="sortPick">
+                    <option value="profit">Most profit</option>
+                    <option value="margin">Best margin</option>
+                    <option value="units">Most sold</option>
+                    <option value="sales">Most sales</option>
+                  </select>
+                  <!-- The same rows the table shows, in the order it shows them, for the spreadsheet. -->
+                  <button type="button" id="productsCsv" class="btn ghost">Download CSV</button>
+                </header>
+                <div class="pad">
+                  <div class="scroller">
+                    <table id="productTable" aria-labelledby="productsTitle">
+                      <thead>
+                        <tr>
+                          <!-- Every heading sorts by its own column; the select beside the table stays in step. -->
+                          <th scope="col"><button type="button" class="sortBy" data-key="name">Product<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                          <th scope="col" class="n"><button type="button" class="sortBy" data-key="units">Sold<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                          <th scope="col" class="n"><button type="button" class="sortBy" data-key="price">eBay price<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                          <th scope="col" class="n"><button type="button" class="sortBy" data-key="cost">Item cost<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                          <th scope="col" class="n"><button type="button" class="sortBy" data-key="each">Profit each<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                          <th scope="col" class="n"><button type="button" class="sortBy" data-key="margin" title="Profit as a share of item cost">Margin<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                          <th scope="col" class="n" aria-sort="descending"><button type="button" class="sortBy" data-key="profit">Profit<svg class="arrow" viewBox="0 0 8 8" aria-hidden="true"><path d="M1 2.5 4 6l3-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></th>
+                        </tr>
+                      </thead>
+                      <tbody id="productsBody"></tbody>
+                    </table>
+                  </div>
+                  <p class="empty" id="productsEmpty" hidden>No sales in this period yet.</p>
                 </div>
-                <p class="empty" id="productsEmpty" hidden>No sales in this period yet.</p>
-              </div>
-            </section>
+              </section>
 
-            <div class="deck three">
-              <section class="card" id="moversCard" hidden>
+              <section class="card" id="moversCard" data-card="movers" hidden>
                 <header><h2>What changed</h2><span class="meta" id="moversMeta"></span></header>
                 <div id="moversList"></div>
               </section>
 
-              <section class="card" id="categoriesCard" hidden>
+              <section class="card" id="categoriesCard" data-card="categories" hidden>
                 <header><h2>Sales by category</h2><span class="meta" id="categoriesMeta"></span></header>
                 <div id="categoriesList"></div>
               </section>
 
-              <section class="card" id="returnsCard" hidden>
+              <section class="card" id="returnsCard" data-card="returns" hidden>
                 <header><h2>Returns</h2><span class="meta" id="returnsMeta"></span></header>
                 <div class="insight" id="returnsHealth"></div>
               </section>
-            </div>
 
-            <!-- The shop's own state: what is listed, what the checks did to it, and what buyers say of it. -->
-            <p class="deckTitle">Shop health</p>
-            <div class="deck three">
-              <section class="card">
+              <!-- The shop's own state: what is listed, what the checks did to it, and what buyers say of it. -->
+              <p class="deckTitle" data-card="healthHeading">Shop health</p>
+              <section class="card" data-card="listings">
                 <header><h2>Listings</h2></header>
                 <div class="insight" id="shopHealth"></div>
                 <!-- What eBay will let this account list this month. A new seller is capped and
@@ -490,7 +522,7 @@
                 </div>
               </section>
 
-              <section class="card">
+              <section class="card" data-card="checks">
                 <header><h2>Stock and price checks</h2><span class="meta">last 24 hours</span></header>
                 <div class="insight" id="checkHealth"></div>
                 <!-- When this browser was last awake. The checking runs in the seller's own Chrome,
@@ -505,7 +537,7 @@
                 is the decision a reseller actually makes each week. Forty-one listings and four
                 that sold is a listing problem; four and four is a supply problem.
               -->
-              <section class="card" id="sellThroughCard" hidden>
+              <section class="card" id="sellThroughCard" data-card="sellThrough" hidden>
                 <header><h2>Listings that sold</h2><span class="meta" id="sellThroughMeta"></span></header>
                 <div class="insight" id="sellThroughHealth"></div>
               </section>
@@ -517,7 +549,7 @@
                 changed. Deliberately no "protected about £X": what a listing hidden before an order
                 arrived saved is a guess about orders that never happened.
               -->
-              <section class="card" id="didCard" hidden>
+              <section class="card" id="didCard" data-card="did" hidden>
                 <header><h2>What Margin did</h2><span class="meta">this period</span></header>
                 <div class="insight" id="didHealth"></div>
               </section>
@@ -533,17 +565,17 @@
                 Small, and it answers two things no money figure does: when to be at the desk, and
                 when a promoted listing would earn its fee.
               -->
-              <section class="card" id="whenCard" hidden>
+              <section class="card" id="whenCard" data-card="when" hidden>
                 <header><h2>When you sell</h2><span class="meta" id="whenMeta"></span></header>
                 <div class="pad"><div class="whenGrid" id="whenGrid"></div></div>
               </section>
 
-              <section class="card" id="shelfCard" hidden>
+              <section class="card" id="shelfCard" data-card="shelf" hidden>
                 <header><h2>Listed now</h2><span class="meta" id="shelfMeta"></span></header>
                 <div class="insight" id="shelfHealth"></div>
               </section>
 
-              <section class="card" id="reviewsCard" hidden>
+              <section class="card" id="reviewsCard" data-card="reviews" hidden>
                 <header><h2>Feedback</h2><span class="meta" id="reviewsMeta"></span></header>
                 <div class="insight" id="reviewsHealth"></div>
                 <div id="reviewsList"></div>
@@ -849,6 +881,23 @@
               <p class="empty" id="shopHint"></p>
             </div>
           </section>
+        </section>
+
+        <!-- ---------------------------------------------------------------- Leaderboard -->
+        <!--
+          The top Margin stores by what they sold on eBay, for the paid plans, and the card where a
+          shop joins or leaves. Opt-in a shop at a time: nothing about a shop is on it until its
+          seller joins here. Drawn by views/Leaderboard.tsx into #leaderboardBody.
+        -->
+        <section class="view" data-view="leaderboard" hidden>
+          <div class="pagehead">
+            <div class="titles">
+              <h1>Leaderboard</h1>
+              <p class="sub">Top Margin stores by items sold on eBay in the last 30 days.</p>
+            </div>
+          </div>
+          <div class="loading" id="leaderboardLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading the leaderboard…</div>
+          <div class="lbBody" id="leaderboardBody"></div>
         </section>
 
         <!-- ---------------------------------------------------------------- Plan -->
