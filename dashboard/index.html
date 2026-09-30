@@ -8,11 +8,11 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-CNhc9B4n.js"></script>
-    <link rel="modulepreload" crossorigin href="../assets/keys-BXqfF6zA.js">
+    <script type="module" crossorigin src="../assets/dashboard-DiftdkBU.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/keys-CrjuZVQ3.js">
     <link rel="modulepreload" crossorigin href="../assets/index-DxsYPgHR.js">
-    <link rel="stylesheet" crossorigin href="../assets/keys-Cfaz3tHe.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-BzTdb_Ts.css">
+    <link rel="stylesheet" crossorigin href="../assets/keys-BOXvPxFu.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-Cmfy3vam.css">
   </head>
   <body>
     <!--
@@ -916,6 +916,8 @@
               </form>
               <p class="formError" id="shopError" role="alert" hidden></p>
               <p class="empty" id="shopHint"></p>
+              <!-- Where the plan has no room for another shop, the way to one that has, beside the words that say so. -->
+              <button class="linkish" type="button" id="shopPlans" hidden>See plans</button>
             </div>
           </section>
         </section>
@@ -947,6 +949,12 @@
           </div>
 
           <div class="loading" id="planLoading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Loading your plan…</div>
+          <!--
+            Back from Stripe's checkout, until the plan has changed: the plan moves when Stripe's
+            webhook reaches the server, often a few seconds after the payment, and a page reading
+            "You are on Free" under a toast that has already gone read as a payment that was lost.
+          -->
+          <div class="prompt planConfirm" id="planConfirm" role="status" hidden><span class="spinner" id="planConfirmSpin" aria-hidden="true"></span><span id="planConfirmSaid"></span></div>
           <div class="plans" id="planList"></div>
           <p class="formError" id="planError" role="alert" hidden></p>
           <p class="foot" id="planFoot"></p>

@@ -1,0 +1,7 @@
+# Margin's website. Everything here may be crawled; the dashboard answers with
+# `X-Robots-Tag: noindex` (vercel.json), so it is read and left out of results
+# rather than blocked, which would leave its address listable with no content.
+User-agent: *
+Allow: /
+
+Sitemap: https://margin-web-green.vercel.app/sitemap.xml

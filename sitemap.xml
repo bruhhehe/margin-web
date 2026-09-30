@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The public pages: the landing page and the two legal pages. The dashboard is a signed-in app and is not listed. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://margin-web-green.vercel.app/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://margin-web-green.vercel.app/privacy/</loc>
+    <lastmod>2026-09-29</lastmod>
+  </url>
+  <url>
+    <loc>https://margin-web-green.vercel.app/terms/</loc>
+    <lastmod>2026-09-29</lastmod>
+  </url>
+</urlset>
