@@ -31,12 +31,12 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black background." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#715aff" />
-    <script type="module" crossorigin src="./assets/index-KoQHZV3M.js"></script>
+    <script type="module" crossorigin src="./assets/index-CrnpvqZ0.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/keys-CrjuZVQ3.js">
     <link rel="modulepreload" crossorigin href="./assets/index-BWepsi8k.js">
     <link rel="stylesheet" crossorigin href="./assets/keys-BOXvPxFu.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-DaLKzB5x.css">
-    <link rel="stylesheet" crossorigin href="./assets/landing-uBSsHlc6.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-oVlSmTnG.css">
+    <link rel="stylesheet" crossorigin href="./assets/landing-DYl2mYEe.css">
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -671,7 +671,7 @@
                 </tr>
                 <tr>
                   <th scope="row">Price</th>
-                  <td class="cmp-us"><b>£0, £19 or £49 a month.</b> No per-order fees</td>
+                  <td class="cmp-us"><b id="cmpPrice">£0, £19 or £49 a month.</b> No per-order fees</td>
                   <td>Plans by product count; ordering add-on $9.90 a month, plus credits at $0.20&ndash;$0.50 each</td>
                   <td>$14.99&ndash;$59.99 a month</td>
                   <td>$29&ndash;$249 a month</td>
@@ -756,22 +756,6 @@
               </ul>
               <a class="btn ghost" href="./dashboard/?plan=free">Start free</a>
             </article>
-            <article class="card plan">
-              <header><h3>Pro</h3></header>
-              <p class="plan-price"><b class="num">£19</b><span>a month</span></p>
-              <p class="plan-billed">Billed monthly. Cancel any time.</p>
-              <p class="plan-who">You are running a shop, not testing one.</p>
-              <ul class="plan-says">
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Up to 250 live listings</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>One eBay shop</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Bulk: list a page of search results, or a CSV, in one go</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Your price follows the product page, with a minimum profit</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Back on sale by itself when the product returns</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Product pages checked every hour</span></li>
-                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>A place on the Margin leaderboard, if you want one</span></li>
-              </ul>
-              <a class="btn ghost" href="./dashboard/?plan=pro">Choose Pro</a>
-            </article>
             <article class="card plan plan-lead">
               <header><h3>Max</h3><span class="chip brand">Best value</span></header>
               <p class="plan-price"><b class="num">£49</b><span>a month</span></p>
@@ -789,8 +773,25 @@
               <p class="plan-caveat">Ordering on AliExpress is new and hasn&rsquo;t yet been tried on a live AliExpress order.</p>
               <a class="btn primary" href="./dashboard/?plan=max">Choose Max</a>
             </article>
+            <article class="card plan">
+              <header><h3>Pro</h3></header>
+              <p class="plan-price"><b class="num">£19</b><span>a month</span></p>
+              <p class="plan-billed">Billed monthly. Cancel any time.</p>
+              <p class="plan-who">You are running a shop, not testing one.</p>
+              <ul class="plan-says">
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Up to 250 live listings</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>One eBay shop</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Bulk: list a page of search results, or a CSV, in one go</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Your price follows the product page, with a minimum profit</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Back on sale by itself when the product returns</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Product pages checked every hour</span></li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>A place on the Margin leaderboard, if you want one</span></li>
+              </ul>
+              <a class="btn ghost" href="./dashboard/?plan=pro">Choose Pro</a>
+            </article>
           </div>
 
+          <p class="plans-fine" id="planCurrency" hidden></p>
           <p class="plans-fine">
             Prices are in pounds sterling, with VAT added at checkout where it applies. Cancel any time from your
             dashboard. A plan never ends a listing: your listings stay on eBay whatever plan you&rsquo;re on. The
