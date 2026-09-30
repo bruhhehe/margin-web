@@ -31,10 +31,11 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black background." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#715aff" />
-    <script type="module" crossorigin src="./assets/index-DIy3QLDI.js"></script>
+    <script type="module" crossorigin src="./assets/index-DdhKlCy8.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/keys-CrjuZVQ3.js">
     <link rel="modulepreload" crossorigin href="./assets/index-BWepsi8k.js">
     <link rel="stylesheet" crossorigin href="./assets/keys-BOXvPxFu.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DCYX609F.css">
     <link rel="stylesheet" crossorigin href="./assets/landing-uBSsHlc6.css">
   </head>
   <body>
@@ -47,9 +48,9 @@
           <b>Margin</b>
         </a>
         <nav class="top-nav" aria-label="Sections">
-          <a href="#how">How it works</a>
-          <a href="#features">Features</a>
+          <a href="#listing">How it works</a>
           <a href="#orders">Orders</a>
+          <a href="#compare">Compare</a>
           <a href="#plans">Plans</a>
         </nav>
         <!--
@@ -68,63 +69,247 @@
     </header>
 
     <main id="main" tabindex="-1">
-      <section class="hero" id="top">
-        <div class="wrap hero-in">
-          <div class="hero-say">
-            <!--
-              Short headline, and the features under it.
+      <svg class="vh" aria-hidden="true" focusable="false">
+        <symbol id="m-box" viewBox="0 0 24 24"><path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" /><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" /></symbol>
+        <symbol id="m-tick" viewBox="0 0 16 16"><path d="M3.5 8.4 6.6 11.4 12.5 4.8" /></symbol>
+        <symbol id="m-next" viewBox="0 0 16 16"><path d="M4 8h8M8.5 4.5 12 8l-3.5 3.5" /></symbol>
+      </svg>
+      <!--
+        The opening: a shop's listings being kept in line with the store.
 
-              The headline has been a claim, a promise, and then a full sentence of description. This
-              is the shortest true thing: what it does and where. The four lines under it are what
-              the product is, in the order a seller meets them — and they say "one place" by being
-              one list rather than by claiming it.
-            -->
-            <h1 class="hero-head"><span>Dropshipping on eBay,</span> <b>all in one place.</b></h1>
+        The board is the product's own My listings, set wide: the same columns, the same outcome
+        chips. Its rows are made up and say so; the prices in them are worked out by core's pricing
+        code as the page loads (index.ts, `runBoard`), so the picture cannot quote a price the panel
+        would not. It updates one row at a time, like a departure board: columns never move, only
+        cells change. Pause stops it, it stops itself off screen, and anybody who asked for less
+        motion gets the board standing still.
+      -->
+      <section class="hb" id="top">
+        <div class="wrap">
+          <div class="hb-say">
+            <h1 class="hb-head">Dropshipping on eBay, all in one place.</h1>
+            <div class="hb-side">
+              <p class="hb-lead">
+                The all-in-one Chrome extension and dashboard for eBay dropshippers. List in seconds, price by margin, and
+                let Margin update price and stock when the store changes them.
+              </p>
+              <div class="hero-do">
+                <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                  Add to Chrome</a>
+                <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
+              </div>
+              <p class="hero-fine">No credit card needed. No analytics, no trackers, and no data sold.</p>
+            </div>
+          </div>
+
+          <figure class="board" id="board" data-board>
+            <div class="board-bar">
+              <span class="tile" aria-hidden="true"></span>
+              <b>My listings</b>
+              <span class="chip neutral">eBay UK</span>
+              <span class="board-cadence"><i aria-hidden="true"></i>Checks every 15 minutes</span>
+              <button class="btn ghost board-pause" type="button" aria-pressed="false" hidden>Pause</button>
+            </div>
+            <div class="board-scroll">
+              <table class="board-table">
+                <caption class="vh">An example shop on Margin: seven listings, what each costs at the store, its eBay price and profit, its stock, when it arrives, and what the last check did.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="c-name">Listing</th>
+                    <th scope="col" class="c-fig c-cost">Item cost</th>
+                    <th scope="col" class="c-fig c-list">List for</th>
+                    <th scope="col" class="c-fig c-profit">Profit</th>
+                    <th scope="col" class="c-fig c-stock">Stock</th>
+                    <th scope="col" class="c-arrives">Arrives</th>
+                    <th scope="col" class="c-result">Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-row="faucet">
+                    <th scope="row"><span class="b-name">Brushed steel kitchen faucet</span><span class="b-src">amazon.co.uk</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£18.40</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£30.18</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£7.36</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">6</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">2 days</span></td>
+                    <td data-col="result"><span class="chip neutral">No change</span></td>
+                  </tr>
+                  <tr data-row="lamp">
+                    <th scope="row"><span class="b-name">Dimmable LED desk lamp</span><span class="b-src">amazon.co.uk</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£12.40</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£20.49</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£4.96</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">3</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">3 days</span></td>
+                    <td data-col="result"><span class="chip neutral">No change</span></td>
+                  </tr>
+                  <tr data-row="bottle">
+                    <th scope="row"><span class="b-name">Insulated water bottle, 1 L</span><span class="b-src">aliexpress.com</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£8.10</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£13.54</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£3.23</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">12</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">6 days</span></td>
+                    <td data-col="result"><span class="chip neutral">No change</span></td>
+                  </tr>
+                  <tr data-row="boards">
+                    <th scope="row"><span class="b-name">Bamboo cutting boards, set of 3</span><span class="b-src">amazon.co.uk</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£14.99</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£24.68</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£6.01</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">8</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">2 days</span></td>
+                    <td data-col="result"><span class="chip neutral">No change</span></td>
+                  </tr>
+                  <tr data-row="mats">
+                    <th scope="row"><span class="b-name">Silicone baking mats, set of 3</span><span class="b-src">aliexpress.com</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£6.20</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£10.48</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£2.49</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">0</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">7 days</span></td>
+                    <td data-col="result"><span class="chip warn">Set to 0</span></td>
+                  </tr>
+                  <tr data-row="skillet">
+                    <th scope="row"><span class="b-name">Cast iron skillet, 26 cm</span><span class="b-src">amazon.co.uk</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£21.50</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£35.19</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£8.60</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">4</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">1 day</span></td>
+                    <td data-col="result"><span class="chip neutral">No change</span></td>
+                  </tr>
+                  <tr data-row="knife">
+                    <th scope="row"><span class="b-name">Magnetic knife strip</span><span class="b-src">amazon.co.uk</span></th>
+                    <td class="c-fig c-cost" data-col="cost"><span class="flap num">£11.60</span></td>
+                    <td class="c-fig" data-col="list"><span class="flap num">£19.20</span></td>
+                    <td class="c-fig c-profit" data-col="profit"><span class="flap num">£4.64</span></td>
+                    <td class="c-fig c-stock" data-col="stock"><span class="flap num">5</span></td>
+                    <td class="c-arrives" data-col="arrives"><span class="flap">&mdash;</span></td>
+                    <td data-col="result"><span class="chip info">Asks you</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption class="board-say">
+              <p class="board-now" data-board-now><b>Magnetic knife strip:</b> Amazon doesn&rsquo;t sell it anymore. Margin asks you what to do.</p>
+              <p class="board-fine">An example shop. The products are made up, but every price is worked out by Margin.</p>
+            </figcaption>
+          </figure>
+
+          <p class="board-note">
+            Checked every 15 minutes on Max, every hour on Pro, and once a day on Free. Import from 22 Amazon sites and
+            AliExpress, and list on 14 eBay sites.
+          </p>
+        </div>
+      </section>
+
+      <!--
+        Each section below pulls one row out of the board and opens one of its columns.
+
+        The strip at the top of each is that row, with the column the section is about outlined and,
+        the first time it is scrolled to, changing the way the board's cells do. It is a picture
+        (aria-hidden): the heading under it says the same thing in words.
+      -->
+      <section class="band cs" id="listing" aria-labelledby="listing-head">
+        <div class="wrap">
+          <div class="strip" aria-hidden="true" data-strip>
+            <div class="strip-h">
+              <span data-c="name" class="is-hl">Listing</span>
+              <span data-c="cost">Item cost</span>
+              <span data-c="list">List for</span>
+              <span data-c="profit">Profit</span>
+              <span data-c="stock">Stock</span>
+              <span data-c="arrives">Arrives</span>
+              <span data-c="result">Result</span>
+            </div>
+            <div class="strip-r">
+              <span data-c="name" class="s-name is-hl" data-from="amazon.co.uk/dp/B0C7…"><span class="flap">Brushed steel kitchen faucet</span></span>
+              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
+              <span data-c="list" class="s-fig num">£30.18</span>
+              <span data-c="profit" class="s-fig c-profit num">£7.36</span>
+              <span data-c="stock" class="s-fig c-stock num">6</span>
+              <span data-c="arrives" class="c-arrives">2 days</span>
+              <span data-c="result" class="s-res"><span class="chip ok">Published</span></span>
+            </div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-say">
+              <h2 id="listing-head">List in seconds from any supported store.</h2>
+              <p>
+                Open the extension on any product page. Margin imports the title, images, price, variations and specifications,
+                and drafts the listing for you. Review it, fix anything flagged, and publish.
+              </p>
+              <ul class="cs-points">
+                <li><b>Bulk listing.</b> List a whole search, best-seller list or spreadsheet in one batch. Products you already sell on eBay are skipped.</li>
+                <li><b>Product finder.</b> Find ranks Amazon&rsquo;s best sellers, trending products and new releases by the profit a sale would leave you.</li>
+                <li><b>Flagged before you publish.</b> Brands that enforce their trademarks, banned items, and words like &ldquo;replica&rdquo; in the title.</li>
+              </ul>
+              <p class="cs-plan">Bulk is on Pro and Max. Find is on Max.</p>
+            </div>
+
+            <div class="proof" aria-hidden="true">
+              <div class="pf pf-draft">
+                <div>
+                  <span class="pf-label"><span>Title</span><span class="num">75/80</span></span>
+                  <span class="pf-field pf-one">Brushed Steel Kitchen Faucet Single Handle Pull Down Sprayer Sink Mixer Tap</span>
+                </div>
+                <ul class="pf-filled">
+                  <li><svg><use href="#m-tick" /></svg>Category</li>
+                  <li><svg><use href="#m-tick" /></svg><span class="num">12</span>&nbsp;item specifics</li>
+                  <li><svg><use href="#m-tick" /></svg><span class="num">7</span>&nbsp;photos</li>
+                  <li><svg><use href="#m-tick" /></svg><span class="num">3</span>&nbsp;variations</li>
+                  <li><svg><use href="#m-tick" /></svg>Description</li>
+                  <li><svg><use href="#m-tick" /></svg>Shipping</li>
+                </ul>
+                <div class="pf-do">
+                  <span class="pf-note">Nothing goes to eBay until you press</span>
+                  <span class="btn primary pf-btn">Review and publish</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!--
-          The container-scroll frame.
+      <section class="cs cs-flip" id="pricing" aria-labelledby="pricing-head">
+        <div class="wrap">
+          <div class="strip" aria-hidden="true" data-strip>
+            <div class="strip-h">
+              <span data-c="name">Listing</span>
+              <span data-c="cost">Item cost</span>
+              <span data-c="list" class="is-hl">List for</span>
+              <span data-c="profit">Profit</span>
+              <span data-c="stock">Stock</span>
+              <span data-c="arrives">Arrives</span>
+              <span data-c="result">Result</span>
+            </div>
+            <div class="strip-r">
+              <span data-c="name" class="s-name"><span>Brushed steel kitchen faucet</span></span>
+              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
+              <span data-c="list" class="s-fig num is-hl" data-from="£0.00"><span class="flap">£30.18</span></span>
+              <span data-c="profit" class="s-fig c-profit num">£7.36</span>
+              <span data-c="stock" class="s-fig c-stock num">6</span>
+              <span data-c="arrives" class="c-arrives">2 days</span>
+              <span data-c="result" class="s-res"><span class="chip ok">Published</span></span>
+            </div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-say">
+              <h2 id="pricing-head">Price by margin, with the fees built in.</h2>
+              <p>
+                Choose a percentage or a fixed amount. Every price includes eBay&rsquo;s fees for your site and category, so you see
+                your profit before you publish.
+              </p>
+              <ul class="cs-points">
+                <li><b>Change any number.</b> Type a new price, fee, profit or margin, and the rest update to match.</li>
+                <li><b>Never below your minimum profit</b> when the store changes its price.</li>
+                <li><b>No surprise listing fees.</b> Margin asks eBay what a listing will cost before it goes live, and stops you if there&rsquo;s a fee.</li>
+              </ul>
+            </div>
 
-          The geometry is the Aceternity component's: 1000px of perspective on the wrapper, the card
-          starting at rotateX(20deg) and scale(1.05) and arriving flat at 1, the heading lifting 100px
-          over the same range, a 64rem card with a 30px radius and the six-layer shadow. What is
-          inside it is ours — the panel at its real 392px, docked beside a product page, because that
-          is what the extension is and a bare panel floating on a page never said so.
-
-          It runs on a scroll-driven CSS animation, so the main thread does none of it. Browsers
-          without one get the card flat, which is the honest still of the same picture; a small
-          listener drives it there instead when motion is welcome. Anybody who asked for less motion
-          gets the flat card and no listener at all.
-        -->
-        <div class="stage" id="stage">
-          <div class="stage-in">
-            <div class="stage-card">
-              <div class="stage-screen">
-                <div class="stage-bar" aria-hidden="true">
-                  <span class="stage-dots"><i></i><i></i><i></i></span>
-                  <span class="stage-url">a product page you already have open</span>
-                </div>
-                <div class="stage-split">
-                  <div class="stage-page" aria-hidden="true">
-                    <div class="pg-shot">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" />
-                        <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
-                      </svg>
-                    </div>
-                    <div class="pg-side">
-                      <span class="pg-line w90"></span>
-                      <span class="pg-line w70"></span>
-                      <span class="pg-price">£18.40</span>
-                      <span class="pg-line w40"></span>
-                      <span class="pg-buy"></span>
-                      <span class="pg-line w80"></span>
-                      <span class="pg-line w60"></span>
-                      <span class="pg-line w85"></span>
-                    </div>
-                  </div>
-      <div class="panel" role="img" aria-label="The Margin side panel, showing a listing for £30.18 with an item cost of £18.40, £4.42 in fees and costs, and £7.36 profit.">
+            <div class="proof proof-panel">
+              <div class="panel" role="img" aria-label="The Margin side panel, showing a listing for £30.18 with an item cost of £18.40, £4.42 in fees and costs, and £7.36 profit.">
                     <div class="panel-chrome">
                       <span class="tile" aria-hidden="true"></span>
                       <b>Margin</b>
@@ -173,326 +358,350 @@
                       </div>
                     </div>
                   </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band cs" id="stock" aria-labelledby="stock-head">
+        <div class="wrap">
+          <div class="strip" aria-hidden="true" data-strip>
+            <div class="strip-h">
+              <span data-c="name">Listing</span>
+              <span data-c="cost">Item cost</span>
+              <span data-c="list">List for</span>
+              <span data-c="profit">Profit</span>
+              <span data-c="stock" class="is-hl">Stock</span>
+              <span data-c="arrives">Arrives</span>
+              <span data-c="result">Result</span>
+            </div>
+            <div class="strip-r">
+              <span data-c="name" class="s-name"><span>Dimmable LED desk lamp</span></span>
+              <span data-c="cost" class="s-fig c-cost num">£12.40</span>
+              <span data-c="list" class="s-fig num">£20.49</span>
+              <span data-c="profit" class="s-fig c-profit num">£4.96</span>
+              <span data-c="stock" class="s-fig c-stock num is-hl" data-from="3"><span class="flap">0</span></span>
+              <span data-c="arrives" class="c-arrives">3 days</span>
+              <span data-c="result" class="s-res"><span class="chip warn">Set to 0</span></span>
+            </div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-say">
+              <span class="chip brand exclusive"><svg class="spark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path class="spark-big" d="M7 3c.35 3.6 2.4 5.65 6 6-3.6.35-5.65 2.4-6 6-.35-3.6-2.4-5.65-6-6 3.6-.35 5.65-2.4 6-6Z" /><path class="spark-small" d="M13 .5c.15 1.5.9 2.35 2.5 2.5-1.6.15-2.35 1-2.5 2.5-.15-1.5-.9-2.35-2.5-2.5 1.6-.15 2.35-1 2.5-2.5Z" /></svg>Exclusive</span>
+              <h2 id="stock-head">Stock and price tracking.</h2>
+              <p>
+                Margin checks the store for price, stock, and delivery time changes and updates your listings to match. When the
+                store sells out, the listing is set to out of stock instead of ended, and goes back on sale when the store restocks.
+              </p>
+              <ul class="cs-points">
+                <li><b>Your listings stay live.</b> Margin never ends a listing, so you keep its watchers and sales history.</li>
+                <li><b>Checked when Chrome is closed.</b> Margin&rsquo;s server checks your AliExpress products every hour. Turn on Help other sellers, and other Margin sellers check your Amazon products too.</li>
+                <li><b>Out of stock is on every plan.</b> Back on sale by itself is on Pro and Max.</li>
+              </ul>
+            </div>
+
+            <div class="proof proof-flush" aria-hidden="true">
+              <div class="pf pf-log">
+                <div class="pf-log-head">
+                  <span class="pf-thumb"><svg><use href="#m-box" /></svg></span>
+                  <span class="pf-name"><b>Dimmable LED desk lamp</b><span>amazon.co.uk &middot; Recent changes</span></span>
                 </div>
+                <ol class="pf-log-rows">
+                  <li>
+                    <span class="pf-when num">Tue 14:30</span>
+                    <span class="pf-ev"><b>Sold out at the store</b><span>Out of Stock Control is on</span></span>
+                    <span class="chip warn">Set to 0</span>
+                  </li>
+                  <li>
+                    <span class="pf-when num">Wed 09:15</span>
+                    <span class="pf-ev"><b>In stock again</b><span>First check agrees</span></span>
+                    <span class="chip neutral">Waiting</span>
+                  </li>
+                  <li>
+                    <span class="pf-when num">Wed 09:30</span>
+                    <span class="pf-ev"><b>In stock again</b><span>Two checks agree</span></span>
+                    <span class="chip ok">Back on sale</span>
+                  </li>
+                </ol>
+                <div class="pf-log-foot"><span>Listing kept, with its watchers</span><span>Sales history kept</span></div>
               </div>
             </div>
           </div>
         </div>
-
-        <!--
-          What the product is, under the picture of it rather than above.
-
-          The headline and the frame are one idea — here is the thing — and the four lines are the
-          second: here is what it does. Putting them after the frame lets the first screen be the
-          claim and the product, which is the order somebody actually meets it in.
-        -->
-        <div class="wrap hero-more">
-          <p class="lead">The all-in-one Chrome extension and dashboard for eBay dropshippers.</p>
-            <ul class="hero-list">
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>List in seconds</b> from any supported store.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Price by margin,</b> as a percentage or a fixed amount.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Auto-update price and stock</b> when the store changes them.</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-                <span><b>Track profit</b> across sales, fees and costs in one place.</span>
-              </li>
-            </ul>
-            <div class="hero-do">
-              <a class="btn primary big" href="https://chromewebstore.google.com/detail/margin/CHROME-WEB-STORE-ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-                Add to Chrome</a>
-              <a class="btn ghost big" href="./dashboard/">Open the dashboard</a>
-            </div>
-            <p class="hero-fine">No credit card needed. No analytics, no trackers, and no data sold.</p>
-        </div>
       </section>
 
-      <!--
-        What it reads, as a row that keeps moving.
-
-        Two copies of the same list inside a track that travels exactly half its own width, so the
-        second copy is where the first was when the animation restarts and the seam never arrives.
-        It is a CSS animation on one element: nothing measures anything, and there is no listener.
-
-        A source that is not live yet says so. A row of names with nothing marked is a claim that
-        all of them work today, and two of them do.
-      -->
-      <section class="sources" id="sources" aria-labelledby="sources-head">
+      <section class="cs cs-flip" id="delivery" aria-labelledby="delivery-head">
         <div class="wrap">
-          <h2 id="sources-head" class="sources-head">Works with the stores you already buy from</h2>
-        </div>
-        <!--
-          One copy of each mark, referenced twice by the two halves of the track.
+          <div class="strip" aria-hidden="true" data-strip>
+            <div class="strip-h">
+              <span data-c="name">Listing</span>
+              <span data-c="cost">Item cost</span>
+              <span data-c="list">List for</span>
+              <span data-c="profit">Profit</span>
+              <span data-c="stock">Stock</span>
+              <span data-c="arrives" class="is-hl">Arrives</span>
+              <span data-c="result">Result</span>
+            </div>
+            <div class="strip-r">
+              <span data-c="name" class="s-name"><span>Insulated water bottle, 1 L</span></span>
+              <span data-c="cost" class="s-fig c-cost num">£8.10</span>
+              <span data-c="list" class="s-fig num">£13.54</span>
+              <span data-c="profit" class="s-fig c-profit num">£3.23</span>
+              <span data-c="stock" class="s-fig c-stock num">12</span>
+              <span data-c="arrives" class="c-arrives is-hl" data-from="6 days"><span class="flap">12 days</span></span>
+              <span data-c="result" class="s-res"><span class="chip brand">Shipping updated</span></span>
+            </div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-say">
+              <h2 id="delivery-head">Delivery times that match the store.</h2>
+              <p>
+                When the store&rsquo;s delivery time changes, Margin moves the listing to the shipping policy that matches, so your
+                buyers see the right date. If a product gets too slow, Margin can take it off sale until it&rsquo;s faster again.
+              </p>
+              <ul class="cs-points">
+                <li><b>Works on eBay UK, US and Australia.</b></li>
+                <li><b>Set it up once.</b> Choose which shipping policy each delivery time uses.</li>
+              </ul>
+            </div>
 
-          A `<symbol>` per store rather than the same path written out twelve times: the row is the
-          same six names twice over, and a mark that has to be edited in twelve places is a mark
-          that ends up different in one of them.
-        -->
-        <svg class="markDefs" aria-hidden="true" focusable="false">
-          <symbol id="m-amazon" viewBox="0 0 24 24">
-            <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z" fill="currentColor" />
-          </symbol>
-          <symbol id="m-onebuy" viewBox="0 0 24 24">
-            <path d="M8.6 8.4 12.8 5v14M8.6 19h8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-          </symbol>
-        </svg>
-        <div class="marquee" data-marquee>
-          <ul class="marquee-track">
-            <li><span class="mark" style="--brand: #ff9900"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-amazon" /></svg></span>Amazon</li>
-            <li><span class="mark mark-img"><img src="./stores/aliexpress.png" alt="" width="64" height="64" decoding="async" /></span>AliExpress</li>
-            <li><span class="mark mark-img"><img src="./stores/walmart.png" alt="" width="64" height="64" decoding="async" /></span>Walmart<span class="soon">soon</span></li>
-            <li><span class="mark" style="--brand: #12a5a0"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-onebuy" /></svg></span>OneBuy<span class="soon">soon</span></li>
-            <li><span class="mark mark-img"><img src="./stores/temu.png" alt="" width="64" height="64" decoding="async" /></span>Temu<span class="soon">soon</span></li>
-            <li><span class="mark mark-img"><img src="./stores/alibaba.png" alt="" width="64" height="64" decoding="async" /></span>Alibaba<span class="soon">soon</span></li>
-            <li aria-hidden="true"><span class="mark" style="--brand: #ff9900"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-amazon" /></svg></span>Amazon</li>
-            <li aria-hidden="true"><span class="mark mark-img"><img src="./stores/aliexpress.png" alt="" width="64" height="64" decoding="async" /></span>AliExpress</li>
-            <li aria-hidden="true"><span class="mark mark-img"><img src="./stores/walmart.png" alt="" width="64" height="64" decoding="async" /></span>Walmart<span class="soon">soon</span></li>
-            <li aria-hidden="true"><span class="mark" style="--brand: #12a5a0"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#m-onebuy" /></svg></span>OneBuy<span class="soon">soon</span></li>
-            <li aria-hidden="true"><span class="mark mark-img"><img src="./stores/temu.png" alt="" width="64" height="64" decoding="async" /></span>Temu<span class="soon">soon</span></li>
-            <li aria-hidden="true"><span class="mark mark-img"><img src="./stores/alibaba.png" alt="" width="64" height="64" decoding="async" /></span>Alibaba<span class="soon">soon</span></li>
-          </ul>
+            <div class="proof" aria-hidden="true">
+              <div class="pf pf-bands">
+                <div class="pf-bands-head"><span>Store says it arrives in</span><span>eBay shipping policy</span></div>
+                <ol>
+                  <li><span class="num">1 to 3 days</span><span>Next-day courier</span></li>
+                  <li><span class="num">4 to 8 days</span><span>Standard</span></li>
+                  <li class="on"><span class="num">9 to 14 days</span><span>Economy</span><span class="chip brand">Now</span></li>
+                  <li class="off"><span class="num">Over 14 days</span><span>Off sale until it&rsquo;s faster</span></li>
+                </ol>
+                <p class="pf-note">Insulated water bottle, 1 L: the store now says 12 days, so the listing moved to Economy.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!--
-        The whole thing in five steps, before any of it is explained.
+      <section class="band cs" id="orders" aria-labelledby="orders-head">
+        <div class="wrap">
+          <div class="strip" aria-hidden="true" data-strip>
+            <div class="strip-h">
+              <span data-c="name">Listing</span>
+              <span data-c="cost">Item cost</span>
+              <span data-c="list">List for</span>
+              <span data-c="profit">Profit</span>
+              <span data-c="stock" class="is-hl">Stock</span>
+              <span data-c="arrives">Arrives</span>
+              <span data-c="result">Result</span>
+            </div>
+            <div class="strip-r">
+              <span data-c="name" class="s-name"><span>Brushed steel kitchen faucet</span></span>
+              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
+              <span data-c="list" class="s-fig num">£30.18</span>
+              <span data-c="profit" class="s-fig c-profit num">£7.36</span>
+              <span data-c="stock" class="s-fig c-stock num is-hl" data-from="6"><span class="flap">5</span></span>
+              <span data-c="arrives" class="c-arrives">2 days</span>
+              <span data-c="result" class="s-res"><span class="chip ok">Sold</span></span>
+            </div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-say">
+              <h2 id="orders-head">Orders and shipping.</h2>
+              <p>
+                Every sale shows what to buy, where it goes, and when it&rsquo;s due. You place the order and get it to your buyer.
+                Margin handles the listing, the price and the checks.
+              </p>
+              <ul class="cs-points">
+                <li><b>See what is due.</b> Closest deadline first, overdue in red. The count shows on the toolbar icon, so you see new sales without opening the panel.</li>
+                <li><b>Buy it without retyping.</b> Opens the product page with the quantity set and fills in the buyer&rsquo;s address at checkout. You place the order yourself.</li>
+                <li><b>Send tracking to eBay.</b> Margin reads the tracking number from your order and detects the carrier. Send one order, or all of them at once.</li>
+                <li><b>Automatic ordering on AliExpress</b> on Max, up to a limit you set for each order.</li>
+              </ul>
+            </div>
 
-        The page used to open on how a product page is parsed, which is the answer to a question
-        nobody has yet. This is the shape of the work — find, import, price, publish, keep track —
-        and everything below it is one of these five steps in detail.
-
-        A timeline rather than a grid of boxes: five equal boxes in rows of three said nothing about
-        order, and these happen one after another. One rail runs down through a numbered stop per
-        step and ends in an arrow, because the last step is the one that carries on after you list.
-        The rail is drawn by the list itself (`.timeline::before`), so a step added or taken away
-        needs no geometry changed.
-
-        On the tinted band, which the section under it gives up: with the calculator gone, that is
-        what has the sections alternate plain and band again from here to the footer.
-      -->
-      <section id="how">
-        <div class="wrap sec">
-          <h2>How Margin works</h2>
-          <ol class="timeline">
-            <li>
-              <span class="tl-node" aria-hidden="true">01</span>
-              <div class="tl-body">
-                <h3>Find a product</h3>
-                <p>Open the extension on any product page.</p>
-              </div>
-            </li>
-            <li>
-              <span class="tl-node" aria-hidden="true">02</span>
-              <div class="tl-body">
-                <h3>Import it</h3>
-                <p>Margin imports the title, images, price, variations and specifications.</p>
-              </div>
-            </li>
-            <li>
-              <span class="tl-node" aria-hidden="true">03</span>
-              <div class="tl-body">
-                <h3>Set your margin</h3>
-                <p>Choose a percentage or a fixed amount. <strong>Margin includes all fees in the final price.</strong></p>
-              </div>
-            </li>
-            <li>
-              <span class="tl-node" aria-hidden="true">04</span>
-              <div class="tl-body">
-                <h3>Publish to eBay</h3>
-                <p>Review the listing, fix anything flagged, and publish.</p>
-              </div>
-            </li>
-            <li class="tl-on">
-              <span class="tl-node" aria-hidden="true">05</span>
-              <div class="tl-body">
-                <!--
-                  The badge sits beside the heading rather than inside it, so the heading is still
-                  "Margin keeps track" to anybody moving by headings, and "Exclusive" is read after it
-                  as the word it is. The star is ornament and is hidden; the word is not.
-                -->
-                <div class="tl-head">
-                  <h3>Margin keeps track</h3>
-                  <span class="chip brand exclusive"><svg class="spark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path class="spark-big" d="M7 3c.35 3.6 2.4 5.65 6 6-3.6.35-5.65 2.4-6 6-.35-3.6-2.4-5.65-6-6 3.6-.35 5.65-2.4 6-6Z" /><path class="spark-small" d="M13 .5c.15 1.5.9 2.35 2.5 2.5-1.6.15-2.35 1-2.5 2.5-.15-1.5-.9-2.35-2.5-2.5 1.6-.15 2.35-1 2.5-2.5Z" /></svg>Exclusive</span>
+            <div class="proof" aria-hidden="true">
+              <div class="pf pf-order">
+                <div class="pf-order-top">
+                  <span class="pf-name"><b>Brushed steel kitchen faucet</b><span>1 &times; &middot; Buyer in Leeds, LS6</span></span>
+                  <span class="chip warn">Ship by tomorrow</span>
                 </div>
-                <p>Margin checks for price, stock, and delivery time changes and automatically updates listings to match.</p>
+                <ol class="pf-steps">
+                  <li class="done"><i><svg><use href="#m-tick" /></svg></i><span>Bought on Amazon, address filled in</span></li>
+                  <li class="done"><i><svg><use href="#m-tick" /></svg></i><span>Tracking found: Royal Mail</span></li>
+                  <li class="next"><i><svg><use href="#m-next" /></svg></i><span class="btn primary pf-btn">Send tracking to eBay</span></li>
+                </ol>
+                <div class="pf-order-sum"><span>Profit on this order</span><b class="num">£7.36</b></div>
               </div>
-            </li>
-          </ol>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <!--
-            The product itself, not a drawing of it: `verify/landing-shots.mjs` takes these from the
-            dashboard and the side panel with the checks' made-up shop, light and dark, and the page
-            shows the one that matches its own theme. Run it again after a visible change.
-          -->
-          <div class="shots">
-            <figure class="shot shot-wide">
+      <section class="cs cs-flip" id="profit" aria-labelledby="profit-head">
+        <div class="wrap">
+          <div class="strip" aria-hidden="true" data-strip>
+            <div class="strip-h">
+              <span data-c="name">Listing</span>
+              <span data-c="cost">Item cost</span>
+              <span data-c="list">List for</span>
+              <span data-c="profit" class="is-hl">Profit</span>
+              <span data-c="stock">Stock</span>
+              <span data-c="arrives">Arrives</span>
+              <span data-c="result">Result</span>
+            </div>
+            <div class="strip-r">
+              <span data-c="name" class="s-name"><span>Brushed steel kitchen faucet</span></span>
+              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
+              <span data-c="list" class="s-fig num">£30.18</span>
+              <span data-c="profit" class="s-fig c-profit num is-hl" data-from="Est. £7.36"><span class="flap">£7.36</span></span>
+              <span data-c="stock" class="s-fig c-stock num">5</span>
+              <span data-c="arrives" class="c-arrives">2 days</span>
+              <span data-c="result" class="s-res"><span class="chip ok">Shipped</span></span>
+            </div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-say">
+              <h2 id="profit-head">Track profit across sales, fees and costs in one place.</h2>
+              <p>
+                See the profit on every Amazon and AliExpress search result before you click. The dashboard adds up your sales,
+                eBay fees, item costs and profit for any period.
+              </p>
+              <ul class="cs-points">
+                <li><b>A page for every listing,</b> with its price history and every change Margin made.</li>
+                <li><b>Up to five eBay shops on Max,</b> on one login.</li>
+                <li><b>The leaderboard.</b> See where your store ranks among Margin sellers.</li>
+              </ul>
+            </div>
+
+            <figure class="proof proof-shot">
               <img class="shot-light" src="./shots/dashboard-light.webp" width="1440" height="900" loading="lazy" decoding="async" alt="The Margin dashboard's Overview: sales, eBay fees, item cost and profit for the last 30 days, a sales and profit chart, and a list of what needs attention." />
               <img class="shot-dark" src="./shots/dashboard-dark.webp" width="1440" height="900" loading="lazy" decoding="async" alt="The Margin dashboard's Overview: sales, eBay fees, item cost and profit for the last 30 days, a sales and profit chart, and a list of what needs attention." />
-              <figcaption>The dashboard: sales, fees and profit across your shop, and what needs attention today.</figcaption>
-            </figure>
-            <figure class="shot shot-narrow">
-              <img class="shot-light" src="./shots/panel-light.webp" width="400" height="720" loading="lazy" decoding="async" alt="The Margin side panel's My listings: each listing with its eBay price, the store's price, the profit, and whether it is in stock." />
-              <img class="shot-dark" src="./shots/panel-dark.webp" width="400" height="720" loading="lazy" decoding="async" alt="The Margin side panel's My listings: each listing with its eBay price, the store's price, the profit, and whether it is in stock." />
-              <figcaption>The side panel: every listing&rsquo;s price, profit and stock, kept up to date for you.</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
       <!--
-        What Margin does, and the one thing it does that others do not do the same way.
+        The tools a seller is choosing between, named.
 
-        It replaced "It keeps checking after you list", which gave that one thing a section to itself
-        and said nothing about the rest. Every line here is something FEATURES.md describes as working
-        today — a list of features is the easiest place for a claim to get ahead of the product — and
-        each is one sentence, because this is the section somebody scans rather than reads.
-
-        The checks carry the same "Exclusive" mark as step five above, so the two say it about the
-        same thing. Where there are three columns that item takes two, which is also what lands eight
-        items as three full rows rather than two and a stray pair.
+        Every cell is what that company's own pages said on 30 September 2026
+        (reports/Margin versus eBay listing tools.md has each source). "Not stated" means the
+        company does not say, not that the feature is missing. Prices stay in each company's own
+        currency. Where Margin trails (checks that stop when Chrome closes, one selling channel),
+        the table says so, because a comparison that only lists wins is an advert for the other side.
       -->
-      <section class="band" id="features">
+      <section class="band" id="compare" aria-labelledby="compare-head">
         <div class="wrap sec">
-          <h2>Key features</h2>
-          <p class="lead">What Margin does, and what makes it different.</p>
-          <ul class="features">
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 3.5 18.5 9.8l-5.7 2-2 5.7L5.5 3.5Z" /><path d="m13 13 5.5 5.5" /></svg>
-              <h3>Easy to use</h3>
-              <p>Open the panel on a product page and the listing is already drafted: title, photos, item specifics, variations and price.</p>
-            </li>
-            <li class="feature-on">
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12a7.5 7.5 0 0 1-13.4 4.6M4.5 12a7.5 7.5 0 0 1 13.4-4.6" /><path d="M18.5 3.5v4h-4M5.5 20.5v-4h4" /></svg>
-              <div class="feature-head">
-                <h3>Stock and price tracking</h3>
-                <span class="chip brand exclusive"><svg class="spark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path class="spark-big" d="M7 3c.35 3.6 2.4 5.65 6 6-3.6.35-5.65 2.4-6 6-.35-3.6-2.4-5.65-6-6 3.6-.35 5.65-2.4 6-6Z" /><path class="spark-small" d="M13 .5c.15 1.5.9 2.35 2.5 2.5-1.6.15-2.35 1-2.5 2.5-.15-1.5-.9-2.35-2.5-2.5 1.6-.15 2.35-1 2.5-2.5Z" /></svg>Exclusive</span>
-              </div>
-              <p>
-                Margin checks the store for price, stock, and delivery time changes and updates your listings to match.
-                When the store sells out, the listing is set to out of stock instead of ended, and goes back on sale when
-                the store restocks.
-              </p>
-            </li>
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5.5" y="10.5" width="13" height="10" rx="2" /><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" /></svg>
-              <h3>Private by design</h3>
-              <p>Amazon pages are read in your own browser. No analytics, no trackers, and your data is never sold. Your eBay connection is stored encrypted.</p>
-            </li>
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.5 5.5 5.5 18.5" /><circle cx="7.5" cy="7.5" r="2.5" /><circle cx="16.5" cy="16.5" r="2.5" /></svg>
-              <h3>Fees built in</h3>
-              <p>Every price includes eBay&rsquo;s fees for your site and category, so you see your profit before you publish.</p>
-            </li>
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5 3.5 8l8.5 4.5L20.5 8 12 3.5Z" /><path d="m3.5 12 8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5" /></svg>
-              <h3>Bulk listing</h3>
-              <p>List a whole search, best-seller list or spreadsheet in one batch. Products you already sell on eBay are skipped.</p>
-            </li>
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5M7.5 12.5l2-2 1.5 1.5 2.5-3" /></svg>
-              <h3>Product finder</h3>
-              <p>Find ranks Amazon&rsquo;s best sellers, trending products and new releases by the profit a sale would leave you.</p>
-            </li>
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" /><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" /></svg>
-              <h3>Orders and tracking</h3>
-              <p>Buy each sale on Amazon with the buyer&rsquo;s address filled in at checkout. Margin reads the tracking number and sends it to eBay.</p>
-            </li>
-            <li>
-              <svg class="feature-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5 5.5 4h13L20 9.5H4Z" /><path d="M5.5 9.5V20h13V9.5M10 20v-5h4v5" /></svg>
-              <h3>Works with Amazon and AliExpress</h3>
-              <p>Import from 22 Amazon sites and AliExpress, and list on 14 eBay sites, each in its own currency with its own fees.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <h2 id="compare-head">How Margin compares.</h2>
+          <p class="lead">What each tool does with pricing, stock and where you can sell. Taken from each company&rsquo;s own pages on September 30, 2026.</p>
 
-      <!--
-        Two facts, not four refusals.
+          <div class="cmp-scroll" tabindex="0" role="region" aria-labelledby="compare-head">
+            <table class="cmp">
+              <thead>
+                <tr>
+                  <td></td>
+                  <th scope="col" class="cmp-us"><span class="tile" aria-hidden="true"></span>Margin</th>
+                  <th scope="col">AutoDS</th>
+                  <th scope="col">Vendoo</th>
+                  <th scope="col">List Perfectly</th>
+                  <th scope="col">Sellbrite</th>
+                  <th scope="col">SixBit</th>
+                  <th scope="col">Shopify Marketplace Connect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Made for</th>
+                  <td class="cmp-us">Listing Amazon and AliExpress products on eBay</td>
+                  <td>Dropshipping from 33 suppliers to about 8 stores</td>
+                  <td>Crosslisting stock you hold</td>
+                  <td>Crosslisting stock you hold</td>
+                  <td>Syncing your own catalog to marketplaces</td>
+                  <td>Listing your own stock, on Windows</td>
+                  <td>Selling your Shopify products on marketplaces</td>
+                </tr>
+                <tr>
+                  <th scope="row">eBay&rsquo;s fee in the price</th>
+                  <td class="cmp-us"><b>eBay&rsquo;s table for each site and category,</b> and eBay asked what a listing costs before it goes live</td>
+                  <td>One fee percentage you type in</td>
+                  <td>You set each price; profit after the sale</td>
+                  <td>None</td>
+                  <td>Not stated</td>
+                  <td>Profit reports after the sale</td>
+                  <td>A markup on your Shopify price</td>
+                </tr>
+                <tr>
+                  <th scope="row">When stock runs out</th>
+                  <td class="cmp-us"><b>0 only once Out of Stock Control is on.</b> Never ends a listing</td>
+                  <td>Sets 0; you turn on eBay&rsquo;s setting yourself</td>
+                  <td>Not stated</td>
+                  <td>Not stated</td>
+                  <td>Not stated</td>
+                  <td>Not stated</td>
+                  <td>Sends 0; your eBay setting decides whether the listing ends</td>
+                </tr>
+                <tr>
+                  <th scope="row">Checks on the store</th>
+                  <td class="cmp-us">Price, stock and delivery, <b>every 15 minutes to once a day</b> by plan. AliExpress is also checked on Margin&rsquo;s server when Chrome is closed</td>
+                  <td>Price, stock and shipping time, on its servers: every 30 minutes to 2 hours</td>
+                  <td>None</td>
+                  <td>None</td>
+                  <td>None</td>
+                  <td>None</td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <th scope="row">eBay sites you can list on</th>
+                  <td class="cmp-us"><b class="num">14</b></td>
+                  <td><span class="num">5</span></td>
+                  <td>US-focused</td>
+                  <td>US only</td>
+                  <td>Publishes to US only</td>
+                  <td>Not stated</td>
+                  <td>&ldquo;Any region&rdquo;</td>
+                </tr>
+                <tr>
+                  <th scope="row">Other places to sell</th>
+                  <td class="cmp-us">None: eBay only</td>
+                  <td>About 8, from Shopify to TikTok Shop</td>
+                  <td>About 12 resale marketplaces</td>
+                  <td>9, plus Shopify and Instagram</td>
+                  <td>Amazon, Etsy, Walmart, Shopify and more</td>
+                  <td>Etsy, Shopify, HipStamp</td>
+                  <td>Amazon, Walmart US, Target Plus US</td>
+                </tr>
+                <tr>
+                  <th scope="row">Price</th>
+                  <td class="cmp-us"><b>£0, £19 or £49 a month.</b> No per-order fees</td>
+                  <td>Plans by product count; ordering add-on $9.90 a month, plus credits at $0.20&ndash;$0.50 each</td>
+                  <td>$14.99&ndash;$59.99 a month</td>
+                  <td>$29&ndash;$249 a month</td>
+                  <td>Free, then $29&ndash;$179 a month</td>
+                  <td>$29.99&ndash;$184.99 a month</td>
+                  <td>Free to 50 orders a month, then 1%, up to $99 a month, plus a Shopify plan</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        This was "Four things Margin will not do", and two of the four were table stakes — it does
-        not guess at a fee, it does not publish without asking. Saying so out loud does not reassure
-        anybody; it makes them wonder why you felt the need. What is left is the pair a seller
-        actually wants to know before they start, and both are said as what happens rather than as
-        what does not.
-      -->
-      <!--
-        The part of the work that happens every day, and the part this page never mentioned.
-
-        Orders was one line in "what it will not do" and one bullet in the Free plan, which is a
-        strange place to keep the tab a seller opens most: listing is a thing you do once per
-        product and dispatch is a thing you do every morning for the rest of the product's life.
-      -->
-      <section id="orders">
-        <div class="wrap sec">
-          <h2>Orders and shipping</h2>
-          <p class="lead">
-            Every sale shows what to buy, where it goes, and when it&rsquo;s due. You place the order and get it to your
-            buyer. Margin handles the listing, the price and the checks.
+          <p class="cmp-hint" aria-hidden="true">Scroll sideways to see every tool.</p>
+          <p class="cmp-fine">
+            &ldquo;Not stated&rdquo; means the company&rsquo;s own pages don&rsquo;t say. Prices are in each company&rsquo;s own
+            currency, before tax. inkFrog closed on June 1, 2026.
           </p>
-
-          <ol class="rail">
-            <li>
-              <h3>See what is due</h3>
-              <p>Closest deadline first, overdue in red. The count shows on the toolbar icon, so you see new sales without opening the panel.</p>
-            </li>
-            <li>
-              <h3>Buy it without retyping</h3>
-              <p>Opens the product page with the quantity set and fills in the buyer&rsquo;s address at checkout. You place the order yourself.</p>
-            </li>
-            <li>
-              <h3>Send tracking to eBay</h3>
-              <p>Margin reads the tracking number from your order and detects the carrier. Send one order, or all of them at once.</p>
-            </li>
-          </ol>
+          <details class="cmp-src">
+            <summary>Where each fact comes from</summary>
+            <ul>
+              <li>AutoDS: <a href="https://help.autods.com/en/articles/12699821-pricing-settings-and-fee-management-in-autods">pricing settings</a>, <a href="https://help.autods.com/en/articles/12699906-product-monitoring-configure-price-and-stock-updates-preferences">product checks</a>, <a href="https://www.autods.com/ebay/features/price-and-stock-monitoring/">check frequency</a>, <a href="https://help.autods.com/en/articles/12700438-product-uploads-supported-suppliers-import-to-store-and-manage-variants">suppliers</a>, <a href="https://help.autods.com/selling-channels/what-is-the-difference-between-ebay-api-and-ebay-non-api-mip-integration">eBay sites</a>, <a href="https://help.autods.com/en/articles/12700458-auto-order-credits-for-order-automation-and-tracking-conversion">order credits</a></li>
+              <li>Vendoo: <a href="https://www.vendoo.co/pricing">pricing</a>, <a href="https://www.vendoo.co/marketplaces">marketplaces</a>, <a href="https://help.vendoo.co/en/articles/6260293-vendoo-s-profit-calculator-sales-reports">profit reports</a></li>
+              <li>List Perfectly: <a href="https://listperfectly.com/pricing">pricing</a>, <a href="https://listperfectly.com/faq/">FAQ</a></li>
+              <li>Sellbrite: <a href="https://www.sellbrite.com/pricing-pro/">pricing</a>, <a href="https://support.sellbrite.com/en/articles/4868472-does-sellbrite-support-international-marketplaces">international sites</a>, <a href="https://www.sellbrite.com/integrations/ebay/">eBay</a></li>
+              <li>SixBit: <a href="https://www.sixbitsoftware.com/pricing/">pricing</a>, <a href="https://www.sixbitsoftware.com/ebaylanding/">eBay</a></li>
+              <li>Shopify Marketplace Connect: <a href="https://apps.shopify.com/marketplace-connect">App Store listing</a>, <a href="https://www.shopifymarketplaceconnecthelp.com/hc/en-us/articles/7312409763983-Pricing-Settings">pricing rules</a>, <a href="https://community.shopify.com/t/how-does-shopify-marketplace-connect-function-regarding-linked-listings-purchased-on-shopify/379450/2">quantity 0</a></li>
+              <li>inkFrog: <a href="https://www.valueaddedresource.net/inkfrog-shut-down/">closure</a></li>
+            </ul>
+          </details>
         </div>
       </section>
-
-      <!--
-        The strongest thing this page has to say to somebody deciding whether to install it.
-
-        It was one of two bullets in "things to know before you start", beside a note about who
-        posts the parcel. An extension that holds an eBay token and reads pages inside a signed-in
-        browser has to answer this, and it should not have to be found.
-      -->
-      <section class="band" id="trust">
-        <div class="wrap sec">
-          <h2>Your seller data stays yours.</h2>
-          <p class="lead">Margin holds a key to your eBay shop. Here is what it does with it.</p>
-          <ul class="hero-list trust-list">
-            <li>
-              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>Your eBay sign-in key is stored encrypted on Margin&rsquo;s server, never in the extension</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>No analytics and no trackers, on this page or in the panel. Error reports stay off unless you turn them on</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>Nothing talks to Amazon except your own browser. Product pages are read there, signed in as you</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>Nothing leaves your browser except to Margin and to eBay</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg>
-              <span>Your data is never sold. There is no other business model here</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-
 
       <!--
         What Margin costs.
@@ -577,6 +786,7 @@
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Find: best-selling products with the profit worked out, every hour</span></li>
                 <li><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.6 7 13l7.5-9" /></svg><span>Each shop on the leaderboard under a name you choose</span></li>
               </ul>
+              <p class="plan-caveat">Ordering on AliExpress is new and hasn&rsquo;t yet been tried on a live AliExpress order.</p>
               <a class="btn primary" href="./dashboard/?plan=max">Choose Max</a>
             </article>
           </div>
@@ -600,6 +810,32 @@
                   eBay has its own rules on dropshipping, including where you can buy the item and who ships it to your
                   buyer, and they can differ by site. Margin doesn&rsquo;t check your orders against them, and following
                   them is up to you. Read eBay&rsquo;s dropshipping policy for your site before you list.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>Do checks run when my computer is off?</summary>
+              <div>
+                <p>
+                  Your AliExpress products, yes. Margin&rsquo;s server checks them every hour once Chrome has been closed for an hour.
+                </p>
+                <p>
+                  Your Amazon products are checked in Chrome, and Chrome keeps checking after you close its windows, as long as the
+                  computer is on. Turn on Help other sellers in Settings, and other Margin sellers check your Amazon products while
+                  your computer is off.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>Is my seller data safe?</summary>
+              <div>
+                <p>
+                  Your eBay sign-in key is stored encrypted on Margin&rsquo;s server, never in the extension. Amazon pages are read in
+                  your own browser, and nothing leaves your browser except to Margin and to eBay.
+                </p>
+                <p>
+                  No analytics and no trackers, on this page or in the panel. Error reports stay off unless you turn them on. Your
+                  data is never sold.
                 </p>
               </div>
             </details>
@@ -683,9 +919,9 @@
           <b>Margin</b>
         </a>
         <nav class="foot-nav" aria-label="Footer">
-          <a href="#how">How it works</a>
-          <a href="#features">Features</a>
+          <a href="#listing">How it works</a>
           <a href="#orders">Orders</a>
+          <a href="#compare">Compare</a>
           <a href="#plans">Plans</a>
           <a href="#faq">Questions</a>
           <a href="./dashboard/">Dashboard</a>
