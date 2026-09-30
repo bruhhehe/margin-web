@@ -151,9 +151,53 @@
             <h3>The heartbeat</h3>
             <p>
               After each round of checks, and every 30 minutes, the extension tells the server the time, how many products it
-              read, and your price rule with its fee settings. This lets the dashboard work out profit the same way the panel
-              does, and tell you when checks have stopped running.
+              read, your price rule with its fee settings, and your check settings (whether Margin follows stock and price,
+              your minimum profit, the quantity to restore, and your low-stock and delivery limits). This lets the dashboard work
+              out profit the same way the panel does, tell you when checks have stopped running, and lets the checks below act
+              exactly as your browser would while it is closed.
             </p>
+
+            <h3>Checks while your computer is off</h3>
+            <p>
+              When your browser hasn&rsquo;t been heard from for an hour, Margin&rsquo;s server checks your AliExpress listings
+              itself, through AliExpress&rsquo;s own API and the AliExpress connection you already made. It asks AliExpress
+              about those products by item number, and acts on the answer with your own settings, as your browser would: a
+              sold-out product goes to 0 on eBay, and on a plan with automatic rules a listing is repriced or put back on sale.
+              Nothing new is sent anywhere. Each listing it checks is marked &ldquo;Checked by Margin&rsquo;s server&rdquo;.
+            </p>
+
+            <h3>Helping other sellers, only if you turn it on</h3>
+            <p>
+              <strong>Help other sellers</strong> (shared checking) is off until you turn it on, and you can turn it off at any
+              time. It works both ways: only shops that help are helped.
+            </p>
+            <ul>
+              <li>
+                <strong>When you help</strong>, while your browser is open, the extension asks our server for a few Amazon
+                products to check (at most 20 an hour and 100 a day). It reads each product page from your internet connection
+                <strong>without your Amazon cookies</strong>, so Amazon sees a signed-out visit, not your account. It sends our
+                server only the price, whether the product can be bought, and whether the page is gone. Amazon sees these page
+                requests coming from your internet connection, as it would if you opened the pages yourself.
+              </li>
+              <li>
+                <strong>What a helper is told</strong> is only the Amazon site and the product&rsquo;s code and page. Never who
+                the seller is, their shop, price, margin or the listing&rsquo;s title. Some of the products are ones we already
+                know the answer to, so we can tell when a helper&rsquo;s answers are wrong.
+              </li>
+              <li>
+                <strong>When you are helped</strong>, after your browser has been quiet for two hours, the Amazon product codes
+                of your listings (never your name, shop, prices or margins) are given to other helpers&rsquo; browsers. Margin
+                acts only when two different helpers agree: a product that sold out goes to 0, and a price that went up can be
+                repriced upward on a plan with automatic rules. A price drop or a product back in stock is only shown to you.
+                Listings checked this way are marked &ldquo;Checked by 2 other Margin sellers&rsquo; browsers&rdquo;.
+              </li>
+              <li>
+                <strong>What we keep</strong> about each check: the product, the answer, which account and shop sent it, and a
+                one-way, salted code made from the sender&rsquo;s IP address, used only to tell whether two answers came from
+                the same connection. We never store the IP address itself. We delete these records after 7 days. A helper whose
+                answers keep disagreeing with other helpers is stopped from helping, and we keep a note of that and why.
+              </li>
+            </ul>
 
             <h3>Product pages the extension reads</h3>
             <p>
@@ -268,8 +312,8 @@
                 little data as we can for these.
               </li>
               <li>
-                <strong>Consent.</strong> For error reports and the leaderboard. You can withdraw it at any time by turning error
-                reports off or leaving the leaderboard.
+                <strong>Consent.</strong> For error reports, the leaderboard and helping other sellers. You can withdraw it at any
+                time by turning error reports off, leaving the leaderboard or turning <strong>Help other sellers</strong> off.
               </li>
               <li><strong>Legal obligation.</strong> Where the law requires us to keep or disclose information.</li>
             </ul>
@@ -291,6 +335,14 @@
               <li><strong>AliExpress</strong>, through the AliExpress Open Platform, only if you connect it.</li>
               <li><strong>The stores whose pages you open</strong>, which see ordinary requests from your own browser.</li>
               <li><strong>Other Margin sellers</strong>, only for a shop you put on the leaderboard.</li>
+              <li>
+                <strong>Other Margin sellers&rsquo; browsers</strong>, only if you turn on <strong>Help other sellers</strong>:
+                the Amazon product codes and pages of your listings, never who you are.
+              </li>
+              <li>
+                <strong>Amazon</strong>, when you help: it sees signed-out page requests from your internet connection for the
+                products your browser checks.
+              </li>
             </ul>
             <p>We may also disclose data where the law requires it. We never sell or rent personal data.</p>
           </section>
@@ -336,6 +388,10 @@
               </li>
               <li><strong>AliExpress order records:</strong> until you disconnect AliExpress, remove the shop or delete your account.</li>
               <li><strong>The heartbeat:</strong> only the latest one.</li>
+              <li>
+                <strong>Helping other sellers:</strong> each check&rsquo;s record 7 days. Whether you help, how your answers
+                compared with other helpers&rsquo;, and any stop from helping: until you remove the shop or delete your account.
+              </li>
               <li><strong>Listing pictures:</strong> 30 days.</li>
               <li><strong>The leaderboard:</strong> until the shop leaves it.</li>
               <li><strong>Error reports:</strong> 30 days after the error last happened, and 500 at most.</li>
@@ -354,8 +410,8 @@
             </ul>
             <p>
               <strong>Deleting your account</strong> removes your account and, for every shop on it, its eBay and AliExpress
-              connections, listing records, change log, costs, order marks, pictures and everything kept about its eBay account,
-              straight away. Your listings on eBay are not touched: they stay live, and Margin simply stops managing them.
+              connections, listing records, change log, costs, order marks, pictures, its part in helping other sellers and
+              everything kept about its eBay account, straight away. Your listings on eBay are not touched: they stay live, and Margin simply stops managing them.
             </p>
           </section>
 
