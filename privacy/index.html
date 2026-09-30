@@ -51,7 +51,7 @@
       <div class="wrap legal-grid">
         <header class="legal-head">
           <h1>Privacy Policy</h1>
-          <p class="legal-meta">Effective September 29, 2026</p>
+          <p class="legal-meta">Effective September 30, 2026</p>
           <div class="legal-short">
             <p>The short version</p>
             <ul>
@@ -151,13 +151,14 @@
             <h3>The heartbeat</h3>
             <p>
               After each round of checks, and every 30 minutes, the extension tells the server the time, how many products it
-              read, your price rule with its fee settings, and your check settings (whether Margin follows stock and price,
-              your minimum profit, the quantity to restore, and your low-stock and delivery limits). This lets the dashboard work
-              out profit the same way the panel does, tell you when checks have stopped running, and lets the checks below act
-              exactly as your browser would while it is closed.
+              read, your price rule with its fee settings, your check settings (whether Margin follows stock and price, your
+              minimum profit, the quantity to restore, and your low-stock and delivery limits), and, if you turned on the
+              safety net, its number of hours. This lets the dashboard work out profit the same way the panel does, tell you
+              when checks have stopped running, and lets the checks below act exactly as your browser would while it is
+              closed.
             </p>
 
-            <h3>Checks while your computer is off</h3>
+            <h3 id="checks-while-off">Checks while your computer is off</h3>
             <p>
               When your browser hasn&rsquo;t been heard from for an hour, Margin&rsquo;s server checks your AliExpress listings
               itself, through AliExpress&rsquo;s own API and the AliExpress connection you already made. It asks AliExpress
@@ -165,8 +166,18 @@
               sold-out product goes to 0 on eBay, and on a plan with automatic rules a listing is repriced or put back on sale.
               Nothing new is sent anywhere. Each listing it checks is marked &ldquo;Checked by Margin&rsquo;s server&rdquo;.
             </p>
+            <p>
+              <strong>The safety net</strong>, only if you turn it on in the panel: when your browser hasn&rsquo;t been heard
+              from for the number of hours you chose, the server sets your checked listings to 0 on eBay, through eBay&rsquo;s
+              out-of-stock control, so nothing sells that may have sold out. It never ends a listing, and it leaves alone the
+              listings checked in that time by the server or by other sellers&rsquo; browsers.
+            </p>
+            <p>
+              The extension can also keep checking after you close Chrome&rsquo;s windows, while Chrome runs in the
+              background. That changes nothing about what it reads or sends.
+            </p>
 
-            <h3>Helping other sellers, only if you turn it on</h3>
+            <h3 id="helping-other-sellers">Helping other sellers, only if you turn it on</h3>
             <p>
               <strong>Help other sellers</strong> (shared checking) is off until you turn it on, and you can turn it off at any
               time. It works both ways: only shops that help are helped.
@@ -189,7 +200,7 @@
                 of your listings (never your name, shop, prices or margins) are given to other helpers&rsquo; browsers. Margin
                 acts only when two different helpers agree: a product that sold out goes to 0, and a price that went up can be
                 repriced upward on a plan with automatic rules. A price drop or a product back in stock is only shown to you.
-                Listings checked this way are marked &ldquo;Checked by 2 other Margin sellers&rsquo; browsers&rdquo;.
+                Listings checked this way are marked &ldquo;Checked by other sellers&rsquo; browsers&rdquo;.
               </li>
               <li>
                 <strong>What we keep</strong> about each check: the product, the answer, which account and shop sent it, and a
