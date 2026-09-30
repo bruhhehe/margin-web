@@ -31,11 +31,11 @@
     <meta property="og:image:alt" content="The Margin mark and wordmark on a near-black background." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#715aff" />
-    <script type="module" crossorigin src="./assets/index-CrnpvqZ0.js"></script>
+    <script type="module" crossorigin src="./assets/index-BY8IrFuB.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/keys-CrjuZVQ3.js">
-    <link rel="modulepreload" crossorigin href="./assets/index-BWepsi8k.js">
+    <link rel="modulepreload" crossorigin href="./assets/index-Bl_eZAbU.js">
     <link rel="stylesheet" crossorigin href="./assets/keys-BOXvPxFu.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-oVlSmTnG.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BxKdfS8M.css">
     <link rel="stylesheet" crossorigin href="./assets/landing-DYl2mYEe.css">
   </head>
   <body>
@@ -69,11 +69,6 @@
     </header>
 
     <main id="main" tabindex="-1">
-      <svg class="vh" aria-hidden="true" focusable="false">
-        <symbol id="m-box" viewBox="0 0 24 24"><path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" /><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" /></symbol>
-        <symbol id="m-tick" viewBox="0 0 16 16"><path d="M3.5 8.4 6.6 11.4 12.5 4.8" /></symbol>
-        <symbol id="m-next" viewBox="0 0 16 16"><path d="M4 8h8M8.5 4.5 12 8l-3.5 3.5" /></symbol>
-      </svg>
       <!--
         The opening: a shop's listings being kept in line with the store.
 
@@ -205,34 +200,12 @@
       </section>
 
       <!--
-        Each section below pulls one row out of the board and opens one of its columns.
-
-        The strip at the top of each is that row, with the column the section is about outlined and,
-        the first time it is scrolled to, changing the way the board's cells do. It is a picture
-        (aria-hidden): the heading under it says the same thing in words.
+        Each section below says one thing Margin does, beside the real side panel doing it: pictures
+        taken from the built extension with the browser checks' made-up shop, light and dark, by
+        verify/landing-shots.mjs. Run it again after a visible change to the panel.
       -->
       <section class="band cs" id="listing" aria-labelledby="listing-head">
         <div class="wrap">
-          <div class="strip" aria-hidden="true" data-strip>
-            <div class="strip-h">
-              <span data-c="name" class="is-hl">Listing</span>
-              <span data-c="cost">Item cost</span>
-              <span data-c="list">List for</span>
-              <span data-c="profit">Profit</span>
-              <span data-c="stock">Stock</span>
-              <span data-c="arrives">Arrives</span>
-              <span data-c="result">Result</span>
-            </div>
-            <div class="strip-r">
-              <span data-c="name" class="s-name is-hl" data-from="amazon.co.uk/dp/B0C7…"><span class="flap">Brushed steel kitchen faucet</span></span>
-              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
-              <span data-c="list" class="s-fig num">£30.18</span>
-              <span data-c="profit" class="s-fig c-profit num">£7.36</span>
-              <span data-c="stock" class="s-fig c-stock num">6</span>
-              <span data-c="arrives" class="c-arrives">2 days</span>
-              <span data-c="result" class="s-res"><span class="chip ok">Published</span></span>
-            </div>
-          </div>
           <div class="cs-grid">
             <div class="cs-say">
               <h2 id="listing-head">List in seconds from any supported store.</h2>
@@ -248,52 +221,18 @@
               <p class="cs-plan">Bulk is on Pro and Max. Find is on Max.</p>
             </div>
 
-            <div class="proof" aria-hidden="true">
-              <div class="pf pf-draft">
-                <div>
-                  <span class="pf-label"><span>Title</span><span class="num">75/80</span></span>
-                  <span class="pf-field pf-one">Brushed Steel Kitchen Faucet Single Handle Pull Down Sprayer Sink Mixer Tap</span>
-                </div>
-                <ul class="pf-filled">
-                  <li><svg><use href="#m-tick" /></svg>Category</li>
-                  <li><svg><use href="#m-tick" /></svg><span class="num">12</span>&nbsp;item specifics</li>
-                  <li><svg><use href="#m-tick" /></svg><span class="num">7</span>&nbsp;photos</li>
-                  <li><svg><use href="#m-tick" /></svg><span class="num">3</span>&nbsp;variations</li>
-                  <li><svg><use href="#m-tick" /></svg>Description</li>
-                  <li><svg><use href="#m-tick" /></svg>Shipping</li>
-                </ul>
-                <div class="pf-do">
-                  <span class="pf-note">Nothing goes to eBay until you press</span>
-                  <span class="btn primary pf-btn">Review and publish</span>
-                </div>
+            <figure class="proof proof-panel-shot">
+              <div class="panel-shot proof-shot">
+                <img class="shot-light" src="./shots/panel-listing-light.webp" width="400" height="444" loading="lazy" decoding="async" alt="The Margin side panel's New listing tab: a kitchen faucet read from Amazon at £18.40, and a Before you publish checklist with every item done." />
+                <img class="shot-dark" src="./shots/panel-listing-dark.webp" width="400" height="444" loading="lazy" decoding="async" alt="The Margin side panel's New listing tab: a kitchen faucet read from Amazon at £18.40, and a Before you publish checklist with every item done." />
               </div>
-            </div>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="cs cs-flip" id="pricing" aria-labelledby="pricing-head">
         <div class="wrap">
-          <div class="strip" aria-hidden="true" data-strip>
-            <div class="strip-h">
-              <span data-c="name">Listing</span>
-              <span data-c="cost">Item cost</span>
-              <span data-c="list" class="is-hl">List for</span>
-              <span data-c="profit">Profit</span>
-              <span data-c="stock">Stock</span>
-              <span data-c="arrives">Arrives</span>
-              <span data-c="result">Result</span>
-            </div>
-            <div class="strip-r">
-              <span data-c="name" class="s-name"><span>Brushed steel kitchen faucet</span></span>
-              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
-              <span data-c="list" class="s-fig num is-hl" data-from="£0.00"><span class="flap">£30.18</span></span>
-              <span data-c="profit" class="s-fig c-profit num">£7.36</span>
-              <span data-c="stock" class="s-fig c-stock num">6</span>
-              <span data-c="arrives" class="c-arrives">2 days</span>
-              <span data-c="result" class="s-res"><span class="chip ok">Published</span></span>
-            </div>
-          </div>
           <div class="cs-grid">
             <div class="cs-say">
               <h2 id="pricing-head">Price by margin, with the fees built in.</h2>
@@ -308,83 +247,18 @@
               </ul>
             </div>
 
-            <div class="proof proof-panel">
-              <div class="panel" role="img" aria-label="The Margin side panel, showing a listing for £30.18 with an item cost of £18.40, £4.42 in fees and costs, and £7.36 profit.">
-                    <div class="panel-chrome">
-                      <span class="tile" aria-hidden="true"></span>
-                      <b>Margin</b>
-                      <svg class="panel-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-                        <path d="M6 6l12 12M18 6L6 18" />
-                      </svg>
-                    </div>
-
-                    <div class="panel-tabs" aria-hidden="true">
-                      <span class="on">New listing</span><span>Bulk</span><span>Orders</span><span>My listings</span><span>Settings</span>
-                    </div>
-
-                    <div class="panel-body">
-                      <div class="panel-product">
-                        <span class="thumb" aria-hidden="true">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5v-9Z" />
-                            <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
-                          </svg>
-                        </span>
-                        <span class="panel-title">Brushed steel kitchen faucet, single handle</span>
-                        <span class="panel-meta">
-                          amazon.co.uk · <span class="num" data-fill="cost">£18.40</span>
-                          <span class="chip ok">In stock</span>
-                        </span>
-                      </div>
-
-                      <div class="panel-card">
-                      <div class="statement panel-statement">
-                        <!-- The panel's own labels, because this is a picture of the panel and must not lie about it. -->
-                        <span class="st-row st-anim"><span class="st-label">List for</span><span class="num st-fig" data-fill="final">£30.18</span></span>
-                        <span class="st-row st-anim"><span class="st-label quiet">Item cost</span><span class="num st-fig quiet" data-fill="minus-cost">− £18.40</span></span>
-                        <span class="st-row st-anim"><span class="st-label quiet">Fees</span><span class="num st-fig quiet" data-fill="minus-fee">− £4.42</span></span>
-                        <span class="st-row st-total st-anim"><span class="st-label">Profit</span><span class="num st-fig" data-fill="profit">£7.36</span></span>
-                      </div>
-
-                      <p class="panel-note">
-                        eBay takes <span class="num" data-fill="fee">£4.02</span> at this price:
-                        <span data-fill="basis">the standard rate: 13.32% of the sale plus £0.40 per order</span>.
-                      </p>
-                      </div>
-
-                      <div class="panel-do">
-                        <span class="btn primary">Review and publish</span>
-                        <span class="btn ghost">Show the math</span>
-                      </div>
-                    </div>
-                  </div>
-            </div>
+            <figure class="proof proof-panel-shot">
+              <div class="panel-shot proof-shot">
+                <img class="shot-light" src="./shots/panel-price-light.webp" width="400" height="612" loading="lazy" decoding="async" alt="The price card in the Margin side panel: list for £30.18, item cost £18.40, fees £4.42 and profit £7.36, with the math shown underneath." />
+                <img class="shot-dark" src="./shots/panel-price-dark.webp" width="400" height="612" loading="lazy" decoding="async" alt="The price card in the Margin side panel: list for £30.18, item cost £18.40, fees £4.42 and profit £7.36, with the math shown underneath." />
+              </div>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="band cs" id="stock" aria-labelledby="stock-head">
         <div class="wrap">
-          <div class="strip" aria-hidden="true" data-strip>
-            <div class="strip-h">
-              <span data-c="name">Listing</span>
-              <span data-c="cost">Item cost</span>
-              <span data-c="list">List for</span>
-              <span data-c="profit">Profit</span>
-              <span data-c="stock" class="is-hl">Stock</span>
-              <span data-c="arrives">Arrives</span>
-              <span data-c="result">Result</span>
-            </div>
-            <div class="strip-r">
-              <span data-c="name" class="s-name"><span>Dimmable LED desk lamp</span></span>
-              <span data-c="cost" class="s-fig c-cost num">£12.40</span>
-              <span data-c="list" class="s-fig num">£20.49</span>
-              <span data-c="profit" class="s-fig c-profit num">£4.96</span>
-              <span data-c="stock" class="s-fig c-stock num is-hl" data-from="3"><span class="flap">0</span></span>
-              <span data-c="arrives" class="c-arrives">3 days</span>
-              <span data-c="result" class="s-res"><span class="chip warn">Set to 0</span></span>
-            </div>
-          </div>
           <div class="cs-grid">
             <div class="cs-say">
               <span class="chip brand exclusive"><svg class="spark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path class="spark-big" d="M7 3c.35 3.6 2.4 5.65 6 6-3.6.35-5.65 2.4-6 6-.35-3.6-2.4-5.65-6-6 3.6-.35 5.65-2.4 6-6Z" /><path class="spark-small" d="M13 .5c.15 1.5.9 2.35 2.5 2.5-1.6.15-2.35 1-2.5 2.5-.15-1.5-.9-2.35-2.5-2.5 1.6-.15 2.35-1 2.5-2.5Z" /></svg>Exclusive</span>
@@ -400,58 +274,18 @@
               </ul>
             </div>
 
-            <div class="proof proof-flush" aria-hidden="true">
-              <div class="pf pf-log">
-                <div class="pf-log-head">
-                  <span class="pf-thumb"><svg><use href="#m-box" /></svg></span>
-                  <span class="pf-name"><b>Dimmable LED desk lamp</b><span>amazon.co.uk &middot; Recent changes</span></span>
-                </div>
-                <ol class="pf-log-rows">
-                  <li>
-                    <span class="pf-when num">Tue 14:30</span>
-                    <span class="pf-ev"><b>Sold out at the store</b><span>Out of Stock Control is on</span></span>
-                    <span class="chip warn">Set to 0</span>
-                  </li>
-                  <li>
-                    <span class="pf-when num">Wed 09:15</span>
-                    <span class="pf-ev"><b>In stock again</b><span>First check agrees</span></span>
-                    <span class="chip neutral">Waiting</span>
-                  </li>
-                  <li>
-                    <span class="pf-when num">Wed 09:30</span>
-                    <span class="pf-ev"><b>In stock again</b><span>Two checks agree</span></span>
-                    <span class="chip ok">Back on sale</span>
-                  </li>
-                </ol>
-                <div class="pf-log-foot"><span>Listing kept, with its watchers</span><span>Sales history kept</span></div>
+            <figure class="proof proof-panel-shot">
+              <div class="panel-shot proof-shot">
+                <img class="shot-light" src="./shots/panel-stock-light.webp" width="400" height="767" loading="lazy" decoding="async" alt="My listings in the Margin side panel: three listings with their price, profit and stock, and Recent changes showing one put back on sale and one set to 0." />
+                <img class="shot-dark" src="./shots/panel-stock-dark.webp" width="400" height="767" loading="lazy" decoding="async" alt="My listings in the Margin side panel: three listings with their price, profit and stock, and Recent changes showing one put back on sale and one set to 0." />
               </div>
-            </div>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="cs cs-flip" id="delivery" aria-labelledby="delivery-head">
         <div class="wrap">
-          <div class="strip" aria-hidden="true" data-strip>
-            <div class="strip-h">
-              <span data-c="name">Listing</span>
-              <span data-c="cost">Item cost</span>
-              <span data-c="list">List for</span>
-              <span data-c="profit">Profit</span>
-              <span data-c="stock">Stock</span>
-              <span data-c="arrives" class="is-hl">Arrives</span>
-              <span data-c="result">Result</span>
-            </div>
-            <div class="strip-r">
-              <span data-c="name" class="s-name"><span>Insulated water bottle, 1 L</span></span>
-              <span data-c="cost" class="s-fig c-cost num">£8.10</span>
-              <span data-c="list" class="s-fig num">£13.54</span>
-              <span data-c="profit" class="s-fig c-profit num">£3.23</span>
-              <span data-c="stock" class="s-fig c-stock num">12</span>
-              <span data-c="arrives" class="c-arrives is-hl" data-from="6 days"><span class="flap">12 days</span></span>
-              <span data-c="result" class="s-res"><span class="chip brand">Shipping updated</span></span>
-            </div>
-          </div>
           <div class="cs-grid">
             <div class="cs-say">
               <h2 id="delivery-head">Delivery times that match the store.</h2>
@@ -465,44 +299,18 @@
               </ul>
             </div>
 
-            <div class="proof" aria-hidden="true">
-              <div class="pf pf-bands">
-                <div class="pf-bands-head"><span>Store says it arrives in</span><span>eBay shipping policy</span></div>
-                <ol>
-                  <li><span class="num">1 to 3 days</span><span>Next-day courier</span></li>
-                  <li><span class="num">4 to 8 days</span><span>Standard</span></li>
-                  <li class="on"><span class="num">9 to 14 days</span><span>Economy</span><span class="chip brand">Now</span></li>
-                  <li class="off"><span class="num">Over 14 days</span><span>Off sale until it&rsquo;s faster</span></li>
-                </ol>
-                <p class="pf-note">Insulated water bottle, 1 L: the store now says 12 days, so the listing moved to Economy.</p>
+            <figure class="proof proof-panel-shot">
+              <div class="panel-shot proof-shot">
+                <img class="shot-light" src="./shots/panel-delivery-light.webp" width="400" height="413" loading="lazy" decoding="async" alt="The shipping settings in the Margin side panel: delivery times of 3, 8 and 14 days, each set to its own eBay shipping policy." />
+                <img class="shot-dark" src="./shots/panel-delivery-dark.webp" width="400" height="413" loading="lazy" decoding="async" alt="The shipping settings in the Margin side panel: delivery times of 3, 8 and 14 days, each set to its own eBay shipping policy." />
               </div>
-            </div>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="band cs" id="orders" aria-labelledby="orders-head">
         <div class="wrap">
-          <div class="strip" aria-hidden="true" data-strip>
-            <div class="strip-h">
-              <span data-c="name">Listing</span>
-              <span data-c="cost">Item cost</span>
-              <span data-c="list">List for</span>
-              <span data-c="profit">Profit</span>
-              <span data-c="stock" class="is-hl">Stock</span>
-              <span data-c="arrives">Arrives</span>
-              <span data-c="result">Result</span>
-            </div>
-            <div class="strip-r">
-              <span data-c="name" class="s-name"><span>Brushed steel kitchen faucet</span></span>
-              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
-              <span data-c="list" class="s-fig num">£30.18</span>
-              <span data-c="profit" class="s-fig c-profit num">£7.36</span>
-              <span data-c="stock" class="s-fig c-stock num is-hl" data-from="6"><span class="flap">5</span></span>
-              <span data-c="arrives" class="c-arrives">2 days</span>
-              <span data-c="result" class="s-res"><span class="chip ok">Sold</span></span>
-            </div>
-          </div>
           <div class="cs-grid">
             <div class="cs-say">
               <h2 id="orders-head">Orders and shipping.</h2>
@@ -518,46 +326,18 @@
               </ul>
             </div>
 
-            <div class="proof" aria-hidden="true">
-              <div class="pf pf-order">
-                <div class="pf-order-top">
-                  <span class="pf-name"><b>Brushed steel kitchen faucet</b><span>1 &times; &middot; Buyer in Leeds, LS6</span></span>
-                  <span class="chip warn">Ship by tomorrow</span>
-                </div>
-                <ol class="pf-steps">
-                  <li class="done"><i><svg><use href="#m-tick" /></svg></i><span>Bought on Amazon, address filled in</span></li>
-                  <li class="done"><i><svg><use href="#m-tick" /></svg></i><span>Tracking found: Royal Mail</span></li>
-                  <li class="next"><i><svg><use href="#m-next" /></svg></i><span class="btn primary pf-btn">Send tracking to eBay</span></li>
-                </ol>
-                <div class="pf-order-sum"><span>Profit on this order</span><b class="num">£7.36</b></div>
+            <figure class="proof proof-panel-shot">
+              <div class="panel-shot proof-shot">
+                <img class="shot-light" src="./shots/panel-orders-light.webp" width="400" height="726" loading="lazy" decoding="async" alt="Orders in the Margin side panel: two sales to ship, with the buyer's address, the profit on each, Buy on Amazon and Send tracking to eBay." />
+                <img class="shot-dark" src="./shots/panel-orders-dark.webp" width="400" height="726" loading="lazy" decoding="async" alt="Orders in the Margin side panel: two sales to ship, with the buyer's address, the profit on each, Buy on Amazon and Send tracking to eBay." />
               </div>
-            </div>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="cs cs-flip" id="profit" aria-labelledby="profit-head">
         <div class="wrap">
-          <div class="strip" aria-hidden="true" data-strip>
-            <div class="strip-h">
-              <span data-c="name">Listing</span>
-              <span data-c="cost">Item cost</span>
-              <span data-c="list">List for</span>
-              <span data-c="profit" class="is-hl">Profit</span>
-              <span data-c="stock">Stock</span>
-              <span data-c="arrives">Arrives</span>
-              <span data-c="result">Result</span>
-            </div>
-            <div class="strip-r">
-              <span data-c="name" class="s-name"><span>Brushed steel kitchen faucet</span></span>
-              <span data-c="cost" class="s-fig c-cost num">£18.40</span>
-              <span data-c="list" class="s-fig num">£30.18</span>
-              <span data-c="profit" class="s-fig c-profit num is-hl" data-from="Est. £7.36"><span class="flap">£7.36</span></span>
-              <span data-c="stock" class="s-fig c-stock num">5</span>
-              <span data-c="arrives" class="c-arrives">2 days</span>
-              <span data-c="result" class="s-res"><span class="chip ok">Shipped</span></span>
-            </div>
-          </div>
           <div class="cs-grid">
             <div class="cs-say">
               <h2 id="profit-head">Track profit across sales, fees and costs in one place.</h2>
