@@ -8,11 +8,17 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icon-180.png" />
-    <script type="module" crossorigin src="../assets/dashboard-SGBQWhP7.js"></script>
+    <!--
+      The page's own typeface, asked for with the page rather than once the stylesheet has been read
+      and a heading found that needs it: until then every word is drawn in a fallback and drawn again.
+      `crossorigin` because a font is always fetched in CORS mode, and a preload without it is fetched twice.
+    -->
+    <link rel="preload" href="../assets/geist-latin-var-BgDaEnEv.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" crossorigin src="../assets/dashboard-zLie13Af.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/keys-CrjuZVQ3.js">
-    <link rel="modulepreload" crossorigin href="../assets/index-DEQdw8rw.js">
+    <link rel="modulepreload" crossorigin href="../assets/intl-BwZ-Vp8n.js">
     <link rel="stylesheet" crossorigin href="../assets/keys-BOXvPxFu.css">
-    <link rel="stylesheet" crossorigin href="../assets/dashboard-D1ikZk_H.css">
+    <link rel="stylesheet" crossorigin href="../assets/dashboard-DAGbi-Xu.css">
   </head>
   <body>
     <!--
@@ -255,7 +261,7 @@
             <div class="titles">
               <h1 id="overviewTitle">Overview</h1>
               <p class="sub" id="periodSaid">&nbsp;</p>
-              <p class="sub" id="scopeSaid" hidden>Feedback, traffic, returns and the selling limit show one shop at a time.</p>
+              <p class="sub" id="scopeSaid" hidden>Feedback, traffic, returns, the selling limit and When you sell show one shop at a time.</p>
             </div>
             <div class="tools">
               <!--
@@ -309,6 +315,8 @@
 
           <div id="overviewBody" hidden>
             <div class="prompt" id="connectPrompt" hidden></div>
+            <!-- Said when the orders behind the figures could not be read, in the server's words (`ordersError`). -->
+            <p class="strip warn" id="ordersShort" role="status" hidden></p>
             <!--
               Customizing the Overview (customize.ts): four buttons and nothing to read, because
               the page itself is what is being arranged and every element on it says what it is.
@@ -539,6 +547,7 @@
                     </table>
                   </div>
                   <p class="empty" id="productsEmpty" hidden>No sales in this period yet.</p>
+                  <div class="moreRow" id="productsMore" hidden></div>
                 </div>
               </section>
 
@@ -597,7 +606,7 @@
                 arrived saved is a guess about orders that never happened.
               -->
               <section class="card" id="didCard" data-el="did" hidden>
-                <header><h2>What Margin did</h2><span class="meta">this period</span></header>
+                <header><h2>What Margin did</h2><span class="meta" id="didMeta">this period</span></header>
                 <div class="insight" id="didHealth"></div>
               </section>
 
@@ -787,14 +796,16 @@
                 <button type="button" data-show="tobuy" aria-pressed="false">To buy <span class="n" id="ordersToBuyN">0</span></button>
                 <button type="button" data-show="bought" aria-pressed="false">Bought <span class="n" id="ordersBoughtN">0</span></button>
                 <button type="button" data-show="late" aria-pressed="false" hidden>Late <span class="n" id="ordersLateN">0</span></button>
+                <!-- Asked to be canceled: out of To buy, and shown only while there is one. -->
+                <button type="button" data-show="canceling" aria-pressed="false" hidden>Being canceled <span class="n" id="ordersCancelingN">0</span></button>
                 <button type="button" data-show="sent" aria-pressed="false">Shipped <span class="n" id="ordersSentN">0</span></button>
               </div>
               <label class="sr-only" for="ordersSpan">Period</label>
               <!-- The page's own period, apart from the Overview's: a month to start with, and as far back as a year. -->
               <select id="ordersSpan" class="sortPick">
                 <option value="30" selected>Last 30 days</option>
+                <!-- Not a year: eBay's orders are read 90 days back for this list, and "Last year" showed those under its name. -->
                 <option value="90">Last 90 days</option>
-                <option value="365">Last year</option>
               </select>
             </div>
             <div id="ordersList"></div>
